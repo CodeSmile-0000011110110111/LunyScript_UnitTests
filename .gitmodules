@@ -1,0 +1,18 @@
+[submodule "Luny"]
+	path = Luny
+	url = https://github.com/CodeSmile-0000011110110111/Luny
+[submodule "LunyLua"]
+	path = LunyLua
+	url = https://github.com/CodeSmile-0000011110110111/LunyLua
+[submodule "LunyScript"]
+	path = LunyScript
+	url = https://github.com/CodeSmile-0000011110110111/LunyScript
+[submodule "Luny-Test"]
+	path = Luny-Test
+	url = https://github.com/CodeSmile-0000011110110111/Luny-Test
+[submodule "LunyScript-Test"]
+	path = LunyScript-Test
+	url = https://github.com/CodeSmile-0000011110110111/LunyScript-Test
+[submodule "LunyLua-Test"]
+	path = LunyLua-Test
+	url = https://github.com/CodeSmile-0000011110110111/LunyLua-Test
