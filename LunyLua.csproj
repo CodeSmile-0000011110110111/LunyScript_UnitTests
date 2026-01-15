@@ -4,7 +4,8 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <EnableDefaultItems>false</EnableDefaultItems>
+    <DefaultItemExcludes>$(DefaultItemExcludes);Luny\**;Luny-Test\**;LunyLua-Test\**;LunyScript\**;LunyScript-Test\**;bin\**;obj\**</DefaultItemExcludes>
   </PropertyGroup>
 
   <ItemGroup>
