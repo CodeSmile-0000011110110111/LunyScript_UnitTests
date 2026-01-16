@@ -1,18 +1,30 @@
 [submodule "Luny"]
 	path = Luny
+	branch = .
+    update = merge
 	url = https://github.com/CodeSmile-0000011110110111/Luny
 [submodule "LunyLua"]
 	path = LunyLua
+	branch = .
+    update = merge
 	url = https://github.com/CodeSmile-0000011110110111/LunyLua
 [submodule "LunyScript"]
 	path = LunyScript
+	branch = .
+    update = merge
 	url = https://github.com/CodeSmile-0000011110110111/LunyScript
 [submodule "Luny-Test"]
 	path = Luny-Test
+	branch = .
+    update = merge
 	url = https://github.com/CodeSmile-0000011110110111/Luny-Test
 [submodule "LunyScript-Test"]
 	path = LunyScript-Test
+	branch = .
+    update = merge
 	url = https://github.com/CodeSmile-0000011110110111/LunyScript-Test
 [submodule "LunyLua-Test"]
 	path = LunyLua-Test
+	branch = .
+    update = merge
 	url = https://github.com/CodeSmile-0000011110110111/LunyLua-Test
