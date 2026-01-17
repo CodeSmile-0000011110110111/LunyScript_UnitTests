@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>disable</ImplicitUsings>
-    <Nullable>annotations</Nullable>
+    <Nullable>disable</Nullable>
     <EnableDefaultItems>false</EnableDefaultItems>
     <DefaultItemExcludes>$(DefaultItemExcludes);Luny\**;Luny-Test\**;LunyLua-Test\**;LunyScript\**;LunyScript-Test\**;bin\**;obj\**</DefaultItemExcludes>
     <LangVersion>9</LangVersion>
