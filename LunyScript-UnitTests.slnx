@@ -1,6 +1,7 @@
 <Solution>
   <Project Path="Luny-Test/Luny-Test.csproj" />
   <Project Path="Luny.csproj" />
+  <Project Path="LunyCodeGen/LunyCodeGen.csproj" />
   <Project Path="LunyLua-Test/LunyLua-Test.csproj" />
   <Project Path="LunyLua.csproj" />
   <Project Path="LunyScript-Test/LunyScript-Test.csproj" />

@@ -28,3 +28,6 @@
 	branch = .
     update = merge
 	url = https://github.com/CodeSmile-0000011110110111/LunyLua-Test
+[submodule "LunyCodeGen"]
+	path = LunyCodeGen
+	url = https://github.com/CodeSmile-0000011110110111/LunyCodeGen
