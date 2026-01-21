@@ -30,4 +30,28 @@
 	url = https://github.com/CodeSmile-0000011110110111/LunyLua-Test
 [submodule "LunyCodeGen"]
 	path = LunyCodeGen
+	branch = .
+    update = merge
 	url = https://github.com/CodeSmile-0000011110110111/LunyCodeGen
+
+[submodule "Luny.Godot"]
+	path = Luny.Godot
+	branch = .
+    update = merge
+	url = https://github.com/CodeSmile-0000011110110111/Luny.Godot
+[submodule "LunyScript.Godot"]
+	path = LunyScript.Godot
+	branch = .
+    update = merge
+	url = https://github.com/CodeSmile-0000011110110111/LunyScript.Godot
+	
+[submodule "Luny.Unity"]
+	path = Luny.Unity
+	branch = .
+    update = merge
+	url = https://github.com/CodeSmile-0000011110110111/Luny.Unity
+[submodule "LunyScript.Unity"]
+	path = LunyScript.Unity
+	branch = .
+    update = merge
+	url = https://github.com/CodeSmile-0000011110110111/LunyScript.Unity
