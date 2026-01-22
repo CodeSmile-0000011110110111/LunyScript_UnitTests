@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <EnableDefaultItems>false</EnableDefaultItems>
+    <DefaultItemExcludes>$(DefaultItemExcludes);Luny\**;Luny-Test\**;LunyLua\**;LunyLua-Test\**;LunyScript-Test\**;bin\**;obj\**</DefaultItemExcludes>
+    <LangVersion>9</LangVersion>
+    <RootNamespace>LunyScript-RFC</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="RFC\**\*.*" />
+  </ItemGroup>
+
+</Project>

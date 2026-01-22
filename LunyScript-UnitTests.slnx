@@ -11,5 +11,6 @@
   <Project Path="LunyScript.Godot.csproj" />
   <Project Path="Luny.Unity.csproj" />
   <Project Path="LunyScript.Unity.csproj" />
+  <Project Path="RFC.csproj" />
 
 </Solution>
