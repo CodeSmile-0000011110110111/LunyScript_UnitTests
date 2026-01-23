@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <None Include="LunyScript.Unity\**\*.cs" />
+      <None Include="LunyScript.Unity\**\*.asmdef" />
   </ItemGroup>
 
   <ItemGroup>
