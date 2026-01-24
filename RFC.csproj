@@ -14,4 +14,10 @@
     <None Include="RFC\**\*.*" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Include=".junie\guidelines.md" />
+    <Content Include=".junie\plan.md" />
+    <Content Include=".junie\tasks.md" />
+  </ItemGroup>
+
 </Project>
