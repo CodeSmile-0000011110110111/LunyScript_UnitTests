@@ -1,15 +1,24 @@
 # Current Status
 
 ## Next Steps (Sprint)
-- [ ] Gather info about scene unload event handling across engines (timing, reliability, additive vs whole)
 - [ ] GetAllObjects() optimization: only convert to LunyObject if scripted
 - [ ] Implement GetSingleObject with proxy fallback
 - [ ] Test scene (re-)load and hook up to scene service callbacks
 - [ ] Create ReloadScene block
+- [ ] Gather info about scene unload event handling across engines (timing, reliability, additive vs whole)
 - [ ] Implement Every.TimeInterval block
 - [ ] "GetInstance()" awaitable to handle ctor/ready timing scenario
+- [ ] LunyScript.Run => use When/Every overloads instead?
+- [ ] LunyScript.Every.* should run unconditionally whereas When.Self.* run only while enabled
+- [ ] Implement Random/Shuffle blocks and API
 
 ## Backlog
+- ### Unit Testing
+  - [ ] analyze how agnostic tests could port to engine-native tests (replace mocks with native implementations) 
+  - [ ] add more LunyEngine agnostic tests to define native-engine contracts
+- ### Assets
+  - [ ] Implement Asset/Resource loading by name/path
+  - [ ] Return valid "error" objects from Asset service
 - ### Design & Lifecycle
     - [ ] Sandboxed script execution (Limit access to objects, assets, API)
     - [ ] Register/create/enable API methods for regular code
@@ -23,7 +32,7 @@
     - [ ] [[LunyScript Hot Reload]] with manual triggers
     - [ ] [[Event Handling Blocks]] foundation (Input, Collision, SendMessage)
     - [ ] [[Variable Blocks]]
-    - [ ] Variables refactor to `Vars.Global[]` / `Vars.G[]`
+    - [ ] Variables aliases: `Vars.Global[]` / `Vars.G[]`
     - [ ] Pass scene name to blocks via event parameters
 - ### Diagnostics & Infrastructure
     - [ ] [[Diagnostics]] Profiling Hooks for scripts and runnables
@@ -32,8 +41,7 @@
     - [ ] [[Resource Addressing]] (LunyUrl)
     - [ ] [[Lua Integration]]
 - ### Improvements & Engine Specific
-    - [ ] Return valid "error" objects from Asset service
-    - [ ] Unity: Add `[IgnoredByDeepProfiler]` attribute
+    - [ ] Unity: Add `[IgnoredByDeepProfiler]` attribute to debug methods
     - [ ] Case insensitive activator object-script name matching
     - [ ] Configurable name matching (starts with/contains)
     - [ ] Variable validation (log read access of non-existing variables)
