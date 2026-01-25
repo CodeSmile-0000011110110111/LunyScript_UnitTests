@@ -1,9 +1,10 @@
 # Current Status
 
 ## Next Steps (Sprint)
+- [ ] Check if we can make the native engine projects build by providing Mocks for native APIs (enables engine-wide refactoring!) 
 - [X] GetAllObjects(): change to only convert to LunyObject if scripted
 - [X] LunyObject: return cached instance before creating new one
-- [ ] Implement GetSingleObject (by name) (with proxy fallback)
+- [ ] Implement GetSingleObject (by name) (with proxy fallback) for Object.Create that should run a script (consider prebuilt scripts)
 - [ ] Test scene (re-)load and hook up to scene service callbacks
 - [ ] Create ReloadScene block
 - [ ] Gather info about scene unload event handling across engines (timing, reliability, additive vs whole)
