@@ -1,16 +1,17 @@
 # Current Status
 
 ## Next Steps (Sprint)
-- [ ] GetAllObjects() optimization: only convert to LunyObject if scripted
-- [ ] Implement GetSingleObject with proxy fallback
+- [X] GetAllObjects(): change to only convert to LunyObject if scripted
+- [X] LunyObject: return cached instance before creating new one
+- [ ] Implement GetSingleObject (by name) (with proxy fallback)
 - [ ] Test scene (re-)load and hook up to scene service callbacks
 - [ ] Create ReloadScene block
 - [ ] Gather info about scene unload event handling across engines (timing, reliability, additive vs whole)
 - [ ] Implement Every.TimeInterval block
 - [ ] "GetInstance()" awaitable to handle ctor/ready timing scenario
-- [ ] LunyScript.Run => use When/Every overloads instead?
-- [ ] LunyScript.Every.* should run unconditionally whereas When.Self.* run only while enabled
-- [ ] Implement Random/Shuffle blocks and API
+- [X] LunyScript.When.Self (updates) should not run while disabled
+- [X] Create object via API and register (activate script)
+- [X] Get and destroy registered object via API
 
 ## Backlog
 - ### Unit Testing
@@ -20,13 +21,17 @@
   - [ ] Implement Asset/Resource loading by name/path
   - [ ] Return valid "error" objects from Asset service
 - ### Design & Lifecycle
+    - [ ] call OnReady for children first (depth-first, post-order)
+    - [ ] ensure deterministic LunyScript execution order (follow scene hierarchy order?)
+    - [ ] test LunyScript running on global object (autoload, DDOL) - should still run after scene (re)load
     - [ ] Sandboxed script execution (Limit access to objects, assets, API)
-    - [ ] Register/create/enable API methods for regular code
-    - [ ] Create object via API and register (activate script)
-    - [ ] Get and destroy registered object via API
-    - [ ] Update methods should not run when object is disabled in hierarchy
+    - [ ] Register/create/enable API methods for engine-native code
     - [ ] Handle LunyObject parenting with hierarchy gaps
-- ### Blocks & Features
+- ### Registries
+    - [ ] LunyObjectRegistry: GetByName should use Dictionary, not FirstOrDefault
+- ### Services
+    - [ ] Scene: implement depth-first enumeration with pre-order or post-order (as IEnumerable?)
+- ### LunyScript Blocks & API
     - [ ] [[Conditional Blocks]] (if/else)
     - [ ] [[Composite Blocks]] (loops, timers, coroutines)
     - [ ] [[LunyScript Hot Reload]] with manual triggers
@@ -34,6 +39,9 @@
     - [ ] [[Variable Blocks]]
     - [ ] Variables aliases: `Vars.Global[]` / `Vars.G[]`
     - [ ] Pass scene name to blocks via event parameters
+    - [ ] Implement Random/Shuffle blocks and API
+    - [ ] LunyScript.Every.* (updates) should run unconditionally and globally (not tied to object - but then: context?)
+    - [ ] LunyScript.Method.Run => use When/Every overloads in addition?
 - ### Diagnostics & Infrastructure
     - [ ] [[Diagnostics]] Profiling Hooks for scripts and runnables
     - [ ] Internal verbose logging with categories/levels
@@ -42,8 +50,8 @@
     - [ ] [[Lua Integration]]
 - ### Improvements & Engine Specific
     - [ ] Unity: Add `[IgnoredByDeepProfiler]` attribute to debug methods
-    - [ ] Case insensitive activator object-script name matching
-    - [ ] Configurable name matching (starts with/contains)
+    - [ ] Case insensitive and partial name matching for object-script activator (controlled by LunyScript flags?)
+      - [ ] Configurable name matching (starts with/contains)
     - [ ] Variable validation (log read access of non-existing variables)
     - [ ] Metadata for global variable read/write tracking
 
