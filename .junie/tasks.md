@@ -2,6 +2,7 @@
 
 ## Next Steps (Sprint)
 - [ ] Check if we can make the native engine projects build by providing Mocks for native APIs (enables engine-wide refactoring!) 
+- [ ] analyze how agnostic tests could port to engine-native tests (replace mocks with native implementations)
 - [X] GetAllObjects(): change to only convert to LunyObject if scripted
 - [X] LunyObject: return cached instance before creating new one
 - [ ] Implement GetSingleObject (by name) (with proxy fallback) for Object.Create that should run a script (consider prebuilt scripts)
@@ -16,7 +17,6 @@
 
 ## Backlog
 - ### Unit Testing
-  - [ ] analyze how agnostic tests could port to engine-native tests (replace mocks with native implementations) 
   - [ ] add more LunyEngine agnostic tests to define native-engine contracts
 - ### Assets
   - [ ] Implement Asset/Resource loading by name/path
@@ -57,8 +57,9 @@
     - [ ] Metadata for global variable read/write tracking
 
 ## Epics
-- **Reflective/Generated API**: Lua API generator or reflective shifts
-- **Repository Structure**: LunyEngine as separate package, lightweight package manager
+- **Reflective/Generated API**: Lua API generator needed; maybe C# reflected/generated engine bindings? (if it speeds up adding features)
+- **Repository Structure**: LunyEngine as separate package from LunyScript
+- **Distribution**: versioning of LunyEngine for multiple frameworks? Lightweight package manager?
 - **Hot Reload**: Support for both C# and Lua
 - **Sandboxed Script Execution**: API filters (Lua blacklist/whitelist, C# custom sandbox service)
 - **On-Screen Diagnostics**: Display design and required services

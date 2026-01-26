@@ -5,18 +5,20 @@
     <ImplicitUsings>disable</ImplicitUsings>
     <Nullable>disable</Nullable>
     <EnableDefaultItems>false</EnableDefaultItems>
-    <DefaultItemExcludes>$(DefaultItemExcludes);Luny\**;Luny-Test\**;LunyLua\**;LunyLua-Test\**;LunyScript-Test\**;bin\**;obj\**</DefaultItemExcludes>
+    <DefaultItemExcludes>$(DefaultItemExcludes);LunyScript.Unity\Editor\**;Luny\**;Luny-Test\**;LunyLua\**;LunyLua-Test\**;LunyScript-Test\**;bin\**;obj\**</DefaultItemExcludes>
     <LangVersion>9</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="LunyScript.Unity\**\*.cs" />
-      <None Include="LunyScript.Unity\**\*.asmdef" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <Compile Include="LunyScript.Unity\**\*.cs" />
+    <Compile Remove="LunyScript.Unity\Editor\**\*.cs" />
+    <Compile Remove="LunyScript.Unity\SmokeTests\Editor\**\*.cs" />
+    <Content Include="LunyScript.Unity\**\*.asmdef" />
     <ProjectReference Include="Luny.csproj" />
     <ProjectReference Include="LunyLua.csproj" />
+    <ProjectReference Include="LunyScript.csproj" />
+    <ProjectReference Include="Luny.Unity.csproj" />
+    <ProjectReference Include="Luny.Unity-Mock.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,5 @@
 <Solution>
+  <Project Path="Luny-ContractTest.csproj" />
   <Project Path="Luny-Test/Luny-Test.csproj" />
   <Project Path="Luny.csproj" />
   <Project Path="LunyCodeGen/LunyCodeGen.csproj" />
@@ -6,9 +7,11 @@
   <Project Path="LunyLua.csproj" />
   <Project Path="LunyScript-Test/LunyScript-Test.csproj" />
   <Project Path="LunyScript.csproj" />
+  <Project Path="Luny.Godot-Mock.csproj" />
 
   <Project Path="Luny.Godot.csproj" />
   <Project Path="LunyScript.Godot.csproj" />
+  <Project Path="Luny.Unity-Mock.csproj" />
   <Project Path="Luny.Unity.csproj" />
   <Project Path="LunyScript.Unity.csproj" />
   <Project Path="RFC.csproj" />

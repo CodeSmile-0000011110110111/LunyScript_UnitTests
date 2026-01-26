@@ -55,3 +55,18 @@
 	branch = .
     update = merge
 	url = https://github.com/CodeSmile-0000011110110111/LunyScript.Unity
+[submodule "Luny.Unity-Mock"]
+	update = merge
+	path = Luny.Unity-Mock
+	url = https://github.com/CodeSmile-0000011110110111/Luny.Unity-Mock
+	branch = .
+[submodule "Luny.Godot-Mock"]
+	update = merge
+	path = Luny.Godot-Mock
+	url = https://github.com/CodeSmile-0000011110110111/Luny.Godot-Mock
+	branch = .
+[submodule "Luny-ContractTest"]
+	update = merge
+	path = Luny-ContractTest
+	url = https://github.com/CodeSmile-0000011110110111/Luny-ContractTest
+	branch = .

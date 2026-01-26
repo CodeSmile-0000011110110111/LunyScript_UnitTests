@@ -17,7 +17,7 @@
 - **Step-by-Step Mode**: Always operate in a strict planning-first mode.
 - **Explicit Confirmation**: Do not modify any files or start implementation until the user has explicitly confirmed the plan.
 - **No "Running Ahead"**: Wait for confirmation after each major phase (Planning -> Implementation -> Verification).
-- **Logging**: Prefer `LunyLogger` methods. Do not modify existing `LunyLogger` log strings without permission.
+- **Logging**: Use `LunyLogger` methods: `LogInfo`, `LogWarning`, `LogError`, `LogException`. Do not modify existing `LunyLogger` log strings without permission, prefer to add a new log statement instead.
 - **Compatibility**: Code restricted to C# 9 and .NET Standard 2.1 for Unity 6 compatibility.
 - `ILunyScriptBlock` implementations are internal and require a static Create() method, ctors are private to enforce use of Create()
 

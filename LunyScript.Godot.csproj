@@ -10,12 +10,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="LunyScript.Godot\**\*.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <Compile Include="LunyScript.Godot\**\*.cs" />
     <ProjectReference Include="Luny.csproj" />
     <ProjectReference Include="LunyLua.csproj" />
+    <ProjectReference Include="LunyScript.csproj" />
+    <ProjectReference Include="Luny.Godot.csproj" />
+    <ProjectReference Include="Luny.Godot-Mock.csproj" />
   </ItemGroup>
 
 </Project>

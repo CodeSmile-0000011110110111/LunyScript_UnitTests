@@ -11,10 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="RFC\**\*.*" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <Content Include="RFC\**\*.*" />
     <Content Include=".junie\guidelines.md" />
     <Content Include=".junie\plan.md" />
     <Content Include=".junie\tasks.md" />

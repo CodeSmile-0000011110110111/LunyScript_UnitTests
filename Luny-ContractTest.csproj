@@ -1,18 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>disable</ImplicitUsings>
     <Nullable>disable</Nullable>
     <EnableDefaultItems>false</EnableDefaultItems>
-    <DefaultItemExcludes>$(DefaultItemExcludes);Luny-Test\**;LunyLua\**;LunyLua-Test\**;LunyScript\**;LunyScript-Test\**;bin\**;obj\**</DefaultItemExcludes>
     <LangVersion>9</LangVersion>
   </PropertyGroup>
-
   <ItemGroup>
-    <Compile Include="Luny.Godot\**\*.cs" />
-    <ProjectReference Include="Luny.csproj" />
-    <ProjectReference Include="Luny.Godot-Mock.csproj" />
+    <Compile Include="Luny-ContractTest\**\*.cs" />
   </ItemGroup>
-
+  <ItemGroup>
+    <ProjectReference Include="Luny.csproj" />
+  </ItemGroup>
 </Project>
