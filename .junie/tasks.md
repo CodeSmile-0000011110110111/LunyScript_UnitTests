@@ -2,18 +2,16 @@
 
 ## Next Steps (Sprint)
 - [X] Check if we can make the native engine projects build by providing Mocks for native APIs (enables engine-wide refactoring!)
-- [ ] LunyServiceRegistry: refactor engine check, remove adapter and replace with global "engine name" property provided by adapter
-- [ ] port agnostic tests to use engine mocks of native implementations
-- [ ] create separate Unity package / Godot addon for ContractTests
-- [ ] Engine Mocks: Unity Application.Quit() should invoke OnApplicationQuit() on all MonoBehaviours, then unload scene (destroys all objects)
+- [X] LunyServiceRegistry: refactor engine check, remove adapter and replace with global "engine name" property provided by adapter
+- [X] refactor existing *-Test tests:
+  - [X] make tests use contract test infrastructure
+  - [X] make all tests run once with each engine adapter, without duplicating the test code
+  - [X] where it makes sense, move tests to Luny-ContractTest
+- [ ] Engine Mocks: Unity Application.Quit() should invoke OnApplicationQuit() on all MonoBehaviours, destroys all objects, "unloads" scenes. This should cause the engine adapter to shut down.
 - [X] GetAllObjects(): change to only convert to LunyObject if scripted
 - [X] LunyObject: return cached instance before creating new one
 - [X] Implement FindByName (with proxy fallback) for Object.Create that should run a script (consider prebuilt scripts)
-- [ ] Test scene (re-)load and hook up to scene service callbacks
-- [ ] Create ReloadScene block
-- [ ] Gather info about scene unload event handling across engines (timing, reliability, additive vs whole)
 - [X] Implement Every.TimeInterval block
-- [ ] Review OnIntervalUpdate implementation in script Scheduler and object event handler 
 - [X] LunyScript.When.Self (updates) should not run while disabled
 - [X] Create object via API and register (activate script)
 - [X] Get and destroy registered object via API
@@ -21,6 +19,8 @@
 ## Backlog
 - ### Unit Testing
   - [ ] add more LunyEngine agnostic tests to define native-engine contracts
+  - [ ] create separate Unity package / Godot addon for ContractTests
+  - [ ] port agnostic tests to use engine mocks of native implementations (problems: Godot has no unit testing, Unity's requires enumerator tests)
 - ### Assets
   - [ ] Implement Asset/Resource loading by name/path
   - [ ] Return valid "error" objects from Asset service
@@ -31,6 +31,7 @@
     - [ ] Sandboxed script execution (Limit access to objects, assets, API)
     - [ ] Register/create/enable API methods for engine-native code
     - [ ] Handle LunyObject parenting with hierarchy gaps
+    - [ ] Review OnIntervalUpdate implementation in script Scheduler and object event handler
 - ### Registries
     - [ ] LunyObjectRegistry: GetByName should use Dictionary, not FirstOrDefault
 - ### Services
@@ -43,16 +44,17 @@
     - [ ] [[Variable Blocks]]
     - [ ] Variables aliases: `Vars.Global[]` / `Vars.G[]`
     - [ ] Pass scene name to blocks via event parameters
+    - [ ] Test scene (re-)load and hook up to scene service callbacks
+    - [ ] Create ReloadScene block
     - [ ] Implement Random/Shuffle blocks and API
     - [ ] LunyScript.Every.* (updates) should run unconditionally and globally (not tied to object - but then: context?)
-    - [ ] LunyScript.Method.Run => use When/Every overloads in addition?
+    - [ ] LunyScript.Method.Run => use When/Every overloads in addition? 
 - ### Diagnostics & Infrastructure
     - [ ] [[Diagnostics]] Profiling Hooks for scripts and runnables
     - [ ] Internal verbose logging with categories/levels
     - [ ] [[Testing Infrastructure]]
     - [ ] [[Resource Addressing]] (LunyUrl)
     - [ ] [[Lua Integration]]
-    - [ ] update gitall.sh to support "gitall.sh status", printing all unstaged files (omit any "up to date" messages)
 - ### Improvements & Engine Specific
     - [ ] Unity: Add `[IgnoredByDeepProfiler]` attribute to debug methods
     - [ ] Case insensitive and partial name matching for object-script activator (controlled by LunyScript flags?)

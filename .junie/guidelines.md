@@ -24,6 +24,7 @@
 - `ILunyScriptBlock` implementations are internal and require a static Create() method, ctors are private to enforce use of Create()
 - When modifying .csproj files also update the .slnx file accordingly
 - do not remove or modify LICENSE and README.md files unless instructed
+- `ILunyEngineService` implementations for native engines must not be updated to satisfy unit test needs - such changes must be done in our *-Mock and *-Test projects 
 
 ## Code Style
 - **Control Flow**:
