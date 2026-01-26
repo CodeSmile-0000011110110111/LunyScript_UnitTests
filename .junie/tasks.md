@@ -5,6 +5,7 @@
 - [ ] LunyServiceRegistry: refactor engine check, remove adapter and replace with global "engine name" property provided by adapter
 - [ ] port agnostic tests to use engine mocks of native implementations
 - [ ] create separate Unity package / Godot addon for ContractTests
+- [ ] Engine Mocks: Unity Application.Quit() should invoke OnApplicationQuit() on all MonoBehaviours, then unload scene (destroys all objects)
 - [X] GetAllObjects(): change to only convert to LunyObject if scripted
 - [X] LunyObject: return cached instance before creating new one
 - [X] Implement FindByName (with proxy fallback) for Object.Create that should run a script (consider prebuilt scripts)
