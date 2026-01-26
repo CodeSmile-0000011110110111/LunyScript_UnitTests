@@ -1,8 +1,8 @@
 # Current Status
 
 ## Next Steps (Sprint)
-- [ ] Check if we can make the native engine projects build by providing Mocks for native APIs (enables engine-wide refactoring!) 
-- [ ] analyze how agnostic tests could port to engine-native tests (replace mocks with native implementations)
+- [X] Check if we can make the native engine projects build by providing Mocks for native APIs (enables engine-wide refactoring!) 
+- [ ] port agnostic tests to use engine mocks of native implementations
 - [X] GetAllObjects(): change to only convert to LunyObject if scripted
 - [X] LunyObject: return cached instance before creating new one
 - [ ] Implement GetSingleObject (by name) (with proxy fallback) for Object.Create that should run a script (consider prebuilt scripts)
@@ -49,6 +49,7 @@
     - [ ] [[Testing Infrastructure]]
     - [ ] [[Resource Addressing]] (LunyUrl)
     - [ ] [[Lua Integration]]
+    - [ ] update gitall.sh to support "gitall.sh status", printing all unstaged files (omit any "up to date" messages)
 - ### Improvements & Engine Specific
     - [ ] Unity: Add `[IgnoredByDeepProfiler]` attribute to debug methods
     - [ ] Case insensitive and partial name matching for object-script activator (controlled by LunyScript flags?)
