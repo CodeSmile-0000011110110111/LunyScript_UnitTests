@@ -2,17 +2,17 @@
 
 ## Next Steps (Sprint)
 - [X] Check if we can make the native engine projects build by providing Mocks for native APIs (enables engine-wide refactoring!)
+- [ ] LunyServiceRegistry: refactor engine check, remove adapter and replace with global "engine name" property provided by adapter
 - [ ] port agnostic tests to use engine mocks of native implementations
-- [ ] GetSingleObject(): remove or rename
 - [ ] create separate Unity package / Godot addon for ContractTests
 - [X] GetAllObjects(): change to only convert to LunyObject if scripted
 - [X] LunyObject: return cached instance before creating new one
-- [ ] Implement GetSingleObject (by name) (with proxy fallback) for Object.Create that should run a script (consider prebuilt scripts)
+- [X] Implement FindByName (with proxy fallback) for Object.Create that should run a script (consider prebuilt scripts)
 - [ ] Test scene (re-)load and hook up to scene service callbacks
 - [ ] Create ReloadScene block
 - [ ] Gather info about scene unload event handling across engines (timing, reliability, additive vs whole)
-- [ ] Implement Every.TimeInterval block
-- [ ] "GetInstance()" awaitable to handle ctor/ready timing scenario
+- [X] Implement Every.TimeInterval block
+- [ ] Review OnIntervalUpdate implementation in script Scheduler and object event handler 
 - [X] LunyScript.When.Self (updates) should not run while disabled
 - [X] Create object via API and register (activate script)
 - [X] Get and destroy registered object via API
