@@ -1,8 +1,9 @@
 # Current Status
 
 ## Next Steps (Sprint)
-- [X] Check if we can make the native engine projects build by providing Mocks for native APIs (enables engine-wide refactoring!) 
+- [X] Check if we can make the native engine projects build by providing Mocks for native APIs (enables engine-wide refactoring!)
 - [ ] port agnostic tests to use engine mocks of native implementations
+- [ ] GetSingleObject(): remove or rename
 - [ ] create separate Unity package / Godot addon for ContractTests
 - [X] GetAllObjects(): change to only convert to LunyObject if scripted
 - [X] LunyObject: return cached instance before creating new one
