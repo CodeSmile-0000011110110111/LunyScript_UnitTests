@@ -23,6 +23,7 @@
 - **Compatibility**: Code restricted to C# 9 and .NET Standard 2.1 for Unity 6 compatibility.
 - `ILunyScriptBlock` implementations are internal and require a static Create() method, ctors are private to enforce use of Create()
 - When modifying .csproj files also update the .slnx file accordingly
+- do not remove or modify LICENSE and README.md files unless instructed
 
 ## Code Style
 - **Control Flow**:
