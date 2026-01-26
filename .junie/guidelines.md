@@ -4,12 +4,14 @@
 - Unit-testing and implementation project for LunyEngine (cross-engine C# for Unity, Godot, etc.).
 - Folder structure:
     - `Luny/`: Engine-agnostic types.
+    - `Luny-ContractTest/`: Engine contract verification tests for `Luny` using the engine mocks/shims
     - `Luny-Test/`: Tests for `Luny`.
     - `LunyLua/`: Lua-CSharp framework.
     - `LunyLua-Test/`: Tests for `LunyLua`.
     - `LunyScript/`: Scripting types.
     - `LunyScript-Test/`: Tests for `LunyScript`.
-    - `*.Unity` / `*.Godot`: Platform-specific bindings (won't compile; used to review and generate native code).
+    - `*.Unity` / `*.Godot`: Platform-specific bindings (uses engine mocks/shims)
+    - `*.Unity-Mock` / `*.Godot-Mock`: Engine mocks/shims emulating engine API and behaviour
 - `.junie/plan.md`: specific, step-by-step strategy for the current active task
 - `.junie/tasks.md`: high-level roadmap / todo list
 
@@ -20,6 +22,7 @@
 - **Logging**: Use `LunyLogger` methods: `LogInfo`, `LogWarning`, `LogError`, `LogException`. Do not modify existing `LunyLogger` log strings without permission, prefer to add a new log statement instead.
 - **Compatibility**: Code restricted to C# 9 and .NET Standard 2.1 for Unity 6 compatibility.
 - `ILunyScriptBlock` implementations are internal and require a static Create() method, ctors are private to enforce use of Create()
+- When modifying .csproj files also update the .slnx file accordingly
 
 ## Code Style
 - **Control Flow**:
@@ -32,6 +35,7 @@
     - Interfaces for only one type should be in the same file as the implementation, placed above the type.
     - Use `nameof(Type)` or `instance.GetType().Name` instead of hardcoded type strings.
 - **Empty Methods**: Should `throw new NotImplementedException("name of type and method")`.
+- **NUnit**: Use `Assert.That` instead of classic assertions
 
 ## Useful Commands
 - **Build Solution**: `dotnet build` (Note: Platform-specific projects like `.Unity` and `.Godot` may not compile and can be ignored or excluded if necessary).

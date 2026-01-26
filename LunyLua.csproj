@@ -11,7 +11,7 @@
 
   <ItemGroup>
     <Compile Include="LunyLua\**\*.cs" />
-      <None Include="LunyLua\**\*.asmdef" />
+    <Content Include="LunyLua\**\*.asmdef" />
   </ItemGroup>
 
   <ItemGroup>
