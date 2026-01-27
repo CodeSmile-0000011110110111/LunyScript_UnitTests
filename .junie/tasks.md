@@ -22,48 +22,44 @@
 ## Backlog
 - ### Unit Testing
   - [ ] add more LunyEngine agnostic tests to define native-engine contracts
-  - [ ] create separate Unity package / Godot addon for ContractTests
-  - [ ] port agnostic tests to use engine mocks of native implementations (problems: Godot has no unit testing, Unity's requires enumerator tests)
-- ### Assets
-  - [ ] Implement Asset/Resource loading by name/path
-  - [ ] Return valid "error" objects from Asset service
-- ### Design & Lifecycle
-    - [ ] call OnReady for children first (depth-first, post-order)
+  - [ ] (maybe) create separate Unity package / Godot addon for ContractTests, then port agnostic tests to use engine mocks of native implementations (problems: Godot has no unit testing, Unity's requires `IEnumerator` `[UnityTest]` tests)
+  - [ ] Add Scene Load/Unload tests (call order)
+  - [ ] Test scene (re-)load and hook up to scene service callbacks, verify against engine behaviour
+- ### LunyEngine (Registries, Services)
+    - [ ] LunyObjectRegistry: GetByName should use Dictionary, not FirstOrDefault
+    - [ ] Scene Service: implement depth-first enumeration with pre-order or post-order (as IEnumerable?)
+- ### Asset Service
+    - [ ] Implement Asset/Resource loading by name/path
+    - [ ] Return valid "error" objects from Asset service
+    - [ ] Addressing: LunyUrl/LunyPath: handles resource path conversion & cleanup ie remove "res://")
+- ### LunyScript Design & Lifecycle
     - [ ] ensure deterministic LunyScript execution order (follow scene hierarchy order?)
+    - [ ] call "OnReady" for children first (depth-first, post-order - like Godot)
     - [ ] test LunyScript running on global object (autoload, DDOL) - should still run after scene (re)load
     - [ ] Sandboxed script execution (Limit access to objects, assets, API)
     - [ ] Register/create/enable API methods for engine-native code
     - [ ] Handle LunyObject parenting with hierarchy gaps
     - [ ] Review OnIntervalUpdate implementation in script Scheduler and object event handler
-- ### Registries
-    - [ ] LunyObjectRegistry: GetByName should use Dictionary, not FirstOrDefault
-- ### Services
-    - [ ] Scene: implement depth-first enumeration with pre-order or post-order (as IEnumerable?)
+    - [ ] [[LunyScript Hot Reload]] with manual triggers
+    - [ ] How to pass references to blocks via event parameters (eg Scene, "Other" from colliders, etc) => Design
+    - [ ] consider LunyScript.Every.* (updates) running unconditionally / globally (not tied to object - but then: context?)
+    - [ ] LunyScript.Method.Run => could use overloads for When/Every BUT I don't want to make it "too easy" to inject lambdas
+    - [ ] [[Lua Integration]]
+    - [ ] Consider: Case insensitive and partial name matching for object-script activator (controlled by LunyScript flags), configurable: starts with/contains/etc
+- ### LunyScript Variables
+    - [ ] Variable validation (log read access of non-existing variables)
+    - [ ] Metadata for global variable read/write tracking
 - ### LunyScript Blocks & API
     - [ ] [[Conditional Blocks]] (if/else)
     - [ ] [[Composite Blocks]] (loops, timers, coroutines)
-    - [ ] [[LunyScript Hot Reload]] with manual triggers
     - [ ] [[Event Handling Blocks]] foundation (Input, Collision, SendMessage)
     - [ ] [[Variable Blocks]]
-    - [ ] Variables aliases: `Vars.Global[]` / `Vars.G[]`
-    - [ ] Pass scene name to blocks via event parameters
-    - [ ] Test scene (re-)load and hook up to scene service callbacks
     - [ ] Create ReloadScene block
     - [ ] Implement Random/Shuffle blocks and API
-    - [ ] LunyScript.Every.* (updates) should run unconditionally and globally (not tied to object - but then: context?)
-    - [ ] LunyScript.Method.Run => use When/Every overloads in addition? 
 - ### Diagnostics & Infrastructure
-    - [ ] [[Diagnostics]] Profiling Hooks for scripts and runnables
-    - [ ] Internal verbose logging with categories/levels
-    - [ ] [[Testing Infrastructure]]
-    - [ ] [[Resource Addressing]] (LunyUrl)
-    - [ ] [[Lua Integration]]
-- ### Improvements & Engine Specific
-    - [ ] Unity: Add `[IgnoredByDeepProfiler]` attribute to debug methods
-    - [ ] Case insensitive and partial name matching for object-script activator (controlled by LunyScript flags?)
-      - [ ] Configurable name matching (starts with/contains)
-    - [ ] Variable validation (log read access of non-existing variables)
-    - [ ] Metadata for global variable read/write tracking
+    - ..
+- ### Engine Specific
+    - Unity: Add `[IgnoredByDeepProfiler]` attribute to debug methods
 
 ## Epics
 - **Reflective/Generated API**: Lua API generator needed; maybe C# reflected/generated engine bindings? (if it speeds up adding features)
