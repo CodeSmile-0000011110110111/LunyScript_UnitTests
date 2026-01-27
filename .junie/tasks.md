@@ -1,6 +1,9 @@
 # Current Status
 
 ## Next Steps (Sprint)
+- [ ] Contract Tests now contain LunyScript tests which should not be there => separate contract from implementation tests
+- [ ] *BridgeTest: should they inherit from ContractTestBase?
+- [ ] Remove LunyTestableAttribute (unused, we now have tests in separate projects)
 - [X] Check if we can make the native engine projects build by providing Mocks for native APIs (enables engine-wide refactoring!)
 - [X] LunyServiceRegistry: refactor engine check, remove adapter and replace with global "engine name" property provided by adapter
 - [X] refactor existing *-Test tests:

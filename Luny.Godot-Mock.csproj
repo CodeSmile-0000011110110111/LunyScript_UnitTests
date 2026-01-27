@@ -5,6 +5,7 @@
     <Nullable>disable</Nullable>
     <EnableDefaultItems>false</EnableDefaultItems>
     <LangVersion>9</LangVersion>
+    <RootNamespace>Luny.Godot.Mock</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Luny.Godot-Mock\**\*.cs" />

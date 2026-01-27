@@ -5,6 +5,7 @@
     <Nullable>disable</Nullable>
     <EnableDefaultItems>false</EnableDefaultItems>
     <LangVersion>9</LangVersion>
+    <RootNamespace>Luny.Unity.Mock</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Luny.Unity-Mock\**\*.cs" />

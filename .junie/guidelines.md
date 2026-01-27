@@ -24,8 +24,10 @@
 - `ILunyScriptBlock` implementations are internal and require a static Create() method, ctors are private to enforce use of Create()
 - When modifying .csproj files also update the .slnx file accordingly
 - do not remove or modify LICENSE and README.md files unless instructed
-- `ILunyEngineService` implementations for native engines must not be updated to satisfy unit test needs - such changes must be done in our *-Mock and *-Test projects 
-
+- Unit Testing:
+  - do not use reflection to make (setup/teardown) calls in order to make tests work - inform user
+  - do not add methods to reset static (singleton) instances if they fail to get reset during teardown - inform user
+ 
 ## Code Style
 - **Control Flow**:
     - No single-line `if` or `else` statements.
