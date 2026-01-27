@@ -7,6 +7,7 @@
     <EnableDefaultItems>false</EnableDefaultItems>
     <DefaultItemExcludes>$(DefaultItemExcludes);LunyScript.Unity\Editor\**;Luny\**;Luny-Test\**;LunyLua\**;LunyLua-Test\**;LunyScript-Test\**;bin\**;obj\**</DefaultItemExcludes>
     <LangVersion>9</LangVersion>
+    <RootNamespace />
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,7 +19,7 @@
     <ProjectReference Include="LunyLua.csproj" />
     <ProjectReference Include="LunyScript.csproj" />
     <ProjectReference Include="Luny.Unity.csproj" />
-    <ProjectReference Include="Luny.Unity-Mock.csproj" />
+    <ProjectReference Include="Luny.Unity-Mock\Luny.Unity-Mock.csproj" />
   </ItemGroup>
 
 </Project>

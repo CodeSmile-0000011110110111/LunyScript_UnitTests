@@ -4,16 +4,19 @@
 - Unit-testing and implementation project for LunyEngine (cross-engine C# for Unity, Godot, etc.).
 - Folder structure:
     - `Luny/`: Engine-agnostic types.
-    - `Luny-ContractTest/`: Engine contract verification tests for `Luny` using the engine mocks/shims
-    - `Luny-Test/`: Tests for `Luny`.
+    - `Luny-ContractTest/`: Engine contract verification tests of `*.*-Mock` types that simulate engine behaviour
+    - `Luny-Test/`: Tests for `Luny` and `LunyEngine` SDK features.
     - `LunyLua/`: Lua-CSharp framework.
     - `LunyLua-Test/`: Tests for `LunyLua`.
     - `LunyScript/`: Scripting types.
     - `LunyScript-Test/`: Tests for `LunyScript`.
-    - `*.Unity` / `*.Godot`: Platform-specific bindings (uses engine mocks/shims)
-    - `*.Unity-Mock` / `*.Godot-Mock`: Engine mocks/shims emulating engine API and behaviour
+    - `*.Unity` / `*.Godot`: Engine-specific bindings using `*.*-Mock` types (this solution) or engine types (engine projects)
+    - `*.Unity-Mock` / `*.Godot-Mock`: Engine mocks/shims simulating native engine API and behaviour (this solution)
 - `.junie/plan.md`: specific, step-by-step strategy for the current active task
 - `.junie/tasks.md`: high-level roadmap / todo list
+- `*.csproj` locations
+  - repository root (preferred): required for projects referenced in engine projects (eg Luny, Luny.Godot, Luny.Unity, ..)
+  - subfolders: for `*-Test/` projects
 
 ## Implementation Preferences
 - **Step-by-Step Mode**: Always operate in a strict planning-first mode.
@@ -22,11 +25,11 @@
 - **Logging**: Use `LunyLogger` methods: `LogInfo`, `LogWarning`, `LogError`, `LogException`. Do not modify existing `LunyLogger` log strings without permission, prefer to add a new log statement instead.
 - **Compatibility**: Code restricted to C# 9 and .NET Standard 2.1 for Unity 6 compatibility.
 - `ILunyScriptBlock` implementations are internal and require a static Create() method, ctors are private to enforce use of Create()
-- When modifying .csproj files also update the .slnx file accordingly
-- do not remove or modify LICENSE and README.md files unless instructed
-- Unit Testing:
-  - do not use reflection to make (setup/teardown) calls in order to make tests work - inform user
-  - do not add methods to reset static (singleton) instances if they fail to get reset during teardown - inform user
+- When renaming/adding/removing .csproj files also update the .slnx file
+- do not remove or modify LICENSE and README.md files, unless instructed (ask)
+- Unit Tests:
+  - avoid reflection for calls made during test runs, unless instructed (ask) 
+  - do not add methods to reset (static) state, unless instructed (ask)
  
 ## Code Style
 - **Control Flow**:

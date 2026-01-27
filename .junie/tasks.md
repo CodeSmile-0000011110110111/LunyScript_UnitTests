@@ -1,16 +1,16 @@
 # Current Status
 
 ## Next Steps (Sprint)
-- [ ] Contract Tests now contain LunyScript tests which should not be there => separate contract from implementation tests
-- [ ] *BridgeTest: should they inherit from ContractTestBase?
-- [ ] Remove LunyTestableAttribute (unused, we now have tests in separate projects)
+- [X] Contract Tests now contain LunyScript tests which should not be there => separate contract from implementation tests
+- [X] Move LunyEngine tests from Luny-ContractTest to Luny-Test
+- [X] *BridgeTest: should they inherit from ContractTestBase? (YES)
+- [X] Remove LunyTestableAttribute (unused, we now have tests in separate projects)
 - [X] Check if we can make the native engine projects build by providing Mocks for native APIs (enables engine-wide refactoring!)
 - [X] LunyServiceRegistry: refactor engine check, remove adapter and replace with global "engine name" property provided by adapter
 - [X] refactor existing *-Test tests:
   - [X] make tests use contract test infrastructure
   - [X] make all tests run once with each engine adapter, without duplicating the test code
   - [X] where it makes sense, move tests to Luny-ContractTest
-- [ ] Engine Mocks: Unity Application.Quit() should invoke OnApplicationQuit() on all MonoBehaviours, destroys all objects, "unloads" scenes. This should cause the engine adapter to shut down.
 - [X] GetAllObjects(): change to only convert to LunyObject if scripted
 - [X] LunyObject: return cached instance before creating new one
 - [X] Implement FindByName (with proxy fallback) for Object.Create that should run a script (consider prebuilt scripts)

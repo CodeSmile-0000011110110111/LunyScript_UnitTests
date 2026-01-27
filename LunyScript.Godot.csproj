@@ -7,6 +7,7 @@
     <EnableDefaultItems>false</EnableDefaultItems>
     <DefaultItemExcludes>$(DefaultItemExcludes);Luny\**;Luny-Test\**;LunyLua\**;LunyLua-Test\**;LunyScript-Test\**;bin\**;obj\**</DefaultItemExcludes>
     <LangVersion>9</LangVersion>
+    <RootNamespace />
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,7 +16,7 @@
     <ProjectReference Include="LunyLua.csproj" />
     <ProjectReference Include="LunyScript.csproj" />
     <ProjectReference Include="Luny.Godot.csproj" />
-    <ProjectReference Include="Luny.Godot-Mock.csproj" />
+    <ProjectReference Include="Luny.Godot-Mock\Luny.Godot-Mock.csproj" />
   </ItemGroup>
 
 </Project>
