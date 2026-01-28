@@ -60,6 +60,12 @@
 
 ## DONE
 
+### CW05-2026
+- [X] Godot: SceneTree should inherit from MainLoop, with GetMainLoop() returning MainLoop just like Godot
+- [X] Godot: Node class' Notification const must be 'long' just like Godot
+- [X] Godot: Name property must be of type 'StringName'
+- [X] Godot: ensure classes that are require to be 'partial' in Godot have the 'partial' keyword. Add an "empty" partial stub just so the 'partial' keyword sticks when running "code cleanup" (which removes keywords and usings it determines to be superfluous)
+
 ### CW04-2026
 - [X] Contract Tests now contain LunyScript tests which should not be there => separate contract from implementation tests
 - [X] Move LunyEngine tests from Luny-ContractTest to Luny-Test

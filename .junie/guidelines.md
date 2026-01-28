@@ -27,10 +27,10 @@
 - `ILunyScriptBlock` implementations are internal and require a static Create() method, ctors are private to enforce use of Create()
 - When renaming/adding/removing .csproj files also update the .slnx file
 - do not remove or modify LICENSE and README.md files, unless instructed (ask)
-- Unit Tests:
-  - avoid reflection for calls made during test runs, unless instructed (ask) 
-  - do not add methods to reset (static) state, unless instructed (ask)
- 
+- Unit Tests: when a test fails due to an unreachable method or state doesn't reset, inform user (do not add new "test only" members, do not use reflection to access unreachable members - there is usually a better way)
+- Engine-Native Mocks/Shims must follow the engine's APIs to the letter, all return types must match precisely, inheritance tree and member definition must match engine's API 1:1
+- Godot: ensure the 'partial' keyword where Godot requires it is preserved: add a stub partial in same file, below actual class, with comment "stub to preserve 'partial' keyword"
+
 ## Code Style
 - **Control Flow**:
     - No single-line `if` or `else` statements.
@@ -43,6 +43,7 @@
     - Use `nameof(Type)` or `instance.GetType().Name` instead of hardcoded type strings.
 - **Empty Methods**: Should `throw new NotImplementedException("name of type and method")`.
 - **NUnit**: Use `Assert.That` instead of classic assertions
+- Use the System types for built-in types eg `Int32`, `String`, `Boolean`
 
 ## Useful Commands
 - **Build Solution**: `dotnet build` (Note: Platform-specific projects like `.Unity` and `.Godot` may not compile and can be ignored or excluded if necessary).

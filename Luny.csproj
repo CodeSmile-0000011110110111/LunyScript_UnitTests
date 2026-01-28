@@ -14,8 +14,4 @@
       <None Include="Luny\**\*.asmdef" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Luny\Attributes\" />
-  </ItemGroup>
-
 </Project>
