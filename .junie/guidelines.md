@@ -28,7 +28,7 @@
 - When renaming/adding/removing .csproj files also update the .slnx file
 - do not remove or modify LICENSE and README.md files, unless instructed (ask)
 - Unit Tests: when a test fails due to an unreachable method or state doesn't reset, inform user (do not add new "test only" members, do not use reflection to access unreachable members - there is usually a better way)
-- Engine-Native Mocks/Shims must follow the engine's APIs to the letter, all return types must match precisely, inheritance tree and member definition must match engine's API 1:1
+- Engine-Native Mocks/Shims: strictly follow the native engine's APIs precisely. When creating/modifying mock types, verify that the API will compile in Godot 4.5 and newer, Unity 6.0 and newer.
 - Godot: ensure the 'partial' keyword where Godot requires it is preserved: add a stub partial in same file, below actual class, with comment "stub to preserve 'partial' keyword"
 
 ## Code Style
