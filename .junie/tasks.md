@@ -1,28 +1,13 @@
 # Current Status
 
 ## Next Steps (Sprint)
-- [X] Contract Tests now contain LunyScript tests which should not be there => separate contract from implementation tests
-- [X] Move LunyEngine tests from Luny-ContractTest to Luny-Test
-- [X] *BridgeTest: should they inherit from ContractTestBase? (YES)
-- [X] Remove LunyTestableAttribute (unused, we now have tests in separate projects)
-- [X] Check if we can make the native engine projects build by providing Mocks for native APIs (enables engine-wide refactoring!)
-- [X] LunyServiceRegistry: refactor engine check, remove adapter and replace with global "engine name" property provided by adapter
-- [X] refactor existing *-Test tests:
-  - [X] make tests use contract test infrastructure
-  - [X] make all tests run once with each engine adapter, without duplicating the test code
-  - [X] where it makes sense, move tests to Luny-ContractTest
-- [X] GetAllObjects(): change to only convert to LunyObject if scripted
-- [X] LunyObject: return cached instance before creating new one
-- [X] Implement FindByName (with proxy fallback) for Object.Create that should run a script (consider prebuilt scripts)
-- [X] Implement Every.TimeInterval block
-- [X] LunyScript.When.Self (updates) should not run while disabled
-- [X] Create object via API and register (activate script)
-- [X] Get and destroy registered object via API
+- [ ] (maybe) create separate Unity package / Godot addon for ContractTests, then port agnostic tests to use engine mocks of native implementations (problems: Godot has no unit testing, Unity's requires `IEnumerator` `[UnityTest]` tests)
+  => figure out how to approach this
+- [ ] .. implement test packages 
 
 ## Backlog
 - ### Unit Testing
   - [ ] add more LunyEngine agnostic tests to define native-engine contracts
-  - [ ] (maybe) create separate Unity package / Godot addon for ContractTests, then port agnostic tests to use engine mocks of native implementations (problems: Godot has no unit testing, Unity's requires `IEnumerator` `[UnityTest]` tests)
   - [ ] Add Scene Load/Unload tests (call order)
   - [ ] Test scene (re-)load and hook up to scene service callbacks, verify against engine behaviour
 - ### LunyEngine (Registries, Services)
@@ -72,3 +57,24 @@
 - **Developer SDK Documentation**: Observer patterns, Service API extension, engine support guide, behavioral contracts
 - **Portable Scene Format**: Design in Godot, import in Unity (portable asset types)
 - **Ingame Console**: Run blocks/runnables at runtime via console
+
+## DONE
+
+### CW04-2026
+- [X] Contract Tests now contain LunyScript tests which should not be there => separate contract from implementation tests
+- [X] Move LunyEngine tests from Luny-ContractTest to Luny-Test
+- [X] *BridgeTest: should they inherit from ContractTestBase? (YES)
+- [X] Remove LunyTestableAttribute (unused, we now have tests in separate projects)
+- [X] Check if we can make the native engine projects build by providing Mocks for native APIs (enables engine-wide refactoring!)
+- [X] LunyServiceRegistry: refactor engine check, remove adapter and replace with global "engine name" property provided by adapter
+- [X] refactor existing *-Test tests:
+    - [X] make tests use contract test infrastructure
+    - [X] make all tests run once with each engine adapter, without duplicating the test code
+    - [X] where it makes sense, move tests to Luny-ContractTest
+- [X] GetAllObjects(): change to only convert to LunyObject if scripted
+- [X] LunyObject: return cached instance before creating new one
+- [X] Implement FindByName (with proxy fallback) for Object.Create that should run a script (consider prebuilt scripts)
+- [X] Implement Every.TimeInterval block
+- [X] LunyScript.When.Self (updates) should not run while disabled
+- [X] Create object via API and register (activate script)
+- [X] Get and destroy registered object via API
