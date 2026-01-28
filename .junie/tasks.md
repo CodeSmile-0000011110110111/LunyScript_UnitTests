@@ -1,28 +1,31 @@
 # Current Status
 
 ## Next Steps (Sprint)
-- [ ] (maybe) create separate Unity package / Godot addon for ContractTests, then port agnostic tests to use engine mocks of native implementations (problems: Godot has no unit testing, Unity's requires `IEnumerator` `[UnityTest]` tests)
-  => figure out how to approach this
-- [ ] .. implement test packages 
+- [X] LunyScriptVariable implementation changes:
+  - [ ] LunyScriptVariable: replace `System.Object` Value with `LuaValue` (it must not leak Lua details)
+  - [X] `LunyNumber` struct: wraps a `System.Double` type
+    - [X] complete implicit conversion to any other type from byte to long and float and bool ("loss of precision" casts are acceptable)
+    - [X] cast to bool: first cast to long, if result is 0 it's 'false', otherwise 'true' 
+    - [X] add arithmetic operators for bool and string that throw an exception (overrule implicit conversions)
 
 ## Backlog
 - ### Unit Testing
   - [ ] add more LunyEngine agnostic tests to define native-engine contracts
   - [ ] Add Scene Load/Unload tests (call order)
   - [ ] Test scene (re-)load and hook up to scene service callbacks, verify against engine behaviour
+  - [ ] (maybe) create separate Unity package / Godot addon for ContractTests, then port agnostic tests to use engine mocks of native implementations (problems: Godot has no unit testing, Unity's requires `IEnumerator` `[UnityTest]` tests)  => figure out how to approach this
 - ### LunyEngine (Registries, Services)
     - [ ] LunyObjectRegistry: GetByName should use Dictionary, not FirstOrDefault
     - [ ] Scene Service: implement depth-first enumeration with pre-order or post-order (as IEnumerable?)
-- ### Asset Service
-    - [ ] Implement Asset/Resource loading by name/path
-    - [ ] Return valid "error" objects from Asset service
-    - [ ] Addressing: LunyUrl/LunyPath: handles resource path conversion & cleanup ie remove "res://")
+  - #### Asset Service
+      - [ ] Implement Asset/Resource loading by name/path
+      - [ ] Return valid "error" objects from Asset service
+      - [ ] Addressing: LunyUrl/LunyPath: handles resource path conversion & cleanup ie remove "res://")
 - ### LunyScript Design & Lifecycle
     - [ ] ensure deterministic LunyScript execution order (follow scene hierarchy order?)
     - [ ] call "OnReady" for children first (depth-first, post-order - like Godot)
     - [ ] test LunyScript running on global object (autoload, DDOL) - should still run after scene (re)load
     - [ ] Sandboxed script execution (Limit access to objects, assets, API)
-    - [ ] Register/create/enable API methods for engine-native code
     - [ ] Handle LunyObject parenting with hierarchy gaps
     - [ ] Review OnIntervalUpdate implementation in script Scheduler and object event handler
     - [ ] [[LunyScript Hot Reload]] with manual triggers
