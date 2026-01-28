@@ -1,8 +1,11 @@
 <Project>
   <PropertyGroup>
+    <BaseOutputPath>bin\$(MSBuildProjectName)\</BaseOutputPath>
+    <BaseIntermediateOutputPath>obj\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
     <AppendTargetFrameworkToOutputPath>true</AppendTargetFrameworkToOutputPath>
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <Deterministic>true</Deterministic>
+    <MSBuildWarningsAsMessages>MSB3021;MSB3026;MSB3027</MSBuildWarningsAsMessages>
   </PropertyGroup>
 </Project>

@@ -1,15 +1,16 @@
 # Current Status
 
 ## Next Steps (Sprint)
+- [ ] LunyScriptVariable: replace `System.Object` Value with `LuaValue` (it must not leak Lua details)
+- [X] LunyScriptVariables: renamed to LunyTable
 - [X] LunyScriptVariable implementation changes:
-  - [X] Rename class to `Variable`, add `IVariable` interface
+  - [X] Rename class to `LunyVariable`, add `ILunyVariable` interface
   - [X] Memory footprint optimization: `Name` returns "(N/A)" in non-debug builds
   - [X] Private constructor, `Create` static methods, updated signature (value first)
-  - [ ] LunyScriptVariable: replace `System.Object` Value with `LuaValue` (it must not leak Lua details)
-  - [X] `LunyNumber` struct: wraps a `System.Double` type
-    - [X] complete implicit conversion to any other type from byte to long and float and bool ("loss of precision" casts are acceptable)
-    - [X] cast to bool: first cast to long, if result is 0 it's 'false', otherwise 'true' 
-    - [X] add arithmetic operators for bool and string that throw an exception (overrule implicit conversions)
+- [X] `LunyNumber` struct: wraps a `System.Double` type
+  - [X] complete implicit conversion to any other type from byte to long and float and bool ("loss of precision" casts are acceptable)
+  - [X] cast to bool: first cast to long, if result is 0 it's 'false', otherwise 'true' 
+  - [X] add arithmetic operators for bool and string that throw an exception (overrule implicit conversions)
 
 ## Backlog
 - ### Unit Testing
