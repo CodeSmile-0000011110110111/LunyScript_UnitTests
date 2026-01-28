@@ -8,4 +8,9 @@
     <Deterministic>true</Deterministic>
     <MSBuildWarningsAsMessages>MSB3021;MSB3026;MSB3027</MSBuildWarningsAsMessages>
   </PropertyGroup>
+
+  <ItemGroup Condition="!$(MSBuildProjectName.EndsWith('-Mock'))">
+    <None Include="$(MSBuildProjectName)\**\*.meta;$(MSBuildProjectName)\**\*.uid" Condition="'$(MSBuildProjectDirectory)' == '$(MSBuildThisFileDirectory)'" Visible="false" />
+    <None Include="**\*.meta;**\*.uid" Condition="'$(MSBuildProjectDirectory)' != '$(MSBuildThisFileDirectory)'" Visible="false" />
+  </ItemGroup>
 </Project>
