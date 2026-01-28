@@ -12,6 +12,7 @@
   <ItemGroup>
     <Compile Include="LunyLua\**\*.cs" />
     <Content Include="LunyLua\**\*.asmdef" />
+    <Reference Include="LunyLua\Lua-CSharp\netstandard2.1\Lua.dll" />
   </ItemGroup>
 
   <ItemGroup>

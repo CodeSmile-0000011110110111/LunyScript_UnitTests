@@ -2,7 +2,7 @@
 
 ## Next Steps (Sprint)
 - [X] LunyScriptVariable implementation changes:
-  - [ ] LunyScriptVariable: replace `System.Object` Value with `LuaValue` (it must not leak Lua details)
+  - [X] LunyScriptVariable: replace `System.Object` Value with `LuaValue` (it must not leak Lua details)
   - [X] `LunyNumber` struct: wraps a `System.Double` type
     - [X] complete implicit conversion to any other type from byte to long and float and bool ("loss of precision" casts are acceptable)
     - [X] cast to bool: first cast to long, if result is 0 it's 'false', otherwise 'true' 
@@ -33,6 +33,7 @@
     - [ ] consider LunyScript.Every.* (updates) running unconditionally / globally (not tied to object - but then: context?)
     - [ ] LunyScript.Method.Run => could use overloads for When/Every BUT I don't want to make it "too easy" to inject lambdas
     - [ ] [[Lua Integration]]
+    - [X] Setup LunyLua and LunyLua-Test with Lua.dll reference
     - [ ] Consider: Case insensitive and partial name matching for object-script activator (controlled by LunyScript flags), configurable: starts with/contains/etc
 - ### LunyScript Variables
     - [ ] Variable validation (log read access of non-existing variables)
