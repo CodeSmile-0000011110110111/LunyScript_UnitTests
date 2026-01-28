@@ -18,15 +18,18 @@
   - repository root (preferred): required for projects referenced in engine projects (eg Luny, Luny.Godot, Luny.Unity, ..)
   - subfolders: for `*-Test/` projects
 
-## Implementation Preferences
+## Implementation Requirements
 - **Step-by-Step Mode**: Always operate in a strict planning-first mode.
 - **Explicit Confirmation**: Do not modify any files or start implementation until the user has explicitly confirmed the plan.
 - **No "Running Ahead"**: Wait for confirmation after each major phase (Planning -> Implementation -> Verification).
-- **Logging**: Use `LunyLogger` methods: `LogInfo`, `LogWarning`, `LogError`, `LogException`. Do not modify existing `LunyLogger` log strings without permission, prefer to add a new log statement instead.
 - **Compatibility**: Code restricted to C# 9 and .NET Standard 2.1 for Unity 6 compatibility.
+- **Logging**: Use `LunyLogger` methods: `LogInfo`, `LogWarning`, `LogError`, `LogException`.
+- Do not modify existing `LunyLogger` log strings without permission, prefer to add a new log statement instead.
 - `ILunyScriptBlock` implementations are internal and require a static Create() method, ctors are private to enforce use of Create()
-- When renaming/adding/removing .csproj files also update the .slnx file
 - do not remove or modify LICENSE and README.md files, unless instructed (ask)
+
+## Implementation Preferences
+- When renaming/adding/removing .csproj files also update the .slnx file
 - Unit Tests: when a test fails due to an unreachable method or state doesn't reset, inform user (do not add new "test only" members, do not use reflection to access unreachable members - there is usually a better way)
 - Engine-Native Mocks/Shims: strictly follow the native engine's APIs precisely. When creating/modifying mock types, verify that the API will compile in Godot 4.5 and newer, Unity 6.0 and newer.
 - Godot: ensure the 'partial' keyword where Godot requires it is preserved: add a stub partial in same file, below actual class, with comment "stub to preserve 'partial' keyword"
