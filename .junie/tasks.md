@@ -3,12 +3,15 @@
 ## Next Steps (Sprint)
 - [X] Add remaining tests for Table class
 - [X] LunyScript: refactor the s_Instance away by changing static subclasses to static struct and assign the instance in Initialize
-- [ ] [[Conditional Blocks]] (if/else, while, AND/OR/NOT)
-- [ ] [[Variable Blocks]]
+- [X] [[Conditional Blocks]] (if/else, while, AND/OR/NOT)
+- [X] [[Variable Blocks]]
+- [ ] Check if LunyScript.GlobalVars/LocalVars can be replaced by Var and GVar APIs
 - [ ] Test scene (un-)(re-)load and hook up to scene service callbacks, verify against engine call order (get this first)
 
 
 ## Backlog
+- ### Refactor
+  - Consider: Explicit Interface Implementations to "hide" Developer SDK methods from public API (beginner-level users) while allowing developers to utilize the SDK features without having to use InternalsVisibleTo. Alternatively: a DeveloperApi, similar to how LunyScript implements its fluent Api.
 - ### Engine Mocks
     - [ ] ..
 - ### LunyEngine

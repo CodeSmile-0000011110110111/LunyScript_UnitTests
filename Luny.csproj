@@ -14,4 +14,9 @@
       <None Include="Luny\**\*.asmdef" />
   </ItemGroup>
 
+  <ItemGroup>
+    <InternalsVisibleTo Include="LunyScript" />
+    <InternalsVisibleTo Include="Luny-Test" />
+    <InternalsVisibleTo Include="Luny-ContractTest" />
+  </ItemGroup>
 </Project>

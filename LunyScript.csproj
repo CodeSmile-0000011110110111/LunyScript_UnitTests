@@ -19,4 +19,12 @@
     <ProjectReference Include="LunyLua.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <InternalsVisibleTo Include="Luny" />
+    <InternalsVisibleTo Include="LunyScript-Test" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="LunyScript\Blocks\Values\" />
+  </ItemGroup>
 </Project>
