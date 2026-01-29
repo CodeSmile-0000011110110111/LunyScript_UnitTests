@@ -3,9 +3,10 @@
 ## Next Steps (Sprint)
 - [X] Add remaining tests for Table class
 - [X] LunyScript: refactor the s_Instance away by changing static subclasses to static struct and assign the instance in Initialize
-- [ ] [[Conditional Blocks]] (if/else)
+- [ ] [[Conditional Blocks]] (if/else, while, AND/OR/NOT)
 - [ ] [[Variable Blocks]]
 - [ ] Test scene (un-)(re-)load and hook up to scene service callbacks, verify against engine call order (get this first)
+
 
 ## Backlog
 - ### Engine Mocks
@@ -27,6 +28,8 @@
     - [ ] Variable validation (log read access of non-existing variables)
     - [ ] Metadata for global variable read/write tracking
 - ### LunyScript Blocks & API
+    - For parameterless calls we may even use a property returning a corresponding block to omit unnecessary ():
+      var block = If(Self.IsEnabled).Then(..);
     - [ ] [[Composite Blocks]] (loops, timers, coroutines)
     - [ ] [[Event Handling Blocks]] foundation (Input, Collision, SendMessage)
     - [ ] Create Scene load blocks
