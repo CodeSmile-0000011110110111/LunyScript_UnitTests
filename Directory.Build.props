@@ -10,6 +10,12 @@
   </PropertyGroup>
 
   <ItemGroup Condition="!$(MSBuildProjectName.EndsWith('-Mock'))">
+    <!-- 1. Force remove them from any existing includes (like None or Content) -->
+    <None Remove="**/*.meta;**/*.uid" />
+    <Content Remove="**/*.meta;**/*.uid" />
+    <Compile Remove="**/*.meta;**/*.uid" />
+
+    <!-- 2. Re-include them specifically as invisible None items -->
     <None Include="$(MSBuildProjectName)\**\*.meta;$(MSBuildProjectName)\**\*.uid" Condition="'$(MSBuildProjectDirectory)' == '$(MSBuildThisFileDirectory)'" Visible="false" />
     <None Include="**\*.meta;**\*.uid" Condition="'$(MSBuildProjectDirectory)' != '$(MSBuildThisFileDirectory)'" Visible="false" />
   </ItemGroup>

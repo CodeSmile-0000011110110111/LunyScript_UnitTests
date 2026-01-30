@@ -11,18 +11,19 @@
     - [X] we also need an `AssetID` for LunyEngine internal addressing (indexing) of assets/resources, and mapping to engine-native addressing (ID, GUID, Path) ✓
     - [X] Return valid "error" objects from Asset service ✓
     - [X] Implement loading of "prefabs" (Godot: packedscene, or just any scene?) ✓
-- [ ] Refactor: Check if LunyScript.GlobalVars/LocalVars can be replaced by Var and GVar APIs
-- [ ] Refactor: consider renaming LunyLogger to just Logger for brevity (good idea??)
+- [ ] Primitive: should have a "WithPhysics()" setting that properly sets up the thing to work physicall (Unity: adds Rigidbody, Godot: do the 20 things to make it a working physics object)
 
 ## Backlog
 - ### Refactor
   - Consider: Explicit Interface Implementations to "hide" Developer SDK methods from public API (beginner-level users) while allowing developers to utilize the SDK features without having to use InternalsVisibleTo. Alternatively: a DeveloperApi, similar to how LunyScript implements its fluent Api.
   - LunyEngine: consider the registries as service providers - don't pass their references around, instead pass the data, or maybe relay calls via LunyEngine
+  - [ ] LunyObjectRegistry: GetByName should use Dictionary, not FirstOrDefault
+  - [ ] Check if LunyScript.GlobalVars/LocalVars can be replaced by Var and GVar APIs
+  - [ ] consider renaming LunyLogger to just Logger for brevity (good idea??)
 - ### Engine Mocks
     - [ ] ..
 - ### LunyEngine
     - [ ] Table: allow nested Tables with path-based indexing (dot and/or slash, or multiple indexers: t["1st"]["2nd"])
-    - [ ] LunyObjectRegistry: GetByName should use Dictionary, not FirstOrDefault
     - [ ] Scene Service: implement depth-first enumeration with pre-order or post-order (as IEnumerable?)
     - [ ] Test scene (un-)(re-)load and hook up to scene service callbacks, verify against engine call order (get this first)
 - ### LunyScript Design & Lifecycle
@@ -36,7 +37,7 @@
 - ### LunyScript Blocks & API
     - For parameterless calls we may even use a property returning a corresponding block to omit unnecessary ():
       var block = If(Self.IsEnabled).Then(..);
-    - [ ] [[Composite Blocks]] (loops, timers, coroutines)
+    - [ ] [[Timer Blocks]]
     - [ ] [[Event Handling Blocks]] foundation (Input, Collision, SendMessage)
     - [ ] Create Scene load blocks
     - [ ] Implement Random/Shuffle blocks and API
