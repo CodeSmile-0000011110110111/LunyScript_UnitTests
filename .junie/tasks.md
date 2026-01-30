@@ -5,23 +5,25 @@
 - [X] LunyScript: refactor the s_Instance away by changing static subclasses to static struct and assign the instance in Initialize
 - [X] [[Conditional Blocks]] (if/else, while, AND/OR/NOT)
 - [X] [[Variable Blocks]]
-- [ ] Check if LunyScript.GlobalVars/LocalVars can be replaced by Var and GVar APIs
-- [ ] Test scene (un-)(re-)load and hook up to scene service callbacks, verify against engine call order (get this first)
+- #### Asset Service
+    - [ ] Implement Asset/Resource loading by name/path
+    - [ ] Addressing: LunyUrl/LunyPath: handles resource path conversion & cleanup ie remove "res://")
+    - [ ] Return valid "error" objects from Asset service
+    - [ ] Implement loading of "prefabs" (Godot: packedscene, or just any scene?)
+- [ ] Refactor: Check if LunyScript.GlobalVars/LocalVars can be replaced by Var and GVar APIs
 
 
 ## Backlog
 - ### Refactor
   - Consider: Explicit Interface Implementations to "hide" Developer SDK methods from public API (beginner-level users) while allowing developers to utilize the SDK features without having to use InternalsVisibleTo. Alternatively: a DeveloperApi, similar to how LunyScript implements its fluent Api.
+  - LunyEngine: consider the registries as service providers - don't pass their references around, instead pass the data, or maybe relay calls via LunyEngine
 - ### Engine Mocks
     - [ ] ..
 - ### LunyEngine
     - [ ] Table: allow nested Tables with path-based indexing (dot and/or slash, or multiple indexers: t["1st"]["2nd"])
     - [ ] LunyObjectRegistry: GetByName should use Dictionary, not FirstOrDefault
     - [ ] Scene Service: implement depth-first enumeration with pre-order or post-order (as IEnumerable?)
-    - #### Asset Service
-        - [ ] Implement Asset/Resource loading by name/path
-        - [ ] Return valid "error" objects from Asset service
-        - [ ] Addressing: LunyUrl/LunyPath: handles resource path conversion & cleanup ie remove "res://")
+    - [ ] Test scene (un-)(re-)load and hook up to scene service callbacks, verify against engine call order (get this first)
 - ### LunyScript Design & Lifecycle
     - [ ] ensure deterministic LunyScript execution order (follow scene hierarchy order?)
     - [ ] Handle LunyObject parenting with hierarchy gaps
