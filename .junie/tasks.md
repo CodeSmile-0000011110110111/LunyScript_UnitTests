@@ -5,12 +5,12 @@
 - [X] LunyScript: refactor the s_Instance away by changing static subclasses to static struct and assign the instance in Initialize
 - [X] [[Conditional Blocks]] (if/else, while, AND/OR/NOT)
 - [X] [[Variable Blocks]]
-- #### Asset Service
-    - [ ] Implement Asset/Resource loading by name/path
-    - [ ] Addressing: LunyUrl/LunyPath: handles resource path conversion & cleanup ie remove "res://")
-    - [ ] we also need an `AssetID` for LunyEngine internal addressing (indexing) of assets/resources, and mapping to engine-native addressing (ID, GUID, Path)
-    - [ ] Return valid "error" objects from Asset service
-    - [ ] Implement loading of "prefabs" (Godot: packedscene, or just any scene?)
+- #### Asset Service ✓
+    - [X] Implement Asset/Resource loading by name/path ✓
+    - [X] Addressing: LunyUrl/LunyPath: handles resource path conversion & cleanup ie remove "res://") ✓
+    - [X] we also need an `AssetID` for LunyEngine internal addressing (indexing) of assets/resources, and mapping to engine-native addressing (ID, GUID, Path) ✓
+    - [X] Return valid "error" objects from Asset service ✓
+    - [X] Implement loading of "prefabs" (Godot: packedscene, or just any scene?) ✓
 - [ ] Refactor: Check if LunyScript.GlobalVars/LocalVars can be replaced by Var and GVar APIs
 - [ ] Refactor: consider renaming LunyLogger to just Logger for brevity (good idea??)
 
