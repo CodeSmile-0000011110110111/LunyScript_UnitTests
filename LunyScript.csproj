@@ -11,7 +11,8 @@
 
   <ItemGroup>
     <Compile Include="LunyScript\**\*.cs" />
-      <None Include="LunyScript\**\*.asmdef" />
+    <None Include="LunyScript\**\*.asmdef" />
+    <None Include="LunyScript\Analyzers\*.dll" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,6 +26,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="LunyScript\Blocks\Values\" />
+    <Folder Include="LunyScript\Analyzers\" />
   </ItemGroup>
 </Project>

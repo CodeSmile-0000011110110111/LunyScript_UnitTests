@@ -70,3 +70,8 @@
 	path = Luny-ContractTest
 	url = https://github.com/CodeSmile-0000011110110111/Luny-ContractTest
 	branch = .
+[submodule "LunyScript-Analyzers"]
+	update = merge
+	path = LunyScript-Analyzers
+	url = https://github.com/CodeSmile-0000011110110111/LunyScript-Analyzers
+	branch = .

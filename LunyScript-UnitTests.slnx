@@ -11,6 +11,7 @@
   <Project Path="Luny-ContractTest\Luny-ContractTest.csproj" />
   <Project Path="Luny-Test\Luny-Test.csproj" />
   <Project Path="LunyLua-Test\LunyLua-Test.csproj" />
+  <Project Path="LunyScript-Analyzers/LunyScript-Analyzers.csproj" />
   <Project Path="LunyScript-Test\LunyScript-Test.csproj" />
 
   <Project Path="LunyCodeGen\LunyCodeGen.csproj" />

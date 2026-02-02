@@ -12,6 +12,7 @@
     - [X] Return valid "error" objects from Asset service ✓
     - [X] Implement loading of "prefabs" (Godot: packedscene, or just any scene?) ✓
 - [ ] Primitive: should have a "WithPhysics()" setting that properly sets up the thing to work physicall (Unity: adds Rigidbody, Godot: do the 20 things to make it a working physics object)
+- [ ] Roslyn analyzer and generator setup to test with both engines
 
 ## Backlog
 - ### Refactor
@@ -20,6 +21,8 @@
   - [ ] LunyObjectRegistry: GetByName should use Dictionary, not FirstOrDefault
   - [ ] Check if LunyScript.GlobalVars/LocalVars can be replaced by Var and GVar APIs
   - [ ] consider renaming LunyLogger to just Logger for brevity (good idea??)
+  - [ ] LunyScript: refactor Api classes to their own files (namespace: LunyScript.Api.DebugApi)
+  - [ ] Rename projects to "LunyScript_*"
 - ### Engine Mocks
     - [ ] ..
 - ### LunyEngine
@@ -41,6 +44,13 @@
     - [ ] [[Event Handling Blocks]] foundation (Input, Collision, SendMessage)
     - [ ] Create Scene load blocks
     - [ ] Implement Random/Shuffle blocks and API
+    - [ ] Roslyn Generator to inject extension interface properties (base interface: ILunyScriptApi, property: )
+      - Should be a incremental generator, using [LunyScriptExtension] and [LunyScriptApi] attributes
+      - separate project, compiled to DLL, DLL for both engines
+      - Godot generator is installed by modifying .csproj (sticky, ie via plugin.gd)
+      - Analyzer message if class isn't partial, but only if it implements a ILunyScriptApi interface
+      - `public interface IExtension { ExtensionApi Extension => new(); } // user defined` 
+      - `public ExtensionApi Extension => ((IExtensionApi)this).Extension; // injected property`
 - ### Engine Specific
     - Unity: Add `[IgnoredByDeepProfiler]` attribute to debug methods
 - ### LATER (minor, reconsider)
