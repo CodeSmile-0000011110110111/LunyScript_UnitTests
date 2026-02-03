@@ -1,7 +1,12 @@
 # Current Status
 
 ## Next Steps (Sprint)
-- [ ] Primitive: should have a "WithPhysics()" setting that properly sets up the thing to work physicall (Unity: adds Rigidbody, Godot: do the 20 things to make it a working physics object)
+- [X] Rename example engine project repos to "LunyScript_*"
+- [X] LunyScript: refactor Api classes to their own files (namespace: LunyScript.Api.DebugApi)
+- [ ] Refactor Table OnValueChanged => should be done by each variable separately, and Table modifies variable internally
+- [ ] Testcase: Write prefab spawner script with new flow constructs and inline variables
+- [ ] Primitives: should have a "WithPhysics()" setting that properly sets up the thing to work physically (Unity: adds Rigidbody, Godot: do the 20 things to make it a working physics object)
+- [ ] Test scene (un-)(re-)load and hook up to scene service callbacks, verify against engine call order (get this first)
 
 ## Backlog
 - ### Refactor
@@ -10,14 +15,11 @@
   - [ ] LunyObjectRegistry: GetByName should use Dictionary, not FirstOrDefault
   - [ ] Check if LunyScript.GlobalVars/LocalVars can be replaced by Var and GVar APIs
   - [ ] consider renaming LunyLogger to just Logger for brevity (good idea??)
-  - [ ] LunyScript: refactor Api classes to their own files (namespace: LunyScript.Api.DebugApi)
-  - [ ] Rename example engine project repos to "LunyScript_*"
 - ### Engine Mocks
     - [ ] ..
 - ### LunyEngine
     - [ ] Table: allow nested Tables with path-based indexing (dot and/or slash, or multiple indexers: t["1st"]["2nd"])
     - [ ] Scene Service: implement depth-first enumeration with pre-order or post-order (as IEnumerable?)
-    - [ ] Test scene (un-)(re-)load and hook up to scene service callbacks, verify against engine call order (get this first)
 - ### LunyScript Design & Lifecycle
     - [ ] ensure deterministic LunyScript execution order (follow scene hierarchy order?)
     - [ ] Handle LunyObject parenting with hierarchy gaps
@@ -41,11 +43,12 @@
       - `public interface IExtension { ExtensionApi Extension => new(); } // user defined` 
       - `public ExtensionApi Extension => ((IExtensionApi)this).Extension; // injected property`
 - ### Engine Specific
-    - Unity: Add `[IgnoredByDeepProfiler]` attribute to debug methods
-- ### LATER (minor, reconsider)
+  - ..
+- ### LATER (minor)
   - [ ] consider LunyScript.Every.* (updates) running unconditionally / globally (not tied to object - but then: context?)
   - [ ] LunyScript.Method.Run => could use overloads for When/Every BUT I don't want to make it "too easy" to inject lambdas
   - [ ] Consider: Case insensitive and partial name matching for object-script activator (controlled by LunyScript flags), configurable: starts with/contains/etc
+  - [ ] Unity: Add `[IgnoredByDeepProfiler]` attribute to debug methods
 - ### EPICS (needs design)
   - LunyScript running on global object (autoload, DDOL) - should still run after scene (re)load
   - [[Lua Integration]] of scripting API
