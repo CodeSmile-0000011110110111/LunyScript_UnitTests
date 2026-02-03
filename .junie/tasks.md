@@ -4,9 +4,10 @@
 - [X] Rename example engine project repos to "LunyScript_*"
 - [X] LunyScript: refactor Api classes to their own files (namespace: LunyScript.Api.DebugApi)
 - [X] table.NotifyVariableChanged => move into table ?
-- [ ] VariableConditionBlock: refactor to individual classes
+- [X] Refactor Table OnValueChanged => move responsibility into VarHandle
+- [ ] rename: ArithmaticOperationBlockBase (AddVariableBlock); ComparisonBlockBase (IsGreaterVariableBlock)
+- [X] VariableConditionBlock: refactor to individual classes
 - [ ] Variables: complex operations fail => `hp.Sub((hp + 10) / 2)`
-- [X] Refactor Table OnValueChanged => should be done by each variable separately, and Table modifies variable internally
 - [ ] Testcase: Write prefab spawner script with new flow constructs and inline variables
 - [ ] Primitives: should have a "WithPhysics()" setting that properly sets up the thing to work physically (Unity: adds Rigidbody, Godot: do the 20 things to make it a working physics object)
 - [ ] Test scene (un-)(re-)load and hook up to scene service callbacks, verify against engine call order (get this first)
