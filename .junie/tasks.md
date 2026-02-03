@@ -1,28 +1,17 @@
 # Current Status
 
 ## Next Steps (Sprint)
-- [X] Add remaining tests for Table class
-- [X] LunyScript: refactor the s_Instance away by changing static subclasses to static struct and assign the instance in Initialize
-- [X] [[Conditional Blocks]] (if/else, while, AND/OR/NOT)
-- [X] [[Variable Blocks]]
-- #### Asset Service ✓
-    - [X] Implement Asset/Resource loading by name/path ✓
-    - [X] Addressing: LunyUrl/LunyPath: handles resource path conversion & cleanup ie remove "res://") ✓
-    - [X] we also need an `AssetID` for LunyEngine internal addressing (indexing) of assets/resources, and mapping to engine-native addressing (ID, GUID, Path) ✓
-    - [X] Return valid "error" objects from Asset service ✓
-    - [X] Implement loading of "prefabs" (Godot: packedscene, or just any scene?) ✓
 - [ ] Primitive: should have a "WithPhysics()" setting that properly sets up the thing to work physicall (Unity: adds Rigidbody, Godot: do the 20 things to make it a working physics object)
-- [ ] Roslyn analyzer and generator setup to test with both engines
 
 ## Backlog
 - ### Refactor
-  - Consider: Explicit Interface Implementations to "hide" Developer SDK methods from public API (beginner-level users) while allowing developers to utilize the SDK features without having to use InternalsVisibleTo. Alternatively: a DeveloperApi, similar to how LunyScript implements its fluent Api.
-  - LunyEngine: consider the registries as service providers - don't pass their references around, instead pass the data, or maybe relay calls via LunyEngine
+  - Consider: LunyEngine explicit Interface Implementations to "hide" Developer SDK methods from public API (beginner-level users) while allowing developers to utilize the SDK features without having to use InternalsVisibleTo. Alternatively: a DeveloperApi, similar to how LunyScript implements its fluent Api.
+  - [ ] LunyEngine: consider the registries as service providers - don't pass their references around, instead pass the data, or maybe relay calls via LunyEngine
   - [ ] LunyObjectRegistry: GetByName should use Dictionary, not FirstOrDefault
   - [ ] Check if LunyScript.GlobalVars/LocalVars can be replaced by Var and GVar APIs
   - [ ] consider renaming LunyLogger to just Logger for brevity (good idea??)
   - [ ] LunyScript: refactor Api classes to their own files (namespace: LunyScript.Api.DebugApi)
-  - [ ] Rename projects to "LunyScript_*"
+  - [ ] Rename example engine project repos to "LunyScript_*"
 - ### Engine Mocks
     - [ ] ..
 - ### LunyEngine
@@ -74,6 +63,10 @@
 
 ## DONE
 
+### CW06-2026
+- [X] GDSharp: GDScript wrapper following C# guidelines => https://github.com/CodeSmile-0000011110110111/GDSharp
+- [X] add LunyScript-Analyzers (Roslyn), always builds release, copies DLL to LunyScript/Analyzers, plugin.gd updates Godot .csproj, and tested working callbacks in Godot + Unity (stub only, no function)
+
 ### CW05-2026
 - [X] Godot: SceneTree should inherit from MainLoop, with GetMainLoop() returning MainLoop just like Godot
 - [X] Godot: Node class' Notification const must be 'long' just like Godot
@@ -90,6 +83,16 @@
     - [X] cast to bool: first cast to long, if result is 0 it's 'false', otherwise 'true'
     - [X] add arithmetic operators for bool and string that throw an exception (overrule implicit conversions)
 - [X] Variable: refactor to variant type
+- [X] Add remaining tests for Table class
+- [X] LunyScript: refactor the s_Instance away by changing static subclasses to static struct and assign the instance in Initialize
+- [X] [[Conditional Blocks]] (if/else, while, AND/OR/NOT)
+- [X] [[Variable Blocks]]
+- #### Asset Service ✓
+    - [X] Implement Asset/Resource loading by name/path ✓
+    - [X] Addressing: LunyUrl/LunyPath: handles resource path conversion & cleanup ie remove "res://") ✓
+    - [X] we also need an `AssetID` for LunyEngine internal addressing (indexing) of assets/resources, and mapping to engine-native addressing (ID, GUID, Path) ✓
+    - [X] Return valid "error" objects from Asset service ✓
+    - [X] Implement loading of "prefabs" (Godot: packedscene, or just any scene?) ✓
 
 ### CW04-2026
 - [X] Contract Tests now contain LunyScript tests which should not be there => separate contract from implementation tests
