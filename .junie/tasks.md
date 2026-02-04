@@ -1,8 +1,6 @@
 # Current Status
 
 ## Next Steps (Sprint)
-- [X] Rename example engine project repos to "LunyScript_*"
-- [X] LunyScript: refactor Api classes to their own files (namespace: LunyScript.Api.DebugApi)
 - [X] table.NotifyVariableChanged => move into table ?
 - [X] Refactor Table OnValueChanged => move responsibility into VarHandle
 - [X] rename: ArithmaticOperationBlockBase (AddVariableBlock); ComparisonBlockBase (IsGreaterVariableBlock)
@@ -84,8 +82,12 @@
 ## DONE
 
 ### CW06-2026
+- [X] Comprehensive variable tests: split into arithmetic and comparison scripts with separate variables
+- [X] Arithmetic tests: add inter-variable operations and complex calculations
 - [X] GDSharp: GDScript wrapper following C# guidelines => https://github.com/CodeSmile-0000011110110111/GDSharp
 - [X] add LunyScript-Analyzers (Roslyn), always builds release, copies DLL to LunyScript/Analyzers, plugin.gd updates Godot .csproj, and tested working callbacks in Godot + Unity (stub only, no function)
+- [X] Rename example engine project repos to "LunyScript_*"
+- [X] LunyScript: refactor Api classes to their own files (namespace: LunyScript.Api.DebugApi)
 
 ### CW05-2026
 - [X] Godot: SceneTree should inherit from MainLoop, with GetMainLoop() returning MainLoop just like Godot
