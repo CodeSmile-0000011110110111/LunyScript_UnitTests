@@ -8,8 +8,10 @@
 - [X] rename: ArithmaticOperationBlockBase (AddVariableBlock); ComparisonBlockBase (IsGreaterVariableBlock)
 - [X] VariableConditionBlock: refactor to individual classes
 - [X] Variable API: refactor from Var.Add("name", ..) => Var("name").Add/Is(..)
-- [ ] Variables: complex operations fail => `hp.Sub((hp + 10) / 2)` 
+- [X] Variables: complex operations fail => `hp.Sub((hp + 10) / 2)` 
 - [X] Variables: support `Var("..") > 50` etc
+- [X] Variables: support `++` and `--` operators
+- [X] Variables: test ! operator 
 - [ ] Testcase: Write prefab spawner script with new flow constructs and inline variables
 - [ ] Primitives: should have a "WithPhysics()" setting that properly sets up the thing to work physically (Unity: adds Rigidbody, Godot: do the 20 things to make it a working physics object)
 - [ ] Test scene (un-)(re-)load and hook up to scene service callbacks, verify against engine call order (get this first)
