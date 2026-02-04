@@ -84,6 +84,7 @@
 ### CW06-2026
 - [X] Comprehensive variable tests: split into arithmetic and comparison scripts with separate variables
 - [X] Arithmetic tests: add inter-variable operations and complex calculations
+- [X] Split variable tests into dedicated files (ArithmeticVariableTests.cs and ComparisonVariableTests.cs)
 - [X] GDSharp: GDScript wrapper following C# guidelines => https://github.com/CodeSmile-0000011110110111/GDSharp
 - [X] add LunyScript-Analyzers (Roslyn), always builds release, copies DLL to LunyScript/Analyzers, plugin.gd updates Godot .csproj, and tested working callbacks in Godot + Unity (stub only, no function)
 - [X] Rename example engine project repos to "LunyScript_*"
