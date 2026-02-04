@@ -27,7 +27,7 @@
   - Consider: LunyEngine explicit Interface Implementations to "hide" Developer SDK methods from public API (beginner-level users) while allowing developers to utilize the SDK features without having to use InternalsVisibleTo. Alternatively: a DeveloperApi, similar to how LunyScript implements its fluent Api.
   - [ ] LunyEngine: consider the registries as service providers - don't pass their references around, instead pass the data, or maybe relay calls via LunyEngine
   - [ ] LunyObjectRegistry: GetByName should use Dictionary, not FirstOrDefault
-  - [ ] Check if LunyScript.GlobalVars/LocalVars can be replaced by Var and GVar APIs
+  - [X] Check if LunyScript.GlobalVars/LocalVars can be replaced by Var and GVar APIs
   - [ ] consider renaming LunyLogger to just Logger for brevity (good idea??)
 - ### Engine Mocks
     - [ ] ..
@@ -85,6 +85,8 @@
 - [X] Comprehensive variable tests: split into arithmetic and comparison scripts with separate variables
 - [X] Arithmetic tests: add inter-variable operations and complex calculations
 - [X] Split variable tests into dedicated files (ArithmeticVariableTests.cs and ComparisonVariableTests.cs)
+- [X] Refactor flow tests to use the Variable API (Var/GVar) instead of GlobalVars/LocalVars directly
+- [X] ILunyScriptEngine: hide GetScriptContext from the public interface
 - [X] GDSharp: GDScript wrapper following C# guidelines => https://github.com/CodeSmile-0000011110110111/GDSharp
 - [X] add LunyScript-Analyzers (Roslyn), always builds release, copies DLL to LunyScript/Analyzers, plugin.gd updates Godot .csproj, and tested working callbacks in Godot + Unity (stub only, no function)
 - [X] Rename example engine project repos to "LunyScript_*"
