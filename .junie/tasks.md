@@ -5,12 +5,21 @@
 - [X] LunyScript: refactor Api classes to their own files (namespace: LunyScript.Api.DebugApi)
 - [X] table.NotifyVariableChanged => move into table ?
 - [X] Refactor Table OnValueChanged => move responsibility into VarHandle
-- [ ] rename: ArithmaticOperationBlockBase (AddVariableBlock); ComparisonBlockBase (IsGreaterVariableBlock)
+- [X] rename: ArithmaticOperationBlockBase (AddVariableBlock); ComparisonBlockBase (IsGreaterVariableBlock)
 - [X] VariableConditionBlock: refactor to individual classes
-- [ ] Variables: complex operations fail => `hp.Sub((hp + 10) / 2)`
+- [X] Variable API: refactor from Var.Add("name", ..) => Var("name").Add/Is(..)
+- [ ] Variables: complex operations fail => `hp.Sub((hp + 10) / 2)` 
+- [X] Variables: support `Var("..") > 50` etc
 - [ ] Testcase: Write prefab spawner script with new flow constructs and inline variables
 - [ ] Primitives: should have a "WithPhysics()" setting that properly sets up the thing to work physically (Unity: adds Rigidbody, Godot: do the 20 things to make it a working physics object)
 - [ ] Test scene (un-)(re-)load and hook up to scene service callbacks, verify against engine call order (get this first)
+
+- .. Improve execution speed of git pull/commit script (parallelize? rewrite to non-generic version for better control?)
+- .. Consider: auto-pull per solution, so i only need to switch autopull in the solution i don't work in (even automate the switch?? cautions?)
+- .. Consider: a proper C# tool instead of 'bush' script?
+- .. Consider: a way for me to very quickly get an overview of what's changed, and view the diffs, and perhaps even comment on them (code review tool?)
+		i could then try the document-driven planning protocol for AI that jetbrains blog recommends -> actual commit docs, be instructional
+
 
 ## Backlog
 - ### Refactor
@@ -56,17 +65,18 @@
 - ### EPICS (needs design)
   - LunyScript running on global object (autoload, DDOL) - should still run after scene (re)load
   - [[Lua Integration]] of scripting API
-  - **Reflective/Generated API**: Lua API generator needed; maybe C# reflected/generated engine bindings? (if it speeds up adding features)
-  - **Repository Structure**: LunyEngine as separate package from LunyScript
+  - **Repository Structure**: LunyEngine as separate package/addon from LunyScript?
   - **Distribution**: versioning of LunyEngine for multiple frameworks? Lightweight package manager?
   - **Hot Reload**: Support for both C# and Lua, manual triggers for testing
   - **Sandboxed Script Execution**: API filter (Lua: blacklist/whitelist, C#: custom sandbox service), object/asset filters
   - **On-Screen Diagnostics**: Display design and required services
-  - **Cross-Engine Editor Tooling**: Custom importers, build scripts, editor windows/settings
   - **Developer SDK Documentation**: Observer patterns, Service API extension, engine support guide, behavioral contracts
-  - **Portable Scene Format**: Design in Godot, import in Unity (portable asset types)
   - **Ingame Console**: Run blocks/runnables at runtime via console
   - (maybe) create separate Unity package / Godot addon for in-engine ContractTest verification => figure out how to approach this
+- ### Ideas "Outside Project Scope" ...
+  - **Cross-Engine Editor Tooling**: Custom importers, build scripts, editor windows/settings
+  - **Portable Scene Format**: Design in Godot, import in Unity, and vice versa (portable asset types)
+  - Luny could have a 1-click solution to setting up a git repository for source control. and instructions how to put it in the cloud (github, aws, .. whatever is easy/popular)
 
 ## DONE
 
