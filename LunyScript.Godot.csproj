@@ -12,6 +12,8 @@
 
   <ItemGroup>
     <Compile Include="LunyScript.Godot\**\*.cs" />
+    <Content Include="LunyScript.Godot\**\*.gd" />
+    <Content Include="LunyScript.Godot\**\*.md" />
     <ProjectReference Include="Luny.csproj" />
     <ProjectReference Include="LunyLua.csproj" />
     <ProjectReference Include="LunyScript.csproj" />

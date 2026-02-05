@@ -12,6 +12,8 @@
 
   <ItemGroup>
     <Compile Include="Luny.Godot\**\*.cs" />
+    <Content Include="Luny.Godot\**\*.gd" />
+    <Content Include="Luny.Godot\**\*.md" />
     <ProjectReference Include="Luny.csproj" />
     <ProjectReference Include="Luny.Godot-Mock\Luny.Godot-Mock.csproj" />
   </ItemGroup>
