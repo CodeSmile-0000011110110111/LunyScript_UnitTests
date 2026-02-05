@@ -13,6 +13,11 @@
 - [X] Variables: Refactor architecture (decoupling) and naming convention
 - [X] Variables: Propagate TargetHandle in expressions (bi-directional)
 - [X] Variables: Add Const() "readonly" table besides Var/GVar for named constant values (global)
+- [X] replace LunyScript.GlobalVars/LocalVars by Var and GVar block-based APIs, and rename to "Variables"
+- [ ] [[Timer Blocks]]
+- For parameterless calls we may even use a property returning a corresponding block to omit unnecessary ():
+  var block = If(Self.IsEnabled).Then(..);
+
 - [ ] Testcase: Write prefab spawner script with new flow constructs and inline variables
 - [ ] Primitives: should have a "WithPhysics()" setting that properly sets up the thing to work physically (Unity: adds Rigidbody, Godot: do the 20 things to make it a working physics object)
 - [ ] Test scene (un-)(re-)load and hook up to scene service callbacks, verify against engine call order (get this first)
@@ -29,13 +34,14 @@
   - Consider: LunyEngine explicit Interface Implementations to "hide" Developer SDK methods from public API (beginner-level users) while allowing developers to utilize the SDK features without having to use InternalsVisibleTo. Alternatively: a DeveloperApi, similar to how LunyScript implements its fluent Api.
   - [ ] LunyEngine: consider the registries as service providers - don't pass their references around, instead pass the data, or maybe relay calls via LunyEngine
   - [ ] LunyObjectRegistry: GetByName should use Dictionary, not FirstOrDefault
-  - [X] Check if LunyScript.GlobalVars/LocalVars can be replaced by Var and GVar APIs
   - [ ] consider renaming LunyLogger to just Logger for brevity (good idea??)
 - ### Engine Mocks
     - [ ] ..
 - ### LunyEngine
     - [ ] Table: allow nested Tables with path-based indexing (dot and/or slash, or multiple indexers: t["1st"]["2nd"])
     - [ ] Scene Service: implement depth-first enumeration with pre-order or post-order (as IEnumerable?)
+    - [ ] Asset Service (Unity): support loading of non-Resource assets (via ScriptableObject DB in Resources)
+    - [ ] Asset Service: services initialize placeholders in Dictionary<Type, object> and store them on the Luny side? Release: a single placeholder for any asset type?
 - ### LunyScript Design & Lifecycle
     - [ ] ensure deterministic LunyScript execution order (follow scene hierarchy order?)
     - [ ] Handle LunyObject parenting with hierarchy gaps
@@ -45,19 +51,9 @@
     - [ ] Variable validation (log read access of non-existing variables)
     - [ ] Metadata for global variable read/write tracking
 - ### LunyScript Blocks & API
-    - For parameterless calls we may even use a property returning a corresponding block to omit unnecessary ():
-      var block = If(Self.IsEnabled).Then(..);
-    - [ ] [[Timer Blocks]]
     - [ ] [[Event Handling Blocks]] foundation (Input, Collision, SendMessage)
     - [ ] Create Scene load blocks
     - [ ] Implement Random/Shuffle blocks and API
-    - [ ] Roslyn Generator to inject extension interface properties (base interface: ILunyScriptApi, property: )
-      - Should be a incremental generator, using [LunyScriptExtension] and [LunyScriptApi] attributes
-      - separate project, compiled to DLL, DLL for both engines
-      - Godot generator is installed by modifying .csproj (sticky, ie via plugin.gd)
-      - Analyzer message if class isn't partial, but only if it implements a ILunyScriptApi interface
-      - `public interface IExtension { ExtensionApi Extension => new(); } // user defined` 
-      - `public ExtensionApi Extension => ((IExtensionApi)this).Extension; // injected property`
 - ### Engine Specific
   - ..
 - ### LATER (minor)
@@ -76,6 +72,13 @@
   - **Developer SDK Documentation**: Observer patterns, Service API extension, engine support guide, behavioral contracts
   - **Ingame Console**: Run blocks/runnables at runtime via console
   - (maybe) create separate Unity package / Godot addon for in-engine ContractTest verification => figure out how to approach this
+  - [ ] Roslyn Generator to inject extension interface properties (base interface: ILunyScriptApi, property: )
+      - Should be a incremental generator, using [LunyScriptExtension] and [LunyScriptApi] attributes
+      - separate project, compiled to DLL, DLL for both engines
+      - Godot generator is installed by modifying .csproj (sticky, ie via plugin.gd)
+      - Analyzer message if class isn't partial, but only if it implements a ILunyScriptApi interface
+      - `public interface IExtension { ExtensionApi Extension => new(); } // user defined`
+      - `public ExtensionApi Extension => ((IExtensionApi)this).Extension; // injected property`
 - ### Ideas "Outside Project Scope" ...
   - **Cross-Engine Editor Tooling**: Custom importers, build scripts, editor windows/settings
   - **Portable Scene Format**: Design in Godot, import in Unity, and vice versa (portable asset types)
