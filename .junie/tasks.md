@@ -12,7 +12,7 @@
 - [X] Variables: test ! operator 
 - [X] Variables: Refactor architecture (decoupling) and naming convention
 - [X] Variables: Propagate TargetHandle in expressions (bi-directional)
-- [ ] Variables: Add Const table besides Var/GVar for constant values (global)
+- [ ] Variables: Add Const() "readonly" table besides Var/GVar for named constant values (global)
 - [ ] Testcase: Write prefab spawner script with new flow constructs and inline variables
 - [ ] Primitives: should have a "WithPhysics()" setting that properly sets up the thing to work physically (Unity: adds Rigidbody, Godot: do the 20 things to make it a working physics object)
 - [ ] Test scene (un-)(re-)load and hook up to scene service callbacks, verify against engine call order (get this first)
