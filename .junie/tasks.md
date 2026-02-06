@@ -15,8 +15,11 @@
 - [X] Variables: Add Const() "readonly" table besides Var/GVar for named constant values (global)
 - [X] replace LunyScript.GlobalVars/LocalVars by Var and GVar block-based APIs, and rename to "Variables"
 - ... LunyScript: Blocks(params blocks) to create a "Sequence" of blocks. Test if block sequences are clone- and/or reusable: check for any side-effects.
-- [ ] Refactor When.* API to new proposed On.* API (see [LunyScript_On_vs_When_API_Refactor.md](/RFC/docs/2026-02/LunyScript_On_vs_When_API_Refactor.md))
+- [X] Refactor When.* API to new proposed On.* API (see [LunyScript_On_vs_When_API_Refactor.md](/RFC/docs/2026-02/LunyScript_On_vs_When_API_Refactor.md))
 - [ ] [[Timer Blocks]] - see: [LunyScript_CoroutineAndTimer_Design.md](/RFC/docs/2026-02/LunyScript_CoroutineAndTimer_Design.md)
+- [ ] Refactor after timers:
+  - LunyScriptObjectEventHandler: rename engine event methods (fixedupdate etc)
+  - CoroutineInstance => is that a block?
 - [ ] LunyScript: Singleton behaviour (property override); autocreates object, makes script/object non-destroyable
 - For parameterless calls we may even use a property returning a corresponding block to omit unnecessary ():
   var block = If(Self.IsEnabled).Then(..);
