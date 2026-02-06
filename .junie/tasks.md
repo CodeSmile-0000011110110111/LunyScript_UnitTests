@@ -14,6 +14,7 @@
 - [X] Variables: Propagate TargetHandle in expressions (bi-directional)
 - [X] Variables: Add Const() "readonly" table besides Var/GVar for named constant values (global)
 - [X] replace LunyScript.GlobalVars/LocalVars by Var and GVar block-based APIs, and rename to "Variables"
+- ... LunyScript: Blocks(params blocks) to create a "Sequence" of blocks. Test if block sequences are clone- and/or reusable: check for any side-effects.
 - [ ] [[Timer Blocks]]
 - For parameterless calls we may even use a property returning a corresponding block to omit unnecessary ():
   var block = If(Self.IsEnabled).Then(..);
