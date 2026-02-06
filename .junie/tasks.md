@@ -17,12 +17,18 @@
 - ... LunyScript: Blocks(params blocks) to create a "Sequence" of blocks. Test if block sequences are clone- and/or reusable: check for any side-effects.
 - [X] Refactor When.* API to new proposed On.* API (see [LunyScript_On_vs_When_API_Refactor.md](/RFC/docs/2026-02/LunyScript_On_vs_When_API_Refactor.md))
 - [ ] [[Timer Blocks]] - see: [LunyScript_CoroutineAndTimer_Design.md](/RFC/docs/2026-02/LunyScript_CoroutineAndTimer_Design.md)
-- [ ] Refactor after timers:
-  - LunyScriptObjectEventHandler: rename engine event methods (fixedupdate etc)
+- [ ] Refactor after implementing timers:
+  - rename engine event methods (fixedupdate etc) => LunyScriptObjectEventHandler, CoroutineRunner
   - CoroutineInstance => is that a block?
+  - CoroutineBlock => move to Blocks folder
+  - *Builder => to *Api or rename *Api to Builder?
+  - TimerBuilder => _isRepeating - is it necessary?
+  - CoroutineBuilder: OnUpdate => OnFrameUpdate ?
+  - CoroutineInstance: _elapsedCount and _targetCount fields for count-based tracking could be merged with the double types elapsedTime and duration, just advancing in integer steps
+    - OR: separate CoroutineInstance types (time, count, time-sliced)
+  - CoroutineRunner: Even/Odd could be turned into +0/+1 Delay not carried into logic?
+  - 
 - [ ] LunyScript: Singleton behaviour (property override); autocreates object, makes script/object non-destroyable
-- For parameterless calls we may even use a property returning a corresponding block to omit unnecessary ():
-  var block = If(Self.IsEnabled).Then(..);
 
 - [ ] Testcase: Write prefab spawner script with new flow constructs and inline variables
 - [ ] Primitives: should have a "WithPhysics()" setting that properly sets up the thing to work physically (Unity: adds Rigidbody, Godot: do the 20 things to make it a working physics object)
