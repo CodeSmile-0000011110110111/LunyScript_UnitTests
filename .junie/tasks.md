@@ -1,38 +1,27 @@
 # Current Status
 
 ## Next Steps (Sprint)
-- [X] table.NotifyVariableChanged => move into table ?
-- [X] Refactor Table OnValueChanged => move responsibility into VarHandle
-- [X] rename: ArithmaticOperationBlockBase (AddVariableBlock); ComparisonBlockBase (IsGreaterVariableBlock)
-- [X] VariableConditionBlock: refactor to individual classes
-- [X] Variable API: refactor from Var.Add("name", ..) => Var("name").Add/Is(..)
-- [X] Variables: complex operations fail => `hp.Sub((hp + 10) / 2)` 
-- [X] Variables: support `Var("..") > 50` etc
-- [X] Variables: support `++` and `--` operators
-- [X] Variables: test ! operator 
-- [X] Variables: Refactor architecture (decoupling) and naming convention
-- [X] Variables: Propagate TargetHandle in expressions (bi-directional)
-- [X] Variables: Add Const() "readonly" table besides Var/GVar for named constant values (global)
-- [X] replace LunyScript.GlobalVars/LocalVars by Var and GVar block-based APIs, and rename to "Variables"
-- ... LunyScript: Blocks(params blocks) to create a "Sequence" of blocks. Test if block sequences are clone- and/or reusable: check for any side-effects.
+- [ ] LunyScript: Blocks(params blocks) method to create a "Sequence" of blocks. Test if block sequences are clone- and/or reusable: check for any side-effects.
 - [X] Refactor When.* API to new proposed On.* API (see [LunyScript_On_vs_When_API_Refactor.md](/RFC/docs/2026-02/LunyScript_On_vs_When_API_Refactor.md))
 - [X] [[Coroutine & Timer Blocks]] - see: [LunyScript_CoroutineAndTimer_Design.md](/RFC/docs/2026-02/LunyScript_CoroutineAndTimer_Design.md)
 - [X] Coroutine: handle Enabled/Disabled and Destroy events
-- [ ] CoroutineControlBlock => split into separate classes, one per control action
+- [X] CoroutineControlBlock => split into separate classes, one per control action
 - [X] CoroutineFinalBuilder => refactor to use fewer ctor params (DTO struct, reusable by coroutine?)
 - [X] Repeating timers don't work yet?
 - [X] Refactor after implementing timers:
+  - System.Threading.Interlocked.Increment => we are single-threaded, remove this
   - [X] timeslice: perhaps defer to specialized subclasses?
   - [X] EveryBuilder: unique name generation with GUID! could be an incrementing static int 
-  - [ ] rename engine event methods (fixedupdate etc) => LunyScriptObjectEventHandler, CoroutineRunner
-  - [ ] CoroutineBlock => move to Blocks folder
+  - [X] rename engine event methods (fixedupdate etc) => LunyScriptObjectEventHandler, CoroutineRunner
+  - [X] CoroutineBlock => move to Blocks folder
   - [ ] *Builder => to *Api or rename *Api to Builder?
   - [X] TimerBuilder => _isRepeating - is it necessary?
-  - [ ] CoroutineBuilder: OnUpdate => OnFrameUpdate ?
+  - [X] CoroutineBuilder: OnUpdate => OnFrameUpdate ?
   - [X] CoroutineInstance: _elapsedCount and _targetCount fields for count-based tracking could be merged with the double types elapsedTime and duration, just advancing in integer steps
     - [X] OR: separate CoroutineInstance types (time, count, time-sliced)
   - [X] CoroutineRunner: Even/Odd could be turned into +0/+1 Delay not carried into logic?
-  - [ ] LunyScript/Coroutines location: we have Execution and Event subfolders. Check if we should re-organize these types (both folder and naming)
+  - [X] LunyScript/Coroutines location: we have Execution and Event subfolders. Check if we should re-organize these types (both folder and naming)
+  - [ ] perform a complete renaming pass
 
 - [ ] LunyScript: Singleton behaviour (property override); autocreates object, makes script/object non-destroyable
 
@@ -115,6 +104,19 @@
 - [X] add LunyScript-Analyzers (Roslyn), always builds release, copies DLL to LunyScript/Analyzers, plugin.gd updates Godot .csproj, and tested working callbacks in Godot + Unity (stub only, no function)
 - [X] Rename example engine project repos to "LunyScript_*"
 - [X] LunyScript: refactor Api classes to their own files (namespace: LunyScript.Api.DebugApi)
+- [X] table.NotifyVariableChanged => move into table ?
+- [X] Refactor Table OnValueChanged => move responsibility into VarHandle
+- [X] rename: ArithmaticOperationBlockBase (AddVariableBlock); ComparisonBlockBase (IsGreaterVariableBlock)
+- [X] VariableConditionBlock: refactor to individual classes
+- [X] Variable API: refactor from Var.Add("name", ..) => Var("name").Add/Is(..)
+- [X] Variables: complex operations fail => `hp.Sub((hp + 10) / 2)`
+- [X] Variables: support `Var("..") > 50` etc
+- [X] Variables: support `++` and `--` operators
+- [X] Variables: test ! operator
+- [X] Variables: Refactor architecture (decoupling) and naming convention
+- [X] Variables: Propagate TargetHandle in expressions (bi-directional)
+- [X] Variables: Add Const() "readonly" table besides Var/GVar for named constant values (global)
+- [X] replace LunyScript.GlobalVars/LocalVars by Var and GVar block-based APIs, and rename to "Variables"
 
 ### CW05-2026
 - [X] Godot: SceneTree should inherit from MainLoop, with GetMainLoop() returning MainLoop just like Godot
