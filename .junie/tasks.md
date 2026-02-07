@@ -16,18 +16,24 @@
 - [X] replace LunyScript.GlobalVars/LocalVars by Var and GVar block-based APIs, and rename to "Variables"
 - ... LunyScript: Blocks(params blocks) to create a "Sequence" of blocks. Test if block sequences are clone- and/or reusable: check for any side-effects.
 - [X] Refactor When.* API to new proposed On.* API (see [LunyScript_On_vs_When_API_Refactor.md](/RFC/docs/2026-02/LunyScript_On_vs_When_API_Refactor.md))
-- [ ] [[Timer Blocks]] - see: [LunyScript_CoroutineAndTimer_Design.md](/RFC/docs/2026-02/LunyScript_CoroutineAndTimer_Design.md)
-- [ ] Refactor after implementing timers:
-  - rename engine event methods (fixedupdate etc) => LunyScriptObjectEventHandler, CoroutineRunner
-  - CoroutineInstance => is that a block?
-  - CoroutineBlock => move to Blocks folder
-  - *Builder => to *Api or rename *Api to Builder?
-  - TimerBuilder => _isRepeating - is it necessary?
-  - CoroutineBuilder: OnUpdate => OnFrameUpdate ?
-  - CoroutineInstance: _elapsedCount and _targetCount fields for count-based tracking could be merged with the double types elapsedTime and duration, just advancing in integer steps
-    - OR: separate CoroutineInstance types (time, count, time-sliced)
-  - CoroutineRunner: Even/Odd could be turned into +0/+1 Delay not carried into logic?
-  - 
+- [X] [[Coroutine & Timer Blocks]] - see: [LunyScript_CoroutineAndTimer_Design.md](/RFC/docs/2026-02/LunyScript_CoroutineAndTimer_Design.md)
+- [X] Coroutine: handle Enabled/Disabled and Destroy events
+- [ ] CoroutineControlBlock => split into separate classes, one per control action
+- [X] CoroutineFinalBuilder => refactor to use fewer ctor params (DTO struct, reusable by coroutine?)
+- [X] Repeating timers don't work yet?
+- [X] Refactor after implementing timers:
+  - [X] timeslice: perhaps defer to specialized subclasses?
+  - [X] EveryBuilder: unique name generation with GUID! could be an incrementing static int 
+  - [ ] rename engine event methods (fixedupdate etc) => LunyScriptObjectEventHandler, CoroutineRunner
+  - [ ] CoroutineBlock => move to Blocks folder
+  - [ ] *Builder => to *Api or rename *Api to Builder?
+  - [X] TimerBuilder => _isRepeating - is it necessary?
+  - [ ] CoroutineBuilder: OnUpdate => OnFrameUpdate ?
+  - [X] CoroutineInstance: _elapsedCount and _targetCount fields for count-based tracking could be merged with the double types elapsedTime and duration, just advancing in integer steps
+    - [X] OR: separate CoroutineInstance types (time, count, time-sliced)
+  - [X] CoroutineRunner: Even/Odd could be turned into +0/+1 Delay not carried into logic?
+  - [ ] LunyScript/Coroutines location: we have Execution and Event subfolders. Check if we should re-organize these types (both folder and naming)
+
 - [ ] LunyScript: Singleton behaviour (property override); autocreates object, makes script/object non-destroyable
 
 - [ ] Testcase: Write prefab spawner script with new flow constructs and inline variables
