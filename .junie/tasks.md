@@ -19,9 +19,11 @@
   - [X] CoroutineBuilder: OnUpdate => OnFrameUpdate ?
   - [X] CoroutineInstance: _elapsedCount and _targetCount fields for count-based tracking could be merged with the double types elapsedTime and duration, just advancing in integer steps
     - [X] OR: separate CoroutineInstance types (time, count, time-sliced)
+    - [X] AND: reduce logic duplication via template-method in CoroutineBase and progression structs (TimeProgress, CountProgress)
   - [X] CoroutineRunner: Even/Odd could be turned into +0/+1 Delay not carried into logic?
   - [X] LunyScript/Coroutines location: we have Execution and Event subfolders. Check if we should re-organize these types (both folder and naming)
   - [ ] perform a complete renaming pass
+- [ ] Coroutine Tests: complete test suite. Verify all permutations (including nonsensical => should fail).
 
 - [ ] LunyScript: Singleton behaviour (property override); autocreates object, makes script/object non-destroyable
 
