@@ -1,7 +1,6 @@
 # Current Status
 
 ## Next Steps (Sprint)
-- [ ] LunyScript: Blocks(params blocks) method to create a "Sequence" of blocks. Test if block sequences are clone- and/or reusable: check for any side-effects.
 - [X] Refactor When.* API to new proposed On.* API (see [LunyScript_On_vs_When_API_Refactor.md](/RFC/docs/2026-02/LunyScript_On_vs_When_API_Refactor.md))
 - [X] [[Coroutine & Timer Blocks]] - see: [LunyScript_CoroutineAndTimer_Design.md](/RFC/docs/2026-02/LunyScript_CoroutineAndTimer_Design.md)
 - [X] Coroutine: handle Enabled/Disabled and Destroy events
@@ -14,7 +13,6 @@
   - [X] EveryBuilder: unique name generation with GUID! could be an incrementing static int 
   - [X] rename engine event methods (fixedupdate etc) => LunyScriptObjectEventHandler, CoroutineRunner
   - [X] CoroutineBlock => move to Blocks folder
-  - [ ] *Builder => to *Api or rename *Api to Builder?
   - [X] TimerBuilder => _isRepeating - is it necessary?
   - [X] CoroutineBuilder: OnUpdate => OnFrameUpdate ?
   - [X] CoroutineInstance: _elapsedCount and _targetCount fields for count-based tracking could be merged with the double types elapsedTime and duration, just advancing in integer steps
@@ -23,8 +21,10 @@
   - [X] CoroutineRunner: Even/Odd could be turned into +0/+1 Delay not carried into logic?
   - [X] LunyScript/Coroutines location: we have Execution and Event subfolders. Check if we should re-organize these types (both folder and naming)
   - [ ] perform a complete renaming pass
-- [ ] Coroutine Tests: complete test suite. Verify all permutations (including nonsensical => should fail).
-
+- [ ] Coroutine Tests: fill gaps in test suite. Verify all permutations (including nonsensical => should fail).
+  - Test Coroutines run in expected point (eg Every().Frames() => after FrameUpdate, not before)
+- [ ] LunyScript: Blocks(params blocks) method to create a "Sequence" of blocks. Test if block sequences are clone- and/or reusable: check for any side-effects.
+- [ ] LunyScript *Builder/*Api => consistency?
 - [ ] LunyScript: Singleton behaviour (property override); autocreates object, makes script/object non-destroyable
 
 - [ ] Testcase: Write prefab spawner script with new flow constructs and inline variables
