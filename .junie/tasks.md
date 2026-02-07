@@ -21,6 +21,13 @@
   - [X] CoroutineRunner: Even/Odd could be turned into +0/+1 Delay not carried into logic?
   - [X] LunyScript/Coroutines location: we have Execution and Event subfolders. Check if we should re-organize these types (both folder and naming)
   - [ ] perform a complete renaming pass
+    - [X] EveryBuilder
+    - [X] TimerBuilder
+    - [X] DurationBuilder
+    - [X] CoroutineBuilder
+    - [ ] Coroutine + Base + Config
+    - [ ] CoroutineRunner
+    - [ ] CoroutineBase => combine heartbeat/advancetime ?
 - [ ] Coroutine Tests: fill gaps in test suite. Verify all permutations (including nonsensical => should fail).
   - Test Coroutines run in expected point (eg Every().Frames() => after FrameUpdate, not before)
 - [ ] LunyScript: Blocks(params blocks) method to create a "Sequence" of blocks. Test if block sequences are clone- and/or reusable: check for any side-effects.
