@@ -27,16 +27,17 @@
     - [X] CoroutineBuilder
     - [X] Coroutine + Base + Config
     - [X] CoroutineRunner
-    - [ ] CoroutineBlock
+    - [X] CoroutineBlock
 - [X] Coroutine: implement OnEnable/OnDisable/OnDestroy behaviour
-- [ ] Coroutine: test object Enable/Disable/Destroy behaviour
-- [ ] CoroutineRunner: use TimeService instead of manually counting update/step
-- [ ] CounterCoroutine: split into TimeSlicedCounterCoroutine for time-sliced variants
+- [ ] CoroutineRunner: use TimeService instead of manually counting update/step?
+- [ ] CounterCoroutine: split into TimeSlicedCounterCoroutine for time-sliced variants?
+- [ ] CoroutineBlock: test and prevent use in regular sequences
 - [ ] Coroutine Tests: fill gaps in test suite. Verify all permutations (including nonsensical => should fail).
   - Test Coroutines run in expected point (eg Every().Frames() => after FrameUpdate, not before)
+  - test object Enable/Disable/Destroy behaviour
 - 
-- [ ] Luny: refactor "OnObjectDestroyed" fired separately via Lifecycle.OnObjectDestroyed(this); => superfluous?
-
+- [ ] Luny: refactor "OnObjectDestroyed" fired separately via Lifecycle.OnObjectDestroyed(this); => necessary?
+- [ ] Luny: refactor to pass LunyTime instance rather than deltaTime
 
 - [ ] LunyScript: Blocks(params blocks) method to create a "Sequence" of blocks. Test if block sequences are clone- and/or reusable: check for any side-effects.
 - [ ] LunyScript *Builder/*Api => consistency?
