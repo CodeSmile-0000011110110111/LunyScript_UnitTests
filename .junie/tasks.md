@@ -20,7 +20,7 @@
     - [X] AND: reduce logic duplication via template-method in CoroutineBase and progression structs (TimeProgress, CountProgress)
   - [X] CoroutineRunner: Even/Odd could be turned into +0/+1 Delay not carried into logic?
   - [X] LunyScript/Coroutines location: we have Execution and Event subfolders. Check if we should re-organize these types (both folder and naming)
-  - [ ] perform a complete renaming pass
+  - [X] perform a complete refactoring pass
     - [X] EveryBuilder
     - [X] TimerBuilder
     - [X] DurationBuilder
@@ -29,9 +29,9 @@
     - [X] CoroutineRunner
     - [X] CoroutineBlock
 - [X] Coroutine: implement OnEnable/OnDisable/OnDestroy behaviour
-- [ ] CoroutineRunner: use TimeService instead of manually counting update/step?
-- [ ] CounterCoroutine: split into TimeSlicedCounterCoroutine for time-sliced variants?
-- [ ] CoroutineBlock: test and prevent use in regular sequences
+- [X] CoroutineRunner: use TimeService instead of manually counting update/step
+- [X] CoroutineBlock: prevent use in regular sequences
+- [X] CounterCoroutine: split into TimeSliceCoroutine for time-sliced variants?
 - [ ] Coroutine Tests: fill gaps in test suite. Verify all permutations (including nonsensical => should fail).
   - Test Coroutines run in expected point (eg Every().Frames() => after FrameUpdate, not before)
   - test object Enable/Disable/Destroy behaviour
@@ -41,18 +41,12 @@
 - [X] Luny: refactor how time is passed around
 
 - [ ] LunyScript: Blocks(params blocks) method to create a "Sequence" of blocks. Test if block sequences are clone- and/or reusable: check for any side-effects.
-- [ ] LunyScript *Builder/*Api => consistency?
-- [ ] LunyScript: Singleton behaviour (property override); autocreates object, makes script/object non-destroyable
+- [ ] LunyScript: bool IsSingleton property; autocreates object, makes script/object non-destroyable via native feature (DDOL, root node)
 
 - [ ] Testcase: Write prefab spawner script with new flow constructs and inline variables
 - [ ] Primitives: should have a "WithPhysics()" setting that properly sets up the thing to work physically (Unity: adds Rigidbody, Godot: do the 20 things to make it a working physics object)
 - [ ] Test scene (un-)(re-)load and hook up to scene service callbacks, verify against engine call order (get this first)
 
-- .. Improve execution speed of git pull/commit script (parallelize? rewrite to non-generic version for better control?)
-- .. Consider: auto-pull per solution, so i only need to switch autopull in the solution i don't work in (even automate the switch?? cautions?)
-- .. Consider: a proper C# tool instead of 'bush' script?
-- .. Consider: a way for me to very quickly get an overview of what's changed, and view the diffs, and perhaps even comment on them (code review tool?)
-		i could then try the document-driven planning protocol for AI that jetbrains blog recommends -> actual commit docs, be instructional
 
 
 ## Backlog
@@ -109,6 +103,10 @@
   - **Cross-Engine Editor Tooling**: Custom importers, build scripts, editor windows/settings
   - **Portable Scene Format**: Design in Godot, import in Unity, and vice versa (portable asset types)
   - Luny could have a 1-click solution to setting up a git repository for source control. and instructions how to put it in the cloud (github, aws, .. whatever is easy/popular)
+  - .. Improve execution speed of git pull/commit script (parallelize? rewrite to non-generic version for better control?)
+    - .. auto-pull per solution, so i only need to switch autopull in the solution i don't work in (even automate the switch?? cautions?)
+    - .. a proper C# tool instead of 'bush' script?
+    - .. a way for me to very quickly get an overview of what's changed, and view the diffs, and perhaps even comment on them
 
 ## DONE
 
