@@ -25,11 +25,19 @@
     - [X] TimerBuilder
     - [X] DurationBuilder
     - [X] CoroutineBuilder
-    - [ ] Coroutine + Base + Config
-    - [ ] CoroutineRunner
-    - [ ] CoroutineBase => combine heartbeat/advancetime ?
+    - [X] Coroutine + Base + Config
+    - [X] CoroutineRunner
+    - [ ] CoroutineBlock
+- [X] Coroutine: implement OnEnable/OnDisable/OnDestroy behaviour
+- [ ] Coroutine: test object Enable/Disable/Destroy behaviour
+- [ ] CoroutineRunner: use TimeService instead of manually counting update/step
+- [ ] CounterCoroutine: split into TimeSlicedCounterCoroutine for time-sliced variants
 - [ ] Coroutine Tests: fill gaps in test suite. Verify all permutations (including nonsensical => should fail).
   - Test Coroutines run in expected point (eg Every().Frames() => after FrameUpdate, not before)
+- 
+- [ ] Luny: refactor "OnObjectDestroyed" fired separately via Lifecycle.OnObjectDestroyed(this); => superfluous?
+
+
 - [ ] LunyScript: Blocks(params blocks) method to create a "Sequence" of blocks. Test if block sequences are clone- and/or reusable: check for any side-effects.
 - [ ] LunyScript *Builder/*Api => consistency?
 - [ ] LunyScript: Singleton behaviour (property override); autocreates object, makes script/object non-destroyable
