@@ -38,7 +38,7 @@
   - test coroutine block in regular sequence throws
 - 
 - [ ] Luny: refactor "OnObjectDestroyed" fired separately via Lifecycle.OnObjectDestroyed(this); => necessary?
-- [ ] Luny: refactor to pass LunyTime instance rather than deltaTime
+- [X] Luny: refactor how time is passed around
 
 - [ ] LunyScript: Blocks(params blocks) method to create a "Sequence" of blocks. Test if block sequences are clone- and/or reusable: check for any side-effects.
 - [ ] LunyScript *Builder/*Api => consistency?
