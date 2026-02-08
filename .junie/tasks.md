@@ -35,6 +35,7 @@
 - [ ] Coroutine Tests: fill gaps in test suite. Verify all permutations (including nonsensical => should fail).
   - Test Coroutines run in expected point (eg Every().Frames() => after FrameUpdate, not before)
   - test object Enable/Disable/Destroy behaviour
+  - test coroutine block in regular sequence throws
 - 
 - [ ] Luny: refactor "OnObjectDestroyed" fired separately via Lifecycle.OnObjectDestroyed(this); => necessary?
 - [ ] Luny: refactor to pass LunyTime instance rather than deltaTime
