@@ -1,52 +1,12 @@
 # Current Status
 
 ## Next Steps (Sprint)
-- [X] Refactor When.* API to new proposed On.* API (see [LunyScript_On_vs_When_API_Refactor.md](/RFC/docs/2026-02/LunyScript_On_vs_When_API_Refactor.md))
-- [X] [[Coroutine & Timer Blocks]] - see: [LunyScript_CoroutineAndTimer_Design.md](/RFC/docs/2026-02/LunyScript_CoroutineAndTimer_Design.md)
-- [X] Coroutine: handle Enabled/Disabled and Destroy events
-- [X] CoroutineControlBlock => split into separate classes, one per control action
-- [X] CoroutineFinalBuilder => refactor to use fewer ctor params (DTO struct, reusable by coroutine?)
-- [X] Repeating timers don't work yet?
-- [X] Refactor after implementing timers:
-  - System.Threading.Interlocked.Increment => we are single-threaded, remove this
-  - [X] timeslice: perhaps defer to specialized subclasses?
-  - [X] EveryBuilder: unique name generation with GUID! could be an incrementing static int 
-  - [X] rename engine event methods (fixedupdate etc) => LunyScriptObjectEventHandler, CoroutineRunner
-  - [X] CoroutineBlock => move to Blocks folder
-  - [X] TimerBuilder => _isRepeating - is it necessary?
-  - [X] CoroutineBuilder: OnUpdate => OnFrameUpdate ?
-  - [X] CoroutineInstance: _elapsedCount and _targetCount fields for count-based tracking could be merged with the double types elapsedTime and duration, just advancing in integer steps
-    - [X] OR: separate CoroutineInstance types (time, count, time-sliced)
-    - [X] AND: reduce logic duplication via template-method in CoroutineBase and progression structs (TimeProgress, CountProgress)
-  - [X] CoroutineRunner: Even/Odd could be turned into +0/+1 Delay not carried into logic?
-  - [X] LunyScript/Coroutines location: we have Execution and Event subfolders. Check if we should re-organize these types (both folder and naming)
-  - [X] perform a complete refactoring pass
-    - [X] EveryBuilder
-    - [X] TimerBuilder
-    - [X] DurationBuilder
-    - [X] CoroutineBuilder
-    - [X] Coroutine + Base + Config
-    - [X] CoroutineRunner
-    - [X] CoroutineBlock
-- [X] Coroutine: implement OnEnable/OnDisable/OnDestroy behaviour
-- [X] CoroutineRunner: use TimeService instead of manually counting update/step
-- [X] CoroutineBlock: prevent use in regular sequences
-- [X] CounterCoroutine: split into TimeSliceCoroutine for time-sliced variants?
 - [ ] Coroutine Tests: fill gaps in test suite. Verify all permutations (including nonsensical => should fail).
-  - Test Coroutines run in expected point (eg Every().Frames() => after FrameUpdate, not before)
-  - test object Enable/Disable/Destroy behaviour
-  - test coroutine block in regular sequence throws
-- 
-- [ ] Luny: refactor "OnObjectDestroyed" fired separately via Lifecycle.OnObjectDestroyed(this); => necessary?
-- [X] Luny: refactor how time is passed around
-
-- [ ] LunyScript: Blocks(params blocks) method to create a "Sequence" of blocks. Test if block sequences are clone- and/or reusable: check for any side-effects.
-- [ ] LunyScript: bool IsSingleton property; autocreates object, makes script/object non-destroyable via native feature (DDOL, root node)
-
+    - Test Coroutines run in expected point (eg Every().Frames() => after FrameUpdate, not before)
+    - test object Enable/Disable/Destroy behaviour
+    - test coroutine block in regular sequence throws
 - [ ] Testcase: Write prefab spawner script with new flow constructs and inline variables
-- [ ] Primitives: should have a "WithPhysics()" setting that properly sets up the thing to work physically (Unity: adds Rigidbody, Godot: do the 20 things to make it a working physics object)
 - [ ] Test scene (un-)(re-)load and hook up to scene service callbacks, verify against engine call order (get this first)
-
 
 
 ## Backlog
@@ -54,26 +14,29 @@
   - Consider: LunyEngine explicit Interface Implementations to "hide" Developer SDK methods from public API (beginner-level users) while allowing developers to utilize the SDK features without having to use InternalsVisibleTo. Alternatively: a DeveloperApi, similar to how LunyScript implements its fluent Api.
   - [ ] LunyEngine: consider the registries as service providers - don't pass their references around, instead pass the data, or maybe relay calls via LunyEngine
   - [ ] LunyObjectRegistry: GetByName should use Dictionary, not FirstOrDefault
-  - [ ] consider renaming LunyLogger to just Logger for brevity (good idea??)
+  - [ ] LunyObjectLifecycle: refactor DestroyNativeNullObjects() to avoid list copy
 - ### Engine Mocks
-    - [ ] ..
+  - [ ] ..
 - ### LunyEngine
-    - [ ] Table: allow nested Tables with path-based indexing (dot and/or slash, or multiple indexers: t["1st"]["2nd"])
-    - [ ] Scene Service: implement depth-first enumeration with pre-order or post-order (as IEnumerable?)
-    - [ ] Asset Service (Unity): support loading of non-Resource assets (via ScriptableObject DB in Resources)
-    - [ ] Asset Service: services initialize placeholders in Dictionary<Type, object> and store them on the Luny side? Release: a single placeholder for any asset type?
+  - [ ] Table: allow nested Tables with path-based indexing (dot and/or slash, or multiple indexers: t["1st"]["2nd"])
+  - [ ] Scene Service: implement depth-first enumeration with pre-order or post-order (as IEnumerable?)
+  - [ ] Asset Service (Unity): support loading of non-Resource assets (via ScriptableObject DB in Resources)
+  - [ ] Asset Service: services initialize placeholders in Dictionary<Type, object> and store them on the Luny side? Release: a single placeholder for any asset type?
+  - [ ] Primitives: should have a "WithPhysics()" setting that properly sets up the thing to work physically (Unity: adds Rigidbody, Godot: do the 20 things to make it a working physics object)
 - ### LunyScript Design & Lifecycle
-    - [ ] ensure deterministic LunyScript execution order (follow scene hierarchy order?)
-    - [ ] Handle LunyObject parenting with hierarchy gaps
-    - [ ] Review OnIntervalUpdate implementation in script Scheduler and object event handler
-    - [ ] How to pass references to blocks via event parameters (eg Scene, "Other" from colliders, etc) => Design
+  - [ ] ensure deterministic LunyScript execution order (follow scene hierarchy order?)
+  - [ ] Handle LunyObject parenting with hierarchy gaps
+  - [ ] Review OnIntervalUpdate implementation in script Scheduler and object event handler
+  - [ ] How to pass references to blocks via event parameters (eg Scene, "Other" from colliders, etc) => Design
 - ### LunyScript Debug / Profile
-    - [ ] Variable validation (log read access of non-existing variables)
-    - [ ] Metadata for global variable read/write tracking
+  - [ ] Variable validation (log read access of non-existing variables)
+  - [ ] Metadata for global variable read/write tracking
 - ### LunyScript Blocks & API
-    - [ ] [[Event Handling Blocks]] foundation (Input, Collision, SendMessage)
-    - [ ] Create Scene load blocks
-    - [ ] Implement Random/Shuffle blocks and API
+  - [ ] LunyScript: Blocks(params blocks) method to create a "Sequence" of blocks. Test if block sequences are clone- and/or reusable: check for any side-effects.
+  - [ ] LunyScript: bool IsSingleton property; autocreates object, makes script/object non-destroyable via native feature (DDOL, root node)
+  - [ ] [[Event Handling Blocks]] foundation (Input, Collision, SendMessage)
+  - [ ] Create Scene load blocks
+  - [ ] Implement Random/Shuffle blocks and API
 - ### Engine Specific
   - ..
 - ### LATER (minor)
@@ -110,7 +73,9 @@
 
 ## DONE
 
-### CW06-2026
+### CW07-2026 Feb
+
+### CW06-2026 Feb
 - [X] Comprehensive variable tests: split into arithmetic and comparison scripts with separate variables
 - [X] Arithmetic tests: add inter-variable operations and complex calculations
 - [X] Split variable tests into dedicated files (ArithmeticVariableTests.cs and ComparisonVariableTests.cs)
@@ -134,8 +99,41 @@
 - [X] Variables: Propagate TargetHandle in expressions (bi-directional)
 - [X] Variables: Add Const() "readonly" table besides Var/GVar for named constant values (global)
 - [X] replace LunyScript.GlobalVars/LocalVars by Var and GVar block-based APIs, and rename to "Variables"
+- [X] Refactor When.* API to new proposed On.* API (see [LunyScript_On_vs_When_API_Refactor.md](/RFC/docs/2026-02/LunyScript_On_vs_When_API_Refactor.md))
+- [X] [[Coroutine & Timer Blocks]] - see: [LunyScript_CoroutineAndTimer_Design.md](/RFC/docs/2026-02/LunyScript_CoroutineAndTimer_Design.md)
+- [X] Coroutine: handle Enabled/Disabled and Destroy events
+- [X] CoroutineControlBlock => split into separate classes, one per control action
+- [X] CoroutineFinalBuilder => refactor to use fewer ctor params (DTO struct, reusable by coroutine?)
+- [X] Repeating timers don't work yet?
+- [X] Refactor after implementing timers:
+    - System.Threading.Interlocked.Increment => we are single-threaded, remove this
+    - [X] timeslice: perhaps defer to specialized subclasses?
+    - [X] EveryBuilder: unique name generation with GUID! could be an incrementing static int
+    - [X] rename engine event methods (fixedupdate etc) => LunyScriptObjectEventHandler, CoroutineRunner
+    - [X] CoroutineBlock => move to Blocks folder
+    - [X] TimerBuilder => _isRepeating - is it necessary?
+    - [X] CoroutineBuilder: OnUpdate => OnFrameUpdate ?
+    - [X] CoroutineInstance: _elapsedCount and _targetCount fields for count-based tracking could be merged with the double types elapsedTime and duration, just advancing in integer steps
+        - [X] OR: separate CoroutineInstance types (time, count, time-sliced)
+        - [X] AND: reduce logic duplication via template-method in CoroutineBase and progression structs (TimeProgress, CountProgress)
+    - [X] CoroutineRunner: Even/Odd could be turned into +0/+1 Delay not carried into logic?
+    - [X] LunyScript/Coroutines location: we have Execution and Event subfolders. Check if we should re-organize these types (both folder and naming)
+    - [X] perform a complete refactoring pass
+        - [X] EveryBuilder
+        - [X] TimerBuilder
+        - [X] DurationBuilder
+        - [X] CoroutineBuilder
+        - [X] Coroutine + Base + Config
+        - [X] CoroutineRunner
+        - [X] CoroutineBlock
+- [X] Coroutine: implement OnEnable/OnDisable/OnDestroy behaviour
+- [X] CoroutineRunner: use TimeService instead of manually counting update/step
+- [X] CoroutineBlock: prevent use in regular sequences
+- [X] CounterCoroutine: split into TimeSliceCoroutine for time-sliced variants?
+- [X] Luny: refactor "OnObjectDestroyed" fired separately via Lifecycle.OnObjectDestroyed(this); => renamed
+- [X] Luny: refactor how time is passed around
 
-### CW05-2026
+### CW05-2026 Jan
 - [X] Godot: SceneTree should inherit from MainLoop, with GetMainLoop() returning MainLoop just like Godot
 - [X] Godot: Node class' Notification const must be 'long' just like Godot
 - [X] Godot: Name property must be of type 'StringName'
@@ -162,7 +160,7 @@
     - [X] Return valid "error" objects from Asset service ✓
     - [X] Implement loading of "prefabs" (Godot: packedscene, or just any scene?) ✓
 
-### CW04-2026
+### CW04-2026 Jan
 - [X] Contract Tests now contain LunyScript tests which should not be there => separate contract from implementation tests
 - [X] Move LunyEngine tests from Luny-ContractTest to Luny-Test
 - [X] *BridgeTest: should they inherit from ContractTestBase? (YES)
