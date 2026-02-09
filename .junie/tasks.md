@@ -3,8 +3,17 @@
 ## Next Steps (Sprint)
 - [ ] Coroutine Tests: fill gaps in test suite. Verify all permutations (including nonsensical => should fail).
     - Test Coroutines run in expected point (eg Every().Frames() => after FrameUpdate, not before)
-    - test object Enable/Disable/Destroy behaviour
+    - test object Enable/Disable pauses coroutine updates
+    - test object destroy cancels/destroys coroutines 
     - test coroutine block in regular sequence throws
+- [ ] Coroutine Improvements:
+  - CoroutineBlock: we need Timer/CounterCoroutineBlock subclasses, only Timer has TimeScale
+  - IScriptCoroutineBlock with sub-interfaces => use/return correct types everywhere
+  - Consider Timer + Counter as separate high-level constructs
+  - Counters could also run when a variable changes?
+
+- [ ] LunyScript Time API: Time blocks return current frame/heartbeat count, elapsed time, delta time, etc
+
 - [ ] Testcase: Write prefab spawner script with new flow constructs and inline variables
 - [ ] Test scene (un-)(re-)load and hook up to scene service callbacks, verify against engine call order (get this first)
 
