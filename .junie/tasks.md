@@ -12,6 +12,9 @@
   - Consider Timer + Counter as separate high-level constructs
   - Counters could also run when a variable changes?
 
+- [X] Luny: add Alarm & Stopwatch structs 
+- [X] Luny: add Timer & Counter classes 
+
 - [ ] LunyScript Time API: Time blocks return current frame/heartbeat count, elapsed time, delta time, etc
 
 - [ ] Testcase: Write prefab spawner script with new flow constructs and inline variables
