@@ -6,16 +6,17 @@
     - test object Enable/Disable pauses coroutine updates
     - test object destroy cancels/destroys coroutines 
     - test coroutine block in regular sequence throws
-- [ ] Coroutine Improvements:
-  - CoroutineBlock: we need Timer/CounterCoroutineBlock subclasses, only Timer has TimeScale
-  - IScriptCoroutineBlock with sub-interfaces => use/return correct types everywhere
-  - Consider Timer + Counter as separate high-level constructs
-  - Counters could also run when a variable changes?
+    - test extreme values ie timer for 0 seconds/frames (and repeating??)
+- [X] Coroutine Improvements:
+  - [X] CoroutineBlock: separate Timer/CounterCoroutineBlock subclasses
+  - [X] IScriptCoroutineBlock with sub-interfaces => use/return correct types everywhere
 
 - [X] Luny: add Alarm & Stopwatch structs 
 - [X] Luny: add Timer & Counter classes 
-
-- [ ] LunyScript Time API: Time blocks return current frame/heartbeat count, elapsed time, delta time, etc
+- [X] LunyScript: coroutines use Timer/Counter classes
+- [ ] LunyScript Time API: create Time blocks returning TimeService values
+- [X] LunyScriptDefinitionRegistry: fix "already registered" in tests (Assembly shadow copies)
+- [ ] 'MockAssetService' => should be an engine mock, and tested via LunyEngine
 
 - [ ] Testcase: Write prefab spawner script with new flow constructs and inline variables
 - [ ] Test scene (un-)(re-)load and hook up to scene service callbacks, verify against engine call order (get this first)
@@ -49,6 +50,8 @@
   - [ ] [[Event Handling Blocks]] foundation (Input, Collision, SendMessage)
   - [ ] Create Scene load blocks
   - [ ] Implement Random/Shuffle blocks and API
+- ### LunyScript Coroutines
+  - Variable coroutines, ie runs when variable changes or has a specific value
 - ### Engine Specific
   - ..
 - ### LATER (minor)
