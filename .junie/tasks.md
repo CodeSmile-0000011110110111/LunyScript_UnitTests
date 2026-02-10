@@ -10,14 +10,16 @@
 - [X] Coroutine Improvements:
   - [X] CoroutineBlock: separate Timer/CounterCoroutineBlock subclasses
   - [X] IScriptCoroutineBlock with sub-interfaces => use/return correct types everywhere
+  - [ ] TimeSlice: internalize time-slicing check, should run in heartbeat or frameupdate dep. on process mode
 
 - [X] Luny: add Alarm & Stopwatch structs 
 - [X] Luny: add Timer & Counter classes 
 - [X] LunyScript: coroutines use Timer/Counter classes
-- [ ] LunyScript Time API: create Time blocks returning TimeService values
 - [X] LunyScriptDefinitionRegistry: fix "already registered" in tests (Assembly shadow copies)
-- [ ] 'MockAssetService' => should be an engine mock, and tested via LunyEngine
 - [X] LunyScript: pass "build context" to Build and return it for settings. Better than property overrides.
+ 
+- [ ] 'MockAssetService' => should be an engine mock, and tested via LunyEngine
+- [ ] LunyScript Time API: create Time blocks returning TimeService values
 
 - [ ] Testcase: Write prefab spawner script with new flow constructs and inline variables
 - [ ] Test scene (un-)(re-)load and hook up to scene service callbacks, verify against engine call order (get this first)
@@ -29,6 +31,8 @@
   - [ ] LunyEngine: consider the registries as service providers - don't pass their references around, instead pass the data, or maybe relay calls via LunyEngine
   - [ ] LunyObjectRegistry: GetByName should use Dictionary, not FirstOrDefault
   - [ ] LunyObjectLifecycle: refactor DestroyNativeNullObjects() to avoid list copy
+  - [ ] LunyScriptRunner: make nested class LunyScriptEngine.Observer, forward to LunyScriptBlockRunner + coroutines
+  - [ ] LunyScriptRunner: keep or remove the VarHandles for frame/heartbeat counters and elapsed time?
 - ### Engine Mocks
   - [ ] ..
 - ### LunyEngine
