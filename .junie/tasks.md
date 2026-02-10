@@ -7,11 +7,14 @@
     - test object destroy cancels/destroys coroutines 
     - test coroutine block in regular sequence throws
     - test extreme values ie timer for 0 seconds/frames (and repeating??)
+    - verify behaviour of: In(0/1).Frames() and depending on where this coroutine starts
 - [X] Coroutine Improvements:
   - [X] CoroutineBlock: separate Timer/CounterCoroutineBlock subclasses
   - [X] IScriptCoroutineBlock with sub-interfaces => use/return correct types everywhere
   - [ ] TimeSlice: internalize time-slicing check, should run in heartbeat or frameupdate dep. on process mode
-
+  - [ ] CoroutineRunner: create registry if AI forgot this
+  - [ ] Disallow negative values: In(-10).Frames() => use UInt or throw?
+    - [ ] Ensure "In(1).Frames" will run in the next frame, and "In(0).Frames" runs in current frame if started in Heartbeat or FrameUpdate
 - [X] Luny: add Alarm & Stopwatch structs 
 - [X] Luny: add Timer & Counter classes 
 - [X] LunyScript: coroutines use Timer/Counter classes
@@ -30,7 +33,7 @@
   - Consider: LunyEngine explicit Interface Implementations to "hide" Developer SDK methods from public API (beginner-level users) while allowing developers to utilize the SDK features without having to use InternalsVisibleTo. Alternatively: a DeveloperApi, similar to how LunyScript implements its fluent Api.
   - [ ] LunyEngine: consider the registries as service providers - don't pass their references around, instead pass the data, or maybe relay calls via LunyEngine
   - [ ] LunyObjectRegistry: GetByName should use Dictionary, not FirstOrDefault
-  - [ ] LunyObjectLifecycle: refactor DestroyNativeNullObjects() to avoid list copy
+  - [ ] LunyObjectLifecycle: refactor DestroyNativeNullObjects() to avoid list copy (runs on scene unload)
   - [ ] LunyScriptRunner: make nested class LunyScriptEngine.Observer, forward to LunyScriptBlockRunner + coroutines
   - [ ] LunyScriptRunner: keep or remove the VarHandles for frame/heartbeat counters and elapsed time?
 - ### Engine Mocks
@@ -56,7 +59,9 @@
   - [ ] Create Scene load blocks
   - [ ] Implement Random/Shuffle blocks and API
 - ### LunyScript Coroutines
-  - Variable coroutines, ie runs when variable changes or has a specific value
+  - [ ] Variable coroutines, ie runs when variable changes or has a specific value
+  - [ ] add option to disable auto-start of coroutines: StartStopped or start conditions?
+  - [ ] add While condition blocks: While(condition).Do(blocks) (runs while true, replaces For() builder) (hearbeat vs update?)
 - ### Engine Specific
   - ..
 - ### LATER (minor)

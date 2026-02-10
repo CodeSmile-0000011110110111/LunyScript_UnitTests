@@ -17,6 +17,8 @@
 - `*.csproj` locations
   - repository root (preferred): required for projects referenced in engine projects (eg Luny, Luny.Godot, Luny.Unity, ..)
   - subfolders: for `*-Test/` projects
+- LunyScript API surface is aimed at beginners and designers and should avoid technical noise and common beginner pitfalls.
+- Luny.csproj is a developer SDK, it should still favor "friendly" semantics and designs but can be more technical.
 
 ## Implementation Requirements
 - **Step-by-Step Mode**: Always operate in a strict planning-first mode.
@@ -24,9 +26,11 @@
 - **No "Running Ahead"**: Wait for confirmation after each major phase (Planning -> Implementation -> Verification).
 - **Compatibility**: Code restricted to C# 9 and .NET Standard 2.1 for Unity 6 compatibility.
 - **Logging**: Use `LunyLogger` methods: `LogInfo`, `LogWarning`, `LogError`, `LogException`.
+- Logging type names: always use `$".. {nameof(TheType)} ..` and never `".. TheType .."` to ensure refactor-rename replaces those usages
 - Do not modify existing `LunyLogger` log strings without permission, prefer to add a new log statement instead.
 - `ILunyScriptBlock` implementations are internal and require a static Create() method, ctors are private to enforce use of Create()
 - do not remove or modify LICENSE and README.md files, unless instructed (ask)
+- Code that gets called from Heartbeat / FrameUpdate / FrameLateUpdate methods should avoid allocations (including boxing). 
 
 ## Implementation Preferences
 - When renaming/adding/removing .csproj files also update the .slnx file
