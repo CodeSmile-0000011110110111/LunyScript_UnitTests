@@ -17,6 +17,7 @@
 - [ ] LunyScript Time API: create Time blocks returning TimeService values
 - [X] LunyScriptDefinitionRegistry: fix "already registered" in tests (Assembly shadow copies)
 - [ ] 'MockAssetService' => should be an engine mock, and tested via LunyEngine
+- [X] LunyScript: pass "build context" to Build and return it for settings. Better than property overrides.
 
 - [ ] Testcase: Write prefab spawner script with new flow constructs and inline variables
 - [ ] Test scene (un-)(re-)load and hook up to scene service callbacks, verify against engine call order (get this first)
