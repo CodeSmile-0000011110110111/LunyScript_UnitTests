@@ -11,21 +11,27 @@
 - [X] Coroutine Improvements:
   - [X] CoroutineBlock: separate Timer/CounterCoroutineBlock subclasses
   - [X] IScriptCoroutineBlock with sub-interfaces => use/return correct types everywhere
-  - [ ] TimeSlice: internalize time-slicing check, should run in heartbeat or frameupdate dep. on process mode
-  - [ ] CoroutineRunner: create registry if AI forgot this
-  - [ ] Disallow negative values: In(-10).Frames() => use UInt or throw?
-    - [ ] Ensure "In(1).Frames" will run in the next frame, and "In(0).Frames" runs in current frame if started in Heartbeat or FrameUpdate
+  - [X] TimeSlice: internalize time-slicing check, should run in heartbeat or frameupdate dep. on process mode
+  - [X] Disallow negative values: In(-10).Frames() => use UInt or throw?
+  - [X] Ensure "In(1).Frames" will run in the next frame, and "In(0).Frames" runs in current frame if started in Heartbeat or FrameUpdate
+  - [X] Remove PerpetualStyleCounter ... leftover
+  - [ ] CoroutineRunner: registry for the coroutine collections
+  - [ ] CoroutineRunner: make re-entrant (Object Destroy/Create lifecycle)
+  - [ ] add While condition blocks: While(condition).Do(blocks) (runs while true, replaces For() builder) (hearbeat vs update?)
 - [X] Luny: add Alarm & Stopwatch structs 
 - [X] Luny: add Timer & Counter classes 
 - [X] LunyScript: coroutines use Timer/Counter classes
 - [X] LunyScriptDefinitionRegistry: fix "already registered" in tests (Assembly shadow copies)
 - [X] LunyScript: pass "build context" to Build and return it for settings. Better than property overrides.
- 
-- [ ] 'MockAssetService' => should be an engine mock, and tested via LunyEngine
-- [ ] LunyScript Time API: create Time blocks returning TimeService values
 
-- [ ] Testcase: Write prefab spawner script with new flow constructs and inline variables
+- [ ] LunyScript: Create Object Lifecycle tests
+  - [ ] Create/Destroy cycle => should re-use existing scripts and coroutines (check allocations)
+  - [ ] Create object later => should build script or even re-use prebuilt script
+  - [ ] Create multiple objects with same name (in different parts of hierarchy)
+- [ ] LunyScript Time API: create Time blocks returning TimeService values
 - [ ] Test scene (un-)(re-)load and hook up to scene service callbacks, verify against engine call order (get this first)
+- 
+- [ ] Testbed: Create testbed scenes demonstrating various aspects (ie lifecycle, prefabs, coroutines, timers, counters)
 
 
 ## Backlog
@@ -36,6 +42,7 @@
   - [ ] LunyObjectLifecycle: refactor DestroyNativeNullObjects() to avoid list copy (runs on scene unload)
   - [ ] LunyScriptRunner: make nested class LunyScriptEngine.Observer, forward to LunyScriptBlockRunner + coroutines
   - [ ] LunyScriptRunner: keep or remove the VarHandles for frame/heartbeat counters and elapsed time?
+  - [ ] 'MockAssetService' => should be an engine mock, and tested via LunyEngine
 - ### Engine Mocks
   - [ ] ..
 - ### LunyEngine
@@ -61,7 +68,7 @@
 - ### LunyScript Coroutines
   - [ ] Variable coroutines, ie runs when variable changes or has a specific value
   - [ ] add option to disable auto-start of coroutines: StartStopped or start conditions?
-  - [ ] add While condition blocks: While(condition).Do(blocks) (runs while true, replaces For() builder) (hearbeat vs update?)
+  - [ ] Pause/Start blocks need reference, this introduces a 1-frame delay => use string based coroutine lookup to avoid this?
 - ### Engine Specific
   - ..
 - ### LATER (minor)
