@@ -24,9 +24,11 @@
 - [X] LunyScriptDefinitionRegistry: fix "already registered" in tests (Assembly shadow copies)
 - [X] LunyScript: pass "build context" to Build and return it for settings. Better than property overrides.
 
+- [ ] ScriptLifecycle/ObjectEventHandler: evaluate, perhaps events should be handled BY the context?
 - [ ] LunyScript: Create Object Lifecycle tests
-  - [ ] Create/Destroy cycle => should re-use existing scripts and coroutines (check allocations)
-  - [ ] Create object later => should build script or even re-use prebuilt script
+  - [ ] Create/Destroy cycle => should re-use existing scripts
+  - [ ] Create/Destroy cycle => should re-use existing coroutines (check allocations)
+  - [ ] Create scripted object later => should build script or use prebuilt script
   - [ ] Create multiple objects with same name (in different parts of hierarchy)
 - [ ] LunyScript Time API: create Time blocks returning TimeService values
 - [ ] Test scene (un-)(re-)load and hook up to scene service callbacks, verify against engine call order (get this first)
