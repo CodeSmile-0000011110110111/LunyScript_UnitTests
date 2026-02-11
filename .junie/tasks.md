@@ -16,7 +16,7 @@
   - [X] Ensure "In(1).Frames" will run in the next frame, and "In(0).Frames" runs in current frame if started in Heartbeat or FrameUpdate
   - [X] Remove PerpetualStyleCounter ... leftover
   - [ ] CoroutineRunner: registry for the coroutine collections
-  - [ ] CoroutineRunner: make re-entrant (Object Destroy/Create lifecycle)
+  - [ ] Coroutines: re-use existing coroutines for re-created objects
   - [ ] add While condition blocks: While(condition).Do(blocks) (runs while true, replaces For() builder) (hearbeat vs update?)
   - [ ] Remove ".Build()" from regular Coroutine
 - [X] Luny: add Alarm & Stopwatch structs 
@@ -27,10 +27,10 @@
 
 - [ ] ScriptLifecycle/ObjectEventHandler: evaluate, perhaps events should be handled BY the context?
 - [ ] LunyScript: Create Object Lifecycle tests
-  - [X] Create/Destroy cycle => should rebuild/re-use existing scripts
-  - [ ] Create/Destroy cycle => should rebuild/re-use existing coroutines (check allocations)
-  - [ ] Create scripted object later => should build script or use prebuilt script
-  - [ ] Create multiple objects with same name (in different parts of hierarchy)
+  - [X] Create/Destroy cycle => should rebuild scripts
+  - [X] Create/Destroy cycle => should rebuild coroutines
+  - [X] Create scripted object later => should build script or use prebuilt script
+  - [X] Create multiple objects with same name 
 - [ ] LunyScript Time API: create Time blocks returning TimeService values
 - [ ] Test scene (un-)(re-)load and hook up to scene service callbacks, verify against engine call order (get this first)
 - 
@@ -55,6 +55,7 @@
   - [ ] Asset Service: services initialize placeholders in Dictionary<Type, object> and store them on the Luny side? Release: a single placeholder for any asset type?
   - [ ] Primitives: should have a "WithPhysics()" setting that properly sets up the thing to work physically (Unity: adds Rigidbody, Godot: do the 20 things to make it a working physics object)
 - ### LunyScript Design & Lifecycle
+  - [ ] Evaluate: 
   - [ ] ensure deterministic LunyScript execution order (follow scene hierarchy order?)
   - [ ] Handle LunyObject parenting with hierarchy gaps
   - [ ] Review OnIntervalUpdate implementation in script Scheduler and object event handler
