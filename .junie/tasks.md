@@ -18,6 +18,7 @@
   - [ ] CoroutineRunner: registry for the coroutine collections
   - [ ] CoroutineRunner: make re-entrant (Object Destroy/Create lifecycle)
   - [ ] add While condition blocks: While(condition).Do(blocks) (runs while true, replaces For() builder) (hearbeat vs update?)
+  - [ ] Remove ".Build()" from regular Coroutine
 - [X] Luny: add Alarm & Stopwatch structs 
 - [X] Luny: add Timer & Counter classes 
 - [X] LunyScript: coroutines use Timer/Counter classes
@@ -26,8 +27,8 @@
 
 - [ ] ScriptLifecycle/ObjectEventHandler: evaluate, perhaps events should be handled BY the context?
 - [ ] LunyScript: Create Object Lifecycle tests
-  - [ ] Create/Destroy cycle => should re-use existing scripts
-  - [ ] Create/Destroy cycle => should re-use existing coroutines (check allocations)
+  - [X] Create/Destroy cycle => should rebuild/re-use existing scripts
+  - [ ] Create/Destroy cycle => should rebuild/re-use existing coroutines (check allocations)
   - [ ] Create scripted object later => should build script or use prebuilt script
   - [ ] Create multiple objects with same name (in different parts of hierarchy)
 - [ ] LunyScript Time API: create Time blocks returning TimeService values
