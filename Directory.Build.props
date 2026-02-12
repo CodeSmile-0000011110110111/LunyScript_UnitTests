@@ -1,22 +1,22 @@
 <Project>
-  <PropertyGroup>
-    <BaseOutputPath>bin\$(MSBuildProjectName)\</BaseOutputPath>
-    <BaseIntermediateOutputPath>obj\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
-    <AppendTargetFrameworkToOutputPath>true</AppendTargetFrameworkToOutputPath>
-    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
-    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-    <Deterministic>true</Deterministic>
-    <MSBuildWarningsAsMessages>MSB3021;MSB3026;MSB3027</MSBuildWarningsAsMessages>
-  </PropertyGroup>
+    <PropertyGroup>
+        <BaseOutputPath>bin\$(MSBuildProjectName)\</BaseOutputPath>
+        <BaseIntermediateOutputPath>obj\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
+        <AppendTargetFrameworkToOutputPath>true</AppendTargetFrameworkToOutputPath>
+        <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+        <Deterministic>true</Deterministic>
+        <MSBuildWarningsAsMessages>MSB3021;MSB3026;MSB3027</MSBuildWarningsAsMessages>
 
-  <ItemGroup Condition="!$(MSBuildProjectName.EndsWith('-Mock'))">
-    <!-- 1. Force remove them from any existing includes (like None or Content) -->
-    <None Remove="**/*.meta;**/*.uid" />
-    <Content Remove="**/*.meta;**/*.uid" />
-    <Compile Remove="**/*.meta;**/*.uid" />
+        <!-- FIX: Move DefaultItemExcludes to a PropertyGroup -->
+        <DefaultItemExcludes Condition="!$(MSBuildProjectName.EndsWith('-Mock'))">$(DefaultItemExcludes);**/*.meta;**/*.uid;**/.*;**/*.DotSettings</DefaultItemExcludes>
+    </PropertyGroup>
 
-    <!-- 2. Re-include them specifically as invisible None items -->
-    <None Include="$(MSBuildProjectName)\**\*.meta;$(MSBuildProjectName)\**\*.uid" Condition="'$(MSBuildProjectDirectory)' == '$(MSBuildThisFileDirectory)'" Visible="false" />
-    <None Include="**\*.meta;**\*.uid" Condition="'$(MSBuildProjectDirectory)' != '$(MSBuildThisFileDirectory)'" Visible="false" />
-  </ItemGroup>
+    <!-- This block handles the VISUAL hiding in Rider/Visual Studio -->
+    <ItemGroup Condition="!$(MSBuildProjectName.EndsWith('-Mock'))">
+        <None Update="**/*.meta;**/*.uid" Visible="false" />
+        <Content Update="**/*.meta;**/*.uid" Visible="false" />
+        <Compile Update="**/*.meta;**/*.uid" Visible="false" />
+        <None Update="**/*.DotSettings" Visible="false" />
+    </ItemGroup>
 </Project>

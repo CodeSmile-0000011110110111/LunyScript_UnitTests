@@ -15,18 +15,15 @@
   - [X] Disallow negative values: In(-10).Frames() => use UInt or throw?
   - [X] Ensure "In(1).Frames" will run in the next frame, and "In(0).Frames" runs in current frame if started in Heartbeat or FrameUpdate
   - [X] Remove PerpetualStyleCounter ... leftover
-  - [ ] CoroutineRunner: registry for the coroutine collections
-  - [ ] Coroutines: re-use existing coroutines for re-created objects
-  - [ ] add While condition blocks: While(condition).Do(blocks) (runs while true, replaces For() builder) (hearbeat vs update?)
   - [ ] Remove ".Build()" from regular Coroutine
+  - [ ] add While condition blocks: While(condition).Do(blocks) (runs while true, replaces For() builder) (hearbeat vs update?)
 - [X] Luny: add Alarm & Stopwatch structs 
 - [X] Luny: add Timer & Counter classes 
 - [X] LunyScript: coroutines use Timer/Counter classes
 - [X] LunyScriptDefinitionRegistry: fix "already registered" in tests (Assembly shadow copies)
 - [X] LunyScript: pass "build context" to Build and return it for settings. Better than property overrides.
 
-- [ ] ScriptLifecycle/ObjectEventHandler: evaluate, perhaps events should be handled BY the context?
-- [ ] LunyScript: Create Object Lifecycle tests
+- [X] LunyScript: Create Object Lifecycle tests
   - [X] Create/Destroy cycle => should rebuild scripts
   - [X] Create/Destroy cycle => should rebuild coroutines
   - [X] Create scripted object later => should build script or use prebuilt script
@@ -46,6 +43,7 @@
   - [ ] LunyScriptRunner: make nested class LunyScriptEngine.Observer, forward to LunyScriptBlockRunner + coroutines
   - [ ] LunyScriptRunner: keep or remove the VarHandles for frame/heartbeat counters and elapsed time?
   - [ ] 'MockAssetService' => should be an engine mock, and tested via LunyEngine
+  - [ ] ScriptLifecycle/ObjectEventHandler: evaluate, perhaps events should be handled by the runtime context?
 - ### Engine Mocks
   - [ ] ..
 - ### LunyEngine
@@ -70,9 +68,11 @@
   - [ ] Create Scene load blocks
   - [ ] Implement Random/Shuffle blocks and API
 - ### LunyScript Coroutines
-  - [ ] Variable coroutines, ie runs when variable changes or has a specific value
-  - [ ] add option to disable auto-start of coroutines: StartStopped or start conditions?
-  - [ ] Pause/Start blocks need reference, this introduces a 1-frame delay => use string based coroutine lookup to avoid this?
+  - [ ] Coroutines: re-use existing coroutines for re-created objects/scripts
+  - [ ] Variable coroutines, ie runs when variable changes or has a specific value => acts like an event system (though While conditions would cover this already)
+  - [ ] add option to disable auto-start of coroutines: DontStart()?
+  - [ ] Pause/Start blocks use reference, this introduces a 1-frame delay if ref-call is positioned after coroutine creation => use string based coroutine lookup to work around this?
+  - [ ] CoroutineRunner: registry for the coroutine collections
 - ### Engine Specific
   - ..
 - ### LATER (minor)
