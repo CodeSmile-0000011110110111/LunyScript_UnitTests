@@ -30,8 +30,22 @@
   - [X] Create multiple objects with same name 
 - [ ] LunyScript Time API: create Time blocks returning TimeService values
 - [ ] Test scene (un-)(re-)load and hook up to scene service callbacks, verify against engine call order (get this first)
-- 
+
+- [X] Luny: LunyAssetBase as common base class for assets
+- [X] Luny: use Dispose() and GC.SuppressFinalize(this) with finalizer logging to catch memory leaks!
+- [ ] Luny: Scene unload => should run object destroy cleanup before engine unload event
+- [ ] Luny: Logger with filterable categories and/or compile flags (ie trace finalizer)
+- [ ] LunyScript: design how to edit values in Inspector and apply them to ScriptContext
+
 - [ ] Testbed: Create testbed scenes demonstrating various aspects (ie lifecycle, prefabs, coroutines, timers, counters)
+
+// Dispose mem leak detection pattern:
+public sealed class ScriptRunner
+{
+    public void Shutdown() => GC.SuppressFinalize(this);
+    // If this hits, Dispose() was skipped.
+    ~ScriptRunner() => LogWarning($"{nameof(ScriptRunner)} leaked! Dispose was never called.");
+}
 
 
 ## Backlog
