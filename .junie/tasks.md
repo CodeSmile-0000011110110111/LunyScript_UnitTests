@@ -15,16 +15,17 @@
   - [X] Disallow negative values: In(-10).Frames() => use UInt or throw?
   - [X] Ensure "In(1).Frames" will run in the next frame, and "In(0).Frames" runs in current frame if started in Heartbeat or FrameUpdate
   - [X] Remove PerpetualStyleCounter ... leftover
-  - [ ] Remove ".Build()" from regular Coroutine
-  - [ ] add While condition blocks: While(condition).Do(blocks) (runs while true, replaces For() builder) (hearbeat vs update?)
+  - [X] Dangling coroutine builders log and throw
+  - [X] Rename ".Build()" to "Do()" in regular Coroutine
 
-
-- [ ] LunyScript: Object.Create().At() <== position or target name
-- [ ] LunyScript Time API: create Time blocks returning TimeService values
 - [ ] Luny: Scene unload => should run object destroy cleanup before engine unload event
 - [ ] Luny: Logger with filterable categories and/or compile flags (ie trace finalizer)
+- [ ] LunyScript: Object.Create().At() <== position or target name
+- [ ] LunyScript Time API: create Time blocks returning TimeService values
+- [ ] Coroutines: add While condition blocks: While(condition).Do(blocks) (runs while true, replaces For() builder) (hearbeat vs update?)
 - [ ] LunyScript: design how to edit values in Inspector and apply them to ScriptContext
-	- Godot: enable multiple scripts per node!
+    - Godot: enable multiple scripts per node!
+
 
 - [ ] Test scene (un-)(re-)load and hook up to scene service callbacks, verify against engine call order (get this first)
 - [ ] Testbed: Create testbed scenes demonstrating various aspects (ie lifecycle, prefabs, coroutines, timers, counters)
