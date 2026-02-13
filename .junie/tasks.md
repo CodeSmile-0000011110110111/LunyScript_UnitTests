@@ -17,35 +17,17 @@
   - [X] Remove PerpetualStyleCounter ... leftover
   - [ ] Remove ".Build()" from regular Coroutine
   - [ ] add While condition blocks: While(condition).Do(blocks) (runs while true, replaces For() builder) (hearbeat vs update?)
-- [X] Luny: add Alarm & Stopwatch structs 
-- [X] Luny: add Timer & Counter classes 
-- [X] LunyScript: coroutines use Timer/Counter classes
-- [X] LunyScriptDefinitionRegistry: fix "already registered" in tests (Assembly shadow copies)
-- [X] LunyScript: pass "build context" to Build and return it for settings. Better than property overrides.
 
-- [X] LunyScript: Create Object Lifecycle tests
-  - [X] Create/Destroy cycle => should rebuild scripts
-  - [X] Create/Destroy cycle => should rebuild coroutines
-  - [X] Create scripted object later => should build script or use prebuilt script
-  - [X] Create multiple objects with same name 
+
+- [ ] LunyScript: Object.Create().At() <== position or target name
 - [ ] LunyScript Time API: create Time blocks returning TimeService values
-- [ ] Test scene (un-)(re-)load and hook up to scene service callbacks, verify against engine call order (get this first)
-
-- [X] Luny: LunyAssetBase as common base class for assets
-- [X] Luny: use Dispose() and GC.SuppressFinalize(this) with finalizer logging to catch memory leaks!
 - [ ] Luny: Scene unload => should run object destroy cleanup before engine unload event
 - [ ] Luny: Logger with filterable categories and/or compile flags (ie trace finalizer)
 - [ ] LunyScript: design how to edit values in Inspector and apply them to ScriptContext
+	- Godot: enable multiple scripts per node!
 
+- [ ] Test scene (un-)(re-)load and hook up to scene service callbacks, verify against engine call order (get this first)
 - [ ] Testbed: Create testbed scenes demonstrating various aspects (ie lifecycle, prefabs, coroutines, timers, counters)
-
-// Dispose mem leak detection pattern:
-public sealed class ScriptRunner
-{
-    public void Shutdown() => GC.SuppressFinalize(this);
-    // If this hits, Dispose() was skipped.
-    ~ScriptRunner() => LogWarning($"{nameof(ScriptRunner)} leaked! Dispose was never called.");
-}
 
 
 ## Backlog
@@ -87,8 +69,10 @@ public sealed class ScriptRunner
   - [ ] add option to disable auto-start of coroutines: DontStart()?
   - [ ] Pause/Start blocks use reference, this introduces a 1-frame delay if ref-call is positioned after coroutine creation => use string based coroutine lookup to work around this?
   - [ ] CoroutineRunner: registry for the coroutine collections
-- ### Engine Specific
-  - ..
+- ### Unity Specific
+  - AssetService: load actual prefab asset, current workaround create a "prefab" + "prefab instance" in scene
+- ### Godot Specific
+  - 
 - ### LATER (minor)
   - [ ] consider LunyScript.Every.* (updates) running unconditionally / globally (not tied to object - but then: context?)
   - [ ] LunyScript.Method.Run => could use overloads for When/Every BUT I don't want to make it "too easy" to inject lambdas
@@ -124,6 +108,19 @@ public sealed class ScriptRunner
 ## DONE
 
 ### CW07-2026 Feb
+- [X] Luny: add Alarm & Stopwatch structs 
+- [X] Luny: add Timer & Counter classes 
+- [X] Luny: LunyAssetBase as common base class for assets
+- [X] Luny: use Dispose() and GC.SuppressFinalize(this) with finalizer logging to catch memory leaks!
+- [X] LunyScript: coroutines use Timer/Counter classes
+- [X] LunyScriptDefinitionRegistry: fix "already registered" in tests (Assembly shadow copies)
+- [X] LunyScript: pass "build context" to Build and return it for settings. Better than property overrides.
+- [X] LunyScript: Create Object Lifecycle tests
+  - [X] Create/Destroy cycle => should rebuild scripts
+  - [X] Create/Destroy cycle => should rebuild coroutines
+  - [X] Create scripted object later => should build script or use prebuilt script
+  - [X] Create multiple objects with same name 
+
 
 ### CW06-2026 Feb
 - [X] Comprehensive variable tests: split into arithmetic and comparison scripts with separate variables
