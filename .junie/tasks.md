@@ -24,6 +24,7 @@
 - [ ] LunyObject: pull down IsNativeObjectValid tests?
 - [ ] LunyScript Time API: create Time blocks returning TimeService values
 - [ ] Coroutines: add While condition blocks: While(condition).Do(blocks) (runs while true, replaces For() builder) (hearbeat vs update?)
+- [ ] Coroutines: refactor to step builder with an "options" DTO passed between them, using Interfaces and generics to avoid boxing
 - [ ] LunyScript: design how to edit values in Inspector and apply them to ScriptContext
     - Godot: enable multiple scripts per node!
 

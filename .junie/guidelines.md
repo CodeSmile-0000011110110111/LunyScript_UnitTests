@@ -28,7 +28,10 @@
 - **Logging**: Use `LunyLogger` methods: `LogInfo`, `LogWarning`, `LogError`, `LogException`.
 - Logging type names: always use `$".. {nameof(TheType)} ..` and never `".. TheType .."` to ensure refactor-rename replaces those usages
 - Do not modify existing `LunyLogger` log strings without permission, prefer to add a new log statement instead.
-- `ILunyScriptBlock` implementations are internal and require a static Create() method, ctors are private to enforce use of Create()
+- `IScript*Block` implementations:
+  - internal and require a static Create() method
+  - ctors are private to enforce use of Create()
+  - One block per "kind": avoid switches in Execute() so debug views show "ObjectCreateCapsuleBlock" rather than generic "ObjectCreateBlock"
 - do not remove or modify LICENSE and README.md files, unless instructed (ask)
 - Code that gets called from Heartbeat / FrameUpdate / FrameLateUpdate methods should avoid allocations (including boxing). 
 
