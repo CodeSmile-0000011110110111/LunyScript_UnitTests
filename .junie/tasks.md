@@ -18,9 +18,10 @@
   - [X] Dangling coroutine builders log and throw
   - [X] Rename ".Build()" to "Do()" in regular Coroutine
 
+- [ ] LunyScript: Object.Create().At() <== position or target name
 - [ ] Luny: Scene unload => should run object destroy cleanup before engine unload event
 - [ ] Luny: Logger with filterable categories and/or compile flags (ie trace finalizer)
-- [ ] LunyScript: Object.Create().At() <== position or target name
+- [ ] LunyObject: pull down IsNativeObjectValid tests?
 - [ ] LunyScript Time API: create Time blocks returning TimeService values
 - [ ] Coroutines: add While condition blocks: While(condition).Do(blocks) (runs while true, replaces For() builder) (hearbeat vs update?)
 - [ ] LunyScript: design how to edit values in Inspector and apply them to ScriptContext
