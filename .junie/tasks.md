@@ -1,37 +1,17 @@
 # Current Status
 
 ## Next Steps (Sprint)
-- [ ] Coroutine Tests: fill gaps in test suite. Verify all permutations (including nonsensical => should fail).
-    - Test Coroutines run in expected point (eg Every().Frames() => after FrameUpdate, not before)
-    - test object Enable/Disable pauses coroutine updates
-    - test object destroy cancels/destroys coroutines 
-    - test coroutine block in regular sequence throws
-    - test extreme values ie timer for 0 seconds/frames (and repeating??)
-    - verify behaviour of: In(0/1).Frames() and depending on where this coroutine starts
-- [X] Coroutine Improvements:
-  - [X] CoroutineBlock: separate Timer/CounterCoroutineBlock subclasses
-  - [X] IScriptCoroutineBlock with sub-interfaces => use/return correct types everywhere
-  - [X] TimeSlice: internalize time-slicing check, should run in heartbeat or frameupdate dep. on process mode
-  - [X] Disallow negative values: In(-10).Frames() => use UInt or throw?
-  - [X] Ensure "In(1).Frames" will run in the next frame, and "In(0).Frames" runs in current frame if started in Heartbeat or FrameUpdate
-  - [X] Remove PerpetualStyleCounter ... leftover
-  - [X] Dangling coroutine builders log and throw
-  - [X] Rename ".Build()" to "Do()" in regular Coroutine
-
+- [ ] LunyScript: VariableBlock references Table.VarHandle - how does this work for non-table values?
+- [ ] LunyScript: create input event API
+  - [ ] maybe: modularize event processing (currently have scheduler and coroutines), ie Input event may run multiple sequences as well
 - [ ] LunyScript: Object.Create().At() <== position or target name
-- [ ] Luny: Scene unload => should run object destroy cleanup before engine unload event
-- [ ] Luny: Logger with filterable categories and/or compile flags (ie trace finalizer)
-- [ ] LunyObject: pull down IsNativeObjectValid tests?
 - [ ] LunyScript Time API: create Time blocks returning TimeService values
-- [ ] Coroutines: add While condition blocks: While(condition).Do(blocks) (runs while true, replaces For() builder) (hearbeat vs update?)
-- [ ] Coroutines: refactor to step builder with an "options" DTO passed between them, using Interfaces and generics to avoid boxing
-- [ ] LunyScript: design how to edit values in Inspector and apply them to ScriptContext
-    - Godot: enable multiple scripts per node!
 
-
-- [ ] Test scene (un-)(re-)load and hook up to scene service callbacks, verify against engine call order (get this first)
-- [ ] Testbed: Create testbed scenes demonstrating various aspects (ie lifecycle, prefabs, coroutines, timers, counters)
-
+- [ ] Luny: Variable should understand primitive engine types: Vector2/3, Rect, etc  (no-boxing generic Variable<T>)
+  - or quick workaround just for vector types 
+  - https://share.google/aimode/g8Apk6pzL1LzLHC2o
+- [ ] Luny: Scene unload => should run object destroy cleanup before engine unload event
+- 
 
 ## Backlog
 - ### Refactor
@@ -47,16 +27,23 @@
   - [ ] ..
 - ### LunyEngine
   - [ ] Table: allow nested Tables with path-based indexing (dot and/or slash, or multiple indexers: t["1st"]["2nd"])
+  - [ ] Table: support array/list variables
   - [ ] Scene Service: implement depth-first enumeration with pre-order or post-order (as IEnumerable?)
   - [ ] Asset Service (Unity): support loading of non-Resource assets (via ScriptableObject DB in Resources)
   - [ ] Asset Service: services initialize placeholders in Dictionary<Type, object> and store them on the Luny side? Release: a single placeholder for any asset type?
   - [ ] Primitives: should have a "WithPhysics()" setting that properly sets up the thing to work physically (Unity: adds Rigidbody, Godot: do the 20 things to make it a working physics object)
+  - [ ] Luny: Logger with filterable categories and/or compile flags (ie trace finalizer)
+  - [ ] LunyObject: pull down IsNativeObjectValid tests?
+  - [ ] Test scene (un-)(re-)load and hook up to scene service callbacks, verify against engine call order (get this first)
 - ### LunyScript Design & Lifecycle
-  - [ ] Evaluate: 
   - [ ] ensure deterministic LunyScript execution order (follow scene hierarchy order?)
   - [ ] Handle LunyObject parenting with hierarchy gaps
   - [ ] Review OnIntervalUpdate implementation in script Scheduler and object event handler
   - [ ] How to pass references to blocks via event parameters (eg Scene, "Other" from colliders, etc) => Design
+  - [ ] Coroutines: add While condition blocks: While(condition).Do(blocks) (runs while true, replaces For() builder) (hearbeat vs update?)
+  - [ ] Coroutines: refactor to step builder with an "options" DTO passed between them, using Interfaces and generics to avoid boxing
+  - [ ] LunyScript: design how to edit values in Inspector and apply them to ScriptContext
+      - Godot: enable multiple scripts per node!
 - ### LunyScript Debug / Profile
   - [ ] Variable validation (log read access of non-existing variables)
   - [ ] Metadata for global variable read/write tracking
@@ -110,6 +97,8 @@
 
 ## DONE
 
+### CW08-2026 Feb
+
 ### CW07-2026 Feb
 - [X] Luny: add Alarm & Stopwatch structs 
 - [X] Luny: add Timer & Counter classes 
@@ -123,6 +112,16 @@
   - [X] Create/Destroy cycle => should rebuild coroutines
   - [X] Create scripted object later => should build script or use prebuilt script
   - [X] Create multiple objects with same name 
+- [X] Coroutine Improvements:
+    - [X] CoroutineBlock: separate Timer/CounterCoroutineBlock subclasses
+    - [X] IScriptCoroutineBlock with sub-interfaces => use/return correct types everywhere
+    - [X] TimeSlice: internalize time-slicing check, should run in heartbeat or frameupdate dep. on process mode
+    - [X] Disallow negative values: In(-10).Frames() => use UInt or throw?
+    - [X] Ensure "In(1).Frames" will run in the next frame, and "In(0).Frames" runs in current frame if started in Heartbeat or FrameUpdate
+    - [X] Remove PerpetualStyleCounter ... leftover
+    - [X] Dangling coroutine builders log and throw
+    - [X] Rename ".Build()" to "Do()" in regular Coroutine
+- [X] Coroutine Tests: fill gaps in test suite. Verify permutations (including nonsensical => should fail).
 
 
 ### CW06-2026 Feb

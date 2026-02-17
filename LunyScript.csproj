@@ -30,11 +30,4 @@
     <Folder Include="LunyScript\BlockBuilders\" />
     <Folder Include="LunyScript\Blocks\Time\" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="LunyScript\BUILDER_PATTERN_REFACTOR.md" />
-    <Content Include="LunyScript\VARIABLE_REFACTOR.md" />
-    <Content Include="LunyScript\VARIABLE_REFACTOR_STEP_1.md" />
-    <Content Include="LunyScript\VARIABLE_REFACTOR_STEP_2.md" />
-  </ItemGroup>
 </Project>
