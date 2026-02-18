@@ -1,9 +1,12 @@
 # Current Status
 
 ## Next Steps (Sprint)
-- [ ] Design LunyScript: VariableBlock references Table.VarHandle - should we allow non-table variables too?
-- [ ] LunyScript: create input event API
-  - [ ] maybe: modularize event processing (currently have scheduler and coroutines), ie Input event may run multiple sequences as well
+- [X] VariableBlock: public API polluted with GetValue(context)
+- [X] Design LunyScript: allow non-table variables => ComputedVariableBlock
+- [X] LunyScript: create input event API
+- [X] Luny: create LunyVector2, LunyVector3, LunyQuaternion
+- [ ] Input: use performed/canceled state and pass this to service base, avoids clearing state
+- 
 - [ ] LunyScript: Object.Create().At() <== position or target name
 - [ ] LunyScript Time API: create Time blocks returning TimeService values
 
@@ -17,6 +20,9 @@
 - ### Post-MVP Refactor
   - Variable: generic vs concrete and interface - should try to opt users putting value types in Variable<T>
   - VariableBlock: consider GetValue() returning IVariable instead of Variable?
+  - VariableBlocks: remove context from GetValue() ?
+  - Input: Button IsPressed returns ScriptConditionBlock
+  - Input: refactor service base Axis/Vector2 mismatch
 - ### Refactor
   - Consider: LunyEngine explicit Interface Implementations to "hide" Developer SDK methods from public API (beginner-level users) while allowing developers to utilize the SDK features without having to use InternalsVisibleTo. Alternatively: a DeveloperApi, similar to how LunyScript implements its fluent Api.
   - [ ] LunyEngine: consider the registries as service providers - don't pass their references around, instead pass the data, or maybe relay calls via LunyEngine
