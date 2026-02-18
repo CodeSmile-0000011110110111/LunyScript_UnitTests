@@ -19,8 +19,4 @@
     <InternalsVisibleTo Include="Luny-Test" />
     <InternalsVisibleTo Include="Luny-ContractTest" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Luny\Engine\Bridge\Structs\" />
-  </ItemGroup>
 </Project>
