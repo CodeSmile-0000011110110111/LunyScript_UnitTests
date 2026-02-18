@@ -1,7 +1,7 @@
 # Current Status
 
 ## Next Steps (Sprint)
-- [ ] LunyScript: VariableBlock references Table.VarHandle - how does this work for non-table values?
+- [ ] Design LunyScript: VariableBlock references Table.VarHandle - should we allow non-table variables too?
 - [ ] LunyScript: create input event API
   - [ ] maybe: modularize event processing (currently have scheduler and coroutines), ie Input event may run multiple sequences as well
 - [ ] LunyScript: Object.Create().At() <== position or target name
