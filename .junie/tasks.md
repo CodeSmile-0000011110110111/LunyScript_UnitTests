@@ -14,6 +14,9 @@
 - 
 
 ## Backlog
+- ### Post-MVP Refactor
+  - Variable: generic vs concrete and interface - should try to opt users putting value types in Variable<T>
+  - VariableBlock: consider GetValue() returning IVariable instead of Variable?
 - ### Refactor
   - Consider: LunyEngine explicit Interface Implementations to "hide" Developer SDK methods from public API (beginner-level users) while allowing developers to utilize the SDK features without having to use InternalsVisibleTo. Alternatively: a DeveloperApi, similar to how LunyScript implements its fluent Api.
   - [ ] LunyEngine: consider the registries as service providers - don't pass their references around, instead pass the data, or maybe relay calls via LunyEngine
