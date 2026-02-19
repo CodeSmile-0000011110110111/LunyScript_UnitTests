@@ -1,14 +1,41 @@
 # Current Status
 
+## Thoughts
+
+Make Luny a participatory project.
+Build a simple demo game.
+Find the (niche) audience who like to build that kind of game but lack the programming expertise.
+Show them how simple it is to use.
+Build towards their most common requirements.
+Ask to contribute their extensions.
+Pick (and refactor) the best ones, integrate them into main.
+Supervision: educate about the refactorings, play the decisions back.
+But also admit to mistakes, shortcomings. 
+Be open. Provide perspective.
+Repeat.
+
+Ask and thank, shares & patreons.
+
+Help build the "every" engine.
+Add a complete feature, or just members you need.
+Contribute more services, proxy types, and improvements.
+Create LunyScript blocks for learners and creative minds.
+LunyEngine grows along with us.
+And it doesn't lock us in.
+It's ours!
+
 ## Next Steps (Sprint)
-- [X] VariableBlock: public API polluted with GetValue(context)
+- [X] Luny: add Variable<T> for all value types
+- [X] Luny: create LunyVector2, LunyVector3, LunyQuaternion
+- [X] refactor VariableBlock: public API polluted with GetValue(context)
 - [X] Design LunyScript: allow non-table variables => ComputedVariableBlock
 - [X] LunyScript: create input event API
-- [X] Luny: create LunyVector2, LunyVector3, LunyQuaternion
 - [ ] Input: use performed/canceled state and pass this to service base, avoids clearing state
+- [ ] Transform => move etc
 - 
 - [ ] LunyScript: Object.Create().At() <== position or target name
 - [ ] LunyScript Time API: create Time blocks returning TimeService values
+- [ ] LunyScript: refactor API to extension methods
 
 - [ ] Luny: Variable should understand primitive engine types: Vector2/3, Rect, etc  (no-boxing generic Variable<T>)
   - or quick workaround just for vector types 
@@ -23,6 +50,7 @@
   - VariableBlocks: remove context from GetValue() ?
   - Input: Button IsPressed returns ScriptConditionBlock
   - Input: refactor service base Axis/Vector2 mismatch
+  - Object API: remove trailing .Do()
 - ### Refactor
   - Consider: LunyEngine explicit Interface Implementations to "hide" Developer SDK methods from public API (beginner-level users) while allowing developers to utilize the SDK features without having to use InternalsVisibleTo. Alternatively: a DeveloperApi, similar to how LunyScript implements its fluent Api.
   - [ ] LunyEngine: consider the registries as service providers - don't pass their references around, instead pass the data, or maybe relay calls via LunyEngine

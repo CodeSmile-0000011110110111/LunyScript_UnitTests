@@ -27,7 +27,6 @@
 
   <ItemGroup>
     <Folder Include="LunyScript\Analyzers\" />
-    <Folder Include="LunyScript\BlockBuilders\" />
     <Folder Include="LunyScript\Blocks\Time\" />
   </ItemGroup>
 </Project>
