@@ -39,7 +39,7 @@
 - When renaming/adding/removing .csproj files also update the .slnx file
 - Unit Tests: when a test fails due to an unreachable method or state doesn't reset, inform user (do not add "test only" members, do not use reflection)
 - Unit Tests: one test file per tested type
-- LunyScript Unit Tests: prefer subclassing ContractTestBase and write actual LunyScript subclasses to test runtime execution of blocks (follow existing tests)
+- LunyScript Unit Tests: create abstract subclass of ContractTestBase containing the tests, then create concrete subclasses for each engine. Prefer to write actual LunyScript instanced to test runtime execution of blocks
 - Engine-Native Mocks/Shims: strictly follow the native engine's APIs precisely. When creating/modifying mock types, verify that the API will compile in Godot 4.5 and newer, Unity 6.0 and newer.
 - Godot: ensure the 'partial' keyword where Godot requires it is preserved: add a stub partial in same file, below actual class, with comment "stub to preserve 'partial' keyword"
 
