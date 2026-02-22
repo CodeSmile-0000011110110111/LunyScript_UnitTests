@@ -31,8 +31,11 @@ It's ours!
 - [X] Design LunyScript: allow non-table variables => ComputedVariableBlock
 - [X] LunyScript: create input event API
 - [ ] Input: use performed/canceled state and pass this to service base, avoids clearing state
+- [ ] Input: what's a suitable "placeholder" for an incorrect action map name? (eg "Palyer")
 - [ ] Transform => move etc
-- 
+
+- Explore options on how to create engine-native blocks (is faster to add them?)
+
 - [ ] LunyScript: Object.Create().At() <== position or target name
 - [ ] LunyScript Time API: create Time blocks returning TimeService values
 - [ ] LunyScript: refactor API to extension methods
