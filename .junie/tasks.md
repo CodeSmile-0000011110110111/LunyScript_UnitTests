@@ -2,7 +2,12 @@
 
 Build a minimal, playable Brotato clone in 3D
 
+## Thoughts
+- compare LunyScript also with its VisualScripting counterpart
+
 ## Next Steps (Sprint)
+- [ ] BuilderToken: use MarkFinished to finalize "open" builders provided they are in a finalizable state, then remove trailing Do() pattern
+
 - [ ] Input: use performed/canceled state and pass this to service base, avoids clearing state
 - [ ] Input: what's a suitable "placeholder" for an incorrect action map name? (eg "Palyer")
 - 
