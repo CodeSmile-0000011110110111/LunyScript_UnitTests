@@ -1,51 +1,16 @@
 # Current Status
 
-## Thoughts
-
-Make Luny a participatory project.
-Build a simple demo game.
-Find the (niche) audience who like to build that kind of game but lack the programming expertise.
-Show them how simple it is to use.
-Build towards their most common requirements.
-Ask to contribute their extensions.
-Pick (and refactor) the best ones, integrate them into main.
-Supervision: educate about the refactorings, play the decisions back.
-But also admit to mistakes, shortcomings. 
-Be open. Provide perspective.
-Repeat.
-
-Ask and thank, shares & patreons.
-
-Help build the "every" engine.
-Add a complete feature, or just members you need.
-Contribute more services, proxy types, and improvements.
-Create LunyScript blocks for learners and creative minds.
-LunyEngine grows along with us.
-And it doesn't lock us in.
-It's ours!
+Build a minimal, playable Brotato clone in 3D
 
 ## Next Steps (Sprint)
-- [X] Luny: add Variable<T> for all value types
-- [X] Luny: create LunyVector2, LunyVector3, LunyQuaternion
-- [X] refactor VariableBlock: public API polluted with GetValue(context)
-- [X] Design LunyScript: allow non-table variables => ComputedVariableBlock
-- [X] LunyScript: create input event API
 - [ ] Input: use performed/canceled state and pass this to service base, avoids clearing state
 - [ ] Input: what's a suitable "placeholder" for an incorrect action map name? (eg "Palyer")
-- [ ] Transform => move etc
-
-- Explore options on how to create engine-native blocks (is faster to add them?)
-
+- 
 - [ ] LunyScript: Object.Create().At() <== position or target name
 - [ ] LunyScript Time API: create Time blocks returning TimeService values
-- [ ] LunyScript: refactor API to extension methods
-- [ ] LunyScript: scripts provide settings which contain list of objects to run for (solves pattern matching issue)
+- [ ] LunyScript: scripts provide settings which contain list of object names to run for (solves pattern matching issue)
 - [ ] LunyScript: add missing When.Input.* events
-- [ ] VariableBlock: lacks Is* and As* methods
-
-- [ ] Luny: Variable should understand primitive engine types: Vector2/3, Rect, etc  (no-boxing generic Variable<T>)
-  - or quick workaround just for vector types 
-  - https://share.google/aimode/g8Apk6pzL1LzLHC2o
+- [ ] VariableBlock: it lacks Is* and As* methods
 - [ ] Luny: Scene unload => should run object destroy cleanup before engine unload event
 - 
 
@@ -85,6 +50,8 @@ It's ours!
   - [ ] Coroutines: refactor to step builder with an "options" DTO passed between them, using Interfaces and generics to avoid boxing
   - [ ] LunyScript: design how to edit values in Inspector and apply them to ScriptContext
       - Godot: enable multiple scripts per node!
+  - [ ] For LoopCounter: find a better solution than the one I had
+  - [ ] LunyScript: extensible API via Interface Mixins and Roslyn generated API property (see [2026-02-02-extending-lunyscript-api.md](/_posts/2026-02-02-extending-lunyscript-api.md))
 - ### LunyScript Debug / Profile
   - [ ] Variable validation (log read access of non-existing variables)
   - [ ] Metadata for global variable read/write tracking
@@ -136,91 +103,18 @@ It's ours!
     - .. a proper C# tool instead of 'bush' script?
     - .. a way for me to very quickly get an overview of what's changed, and view the diffs, and perhaps even comment on them
 
-### REMINDERS
-
-Godot: centralized proxy strategy for once-only type-checking ...
-Goal: use `node.transform.position` across entire API without worrying about whether the underlying object is Node2D, Node3D, or logical (Node).
-```
-using Godot;
-using System;
-
-public class NodeProxy {    // <== GodotNode (LunyObject subclass)
-private readonly Node _node;
-public TransformProxy transform { get; }    // <== LunyTransform + NodeTransform
-
-    public NodeProxy(Node node) {
-        _node = node;
-        transform = new TransformProxy(node);
-    }
-
-    public class TransformProxy {
-        // Centralized delegates for get/set logic
-        private readonly Func<Vector3> _getPos;
-        private readonly Action<Vector3> _setPos;
-
-        public TransformProxy(Node node) {
-            // TYPE CHECKING HAPPENS ONLY ONCE HERE
-            if (node is Node3D n3) {
-                _getPos = () => n3.Position;            // make lambdas static, alloc only once?
-                _setPos = (v) => n3.Position = v;
-            }
-            else if (node is Node2D n2) {
-                _getPos = () => new Vector3(n2.Position.X, n2.Position.Y, 0);
-                _setPos = (v) => n2.Position = new Vector2(v.X, v.Y);
-            }
-            else {
-                // Default "Safe" behavior for base Nodes
-                _getPos = () => Vector3.Zero;
-                _setPos = (v) => { }; 
-            }
-        }
-
-        // Clean properties with zero logic/type-checks
-        public Vector3 position {
-            get => _getPos();
-            set => _setPos(value);
-        }
-    }
-}
-
-// Static lambda pattern
-
-public class NodeProxy {
-    // 1. Static Accessor Definitions (Shared by all instances)
-    private static readonly Func<Node, Vector3> Get3D = (n) => ((Node3D)n).Position;
-    private static readonly Action<Node, Vector3> Set3D = (n, v) => ((Node3D)n).Position = v;
-
-    private static readonly Func<Node, Vector3> Get2D = (n) => {
-        var p = ((Node2D)n).Position;
-        return new Vector3(p.X, p.Y, 0);
-    };
-    private static readonly Action<Node, Vector3> Set2D = (n, v) => ((Node2D)n).Position = new Vector2(v.X, v.Y);
-
-    private static readonly Func<Node, Vector3> GetNone = (n) => Vector3.Zero;
-    private static readonly Action<Node, Vector3> SetNone = (n, v) => { };
-
-    private readonly Node _node;
-    private readonly Func<Node, Vector3> _getter;
-    private readonly Action<Node, Vector3> _setter;
-
-    public NodeProxy(Node node) {
-        _node = node;
-        // 2. Assign the shared static reference ONCE
-        if (node is Node3D) { _getter = Get3D; _setter = Set3D; }
-        else if (node is Node2D) { _getter = Get2D; _setter = Set2D; }
-        else { _getter = GetNone; _setter = SetNone; }
-    }
-
-    public Vector3 Position {
-        get => _getter(_node); // No new allocation here
-        set => _setter(_node, value);
-    }
-}
-```
-
 ## DONE
 
 ### CW08-2026 Feb
+- [X] Luny: add Variable<T> for all value types
+- [X] Luny: create LunyVector2, LunyVector3, LunyQuaternion
+- [X] Luny: Variable should understand primitive engine types: Vector2/3, Rect, etc  (no-boxing generic Variable<T>)
+    - https://share.google/aimode/g8Apk6pzL1LzLHC2o
+- [X] refactor VariableBlock: public API polluted with GetValue(context)
+- [X] LunyScript: allow non-table variables => ComputedVariableBlock
+- [X] LunyScript: create input event API
+- [X] LunyScript: Remove LoopCounter since it polluted GetValue with ScriptRuntimeContext parameter
+- [X] LunyScript: Transform => move and shift blocks
 
 ### CW07-2026 Feb
 - [X] Luny: add Alarm & Stopwatch structs 
