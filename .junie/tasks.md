@@ -6,10 +6,11 @@ Build a minimal, playable Brotato clone in 3D
 - compare LunyScript also with its VisualScripting counterpart
 
 ## Next Steps (Sprint)
-- [ ] BuilderToken: use MarkFinished to finalize "open" builders provided they are in a finalizable state, then remove trailing Do() pattern
+- [X] BuilderToken: use MarkFinished to finalize "open" builders provided they are in a finalizable state, then remove trailing Do() pattern
 - [ ] Transform.Move* => move second parameter to Speed(3) method
 - [ ] Input: add When.Input API
 - [ ] Problem: VariableBlock wraps any type, we can't rule out nonsensical uses (ie Vector2 where Quaternion is expected)
+- [ ] Rigidbody: add "stay upgright" block
 
 - [ ] Input: use performed/canceled state and pass this to service base, avoids clearing state
 - [ ] Input: what's a suitable "placeholder" for an incorrect action map name? (eg "Palyer")
@@ -21,6 +22,12 @@ Build a minimal, playable Brotato clone in 3D
 - [ ] VariableBlock: it lacks Is* and As* methods
 - [ ] Luny: Scene unload => should run object destroy cleanup before engine unload event
 - 
+
+## Minor Improvements
+- [ ] Object.Create: add Color() builder, and Object/Renderer.SetColor()
+- [ ] Rigidbody.Move*/Rotate* analogous to Transform.* variants but using physics
+- [ ] Component.Enable/Disable: builder with .All().InChildren()/.InParents()
+- [ ] Scheduler: should hold ISequenceBlock to be more flexible
 
 ## Backlog
 - ### Post-MVP Refactor
