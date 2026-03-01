@@ -7,10 +7,18 @@ Build a minimal, playable Brotato clone in 3D
 
 ## Next Steps (Sprint)
 - [X] BuilderToken: use MarkFinished to finalize "open" builders provided they are in a finalizable state, then remove trailing Do() pattern
+- [X] BUG: Coroutine.For() never ends, Every().XXX.Do() ends after time -- mixup?
+- [X] BUG: Timer() TimeScale is not respected
+- [X] BUG: Timer Every ms does not run event blocks
+- [ ] BUG: Coroutine.Every frames/heartbeats technically correct but semantically wrong: "every 8 frames" => 8 + 8 = 17! (verify)
+- [ ] BUG: enabling game object does not start coroutines
+- [X] Timer: has no When* event blocks
+- [ ] Counter: has no When* event blocks
 - [ ] Transform.Move* => move second parameter to Speed(3) method
 - [ ] Input: add When.Input API
 - [ ] Problem: VariableBlock wraps any type, we can't rule out nonsensical uses (ie Vector2 where Quaternion is expected)
 - [ ] Rigidbody: add "stay upgright" block
+- [ ] Event System: Event.Send("kick").To("ball") -- sets an "event variable", processed after each update (2-3x per frame) and then reset - allows 2-3 event chaining per frame (Heartbeat: A sends B, Post Heartbeat: B sends C, Post Update: C sends D, Post LateUpdate: D sends E, PostUpdate: E sends F; Next Frame PreUpdate: F sends ..)
 
 - [ ] Input: use performed/canceled state and pass this to service base, avoids clearing state
 - [ ] Input: what's a suitable "placeholder" for an incorrect action map name? (eg "Palyer")
@@ -28,6 +36,16 @@ Build a minimal, playable Brotato clone in 3D
 - [ ] Rigidbody.Move*/Rotate* analogous to Transform.* variants but using physics
 - [ ] Component.Enable/Disable: builder with .All().InChildren()/.InParents()
 - [ ] Scheduler: should hold ISequenceBlock to be more flexible
+- [ ] LunyScriptUnityAdapter/LunyScriptMonoBehaviourEventRelayInstaller => should be a UnityPhysicsService providing these callbacks
+- [ ] CollisionBuilder: Begins/Ends/Update should not have Layered/Tagged/Named/etc
+- [ ] CollisionBuilder: (maybe) decide 2D/3D based on whether Collider or Collider2D exists
+- [ ] CollisionEventRelay: add components without the "Update" event
+- [ ] API: consider For.Seconds(3).Do(blocks)
+- [ ] API: For should perhaps use a variable block?
+- [ ] API: Run => allow custom name, or generate name from callstack otherwise
+- [ ] API: Counter/Every => .Do().Pause() ?? The Do() provides ICoroutineBlock methods
+- [ ] API: Every* adds little over Counter() => could merge "DelayBy" with Counter? At least it omits the "Counter()." part
+- [ ] API: Coroutine("").OnFrameUpdate() should not allow .Do() at end
 
 ## Backlog
 - ### Post-MVP Refactor
