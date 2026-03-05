@@ -12,28 +12,31 @@ Build a minimal, playable Brotato clone in 3D
 - [X] BUG: Coroutine.For() never ends, Every().XXX.Do() ends after time -- mixup?
 - [X] BUG: Timer() TimeScale is not respected
 - [X] BUG: Timer Every ms does not run event blocks
+- [X] BUG: IfBlockBuilder calls its own Execute every frame, building the block every time
+- [X] ISSUE: Uninitialized variable + arithmetics fails because null != 0
+- [X] Problem: VariableBlock wraps any type, we can't rule out nonsensical uses (ie Vector2 where Quaternion is expected)
+- [X] Scheduler: should hold ISequenceBlock to be more flexible
+- [X] Input: use event phases and pass this to service base, avoids clearing state
+- [X] Input: add handling of started, performed, canceled events
+- [X] Input: add When.InputAction API
+- [X] CollisionBuilder: Begins/Ends/Update should not have Layered/Tagged/Named/etc
+- [X] API: Every* adds little over Counter() => could merge "DelayBy" with Counter? At least it omits the "Counter()." part
+- 
 - [ ] BUG: Coroutine.Every frames/heartbeats technically correct but semantically wrong: "every 8 frames" => 8 + 8 = 17! (verify)
 - [ ] BUG: enabling game object does not start coroutines
-- [ ] BUG: IfBlockBuilder calls its own Execute every frame, building the block every time
-- [ ] ISSUE: Uninitialized variable + arithmetics fails because null != 0
 - [ ] On.Collision: require filters first, blocks last
 - [ ] Transform.Move* => move second parameter to Speed(3) method
-- [ ] Input: add When.Input API
-- [ ] Problem: VariableBlock wraps any type, we can't rule out nonsensical uses (ie Vector2 where Quaternion is expected)
 - [ ] Rigidbody: add "stay upgright" block
 - [ ] Event System: Event.Send("kick").To("ball") -- sets an "event variable", processed after each update (2-3x per frame) and then reset - allows 2-3 event chaining per frame (Heartbeat: A sends B, Post Heartbeat: B sends C, Post Update: C sends D, Post LateUpdate: D sends E, PostUpdate: E sends F; Next Frame PreUpdate: F sends ..)
 
-- [X] Input: use event phases and pass this to service base, avoids clearing state
 - [ ] Input: merge old and new input handling
-- [ ] Input: add handling of started, performed, canceled events
 - [ ] Input: what's a suitable "placeholder" for an incorrect action map name? (eg "Palyer")
 - 
 - 
 - [ ] LunyScript: Object.Create().At() <== position or target name
 - [ ] LunyScript Time API: create Time blocks returning TimeService values
 - [ ] LunyScript: scripts provide settings which contain list of object names to run for (solves pattern matching issue)
-- [ ] LunyScript: add missing When.Input.* events
-- [ ] VariableBlock: it lacks Is* and As* methods
+- [ ] LunyScript: add missing When.Input.* events (direct input, not action maps)
 - [ ] Luny: Scene unload => should run object destroy cleanup before engine unload event
 - 
 
@@ -41,17 +44,12 @@ Build a minimal, playable Brotato clone in 3D
 - [ ] Object.Create: add Color() builder, and Object/Renderer.SetColor()
 - [ ] Rigidbody.Move*/Rotate* analogous to Transform.* variants but using physics
 - [ ] Component.Enable/Disable: builder with .All().InChildren()/.InParents()
-- [ ] Scheduler: should hold ISequenceBlock to be more flexible
 - [ ] LunyScriptUnityAdapter/LunyScriptMonoBehaviourEventRelayInstaller => should be a UnityPhysicsService providing these callbacks
-- [ ] CollisionBuilder: Begins/Ends/Update should not have Layered/Tagged/Named/etc
 - [ ] CollisionBuilder: (maybe) decide 2D/3D based on whether Collider or Collider2D exists
 - [ ] CollisionEventRelay: add components without the "Update" event
 - [ ] API: consider For.Seconds(3).Do(blocks)
 - [ ] API: For should perhaps use a variable block?
 - [ ] API: Run => allow custom name, or generate name from callstack otherwise
-- [ ] API: Counter/Every => .Do().Pause() ?? The Do() provides ICoroutineBlock methods
-- [ ] API: Every* adds little over Counter() => could merge "DelayBy" with Counter? At least it omits the "Counter()." part
-- [ ] API: Coroutine("").OnFrameUpdate() should not allow .Do() at end
 - [ ] ObjectRef class => encapsulates string with object/asset to support passing both equally
 
 ## Backlog
@@ -112,7 +110,6 @@ Build a minimal, playable Brotato clone in 3D
 - ### Godot Specific
   - 
 - ### LATER (minor)
-  - [ ] consider LunyScript.Every.* (updates) running unconditionally / globally (not tied to object - but then: context?)
   - [ ] LunyScript.Method.Run => could use overloads for When/Every BUT I don't want to make it "too easy" to inject lambdas
   - [ ] Consider: Case insensitive and partial name matching for object-script activator (controlled by LunyScript flags), configurable: starts with/contains/etc
   - [ ] Unity: Add `[IgnoredByDeepProfiler]` attribute to debug methods
